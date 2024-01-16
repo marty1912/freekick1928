@@ -1,0 +1,153 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhyjbkpqxorgv"]
+
+[ext_resource type="Script" path="res://Scripts/BallLauncher.gd" id="1_3hdld"]
+[ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uutfu"]
+size = Vector3(7.4, 2.44, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_djm41"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mh0g"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.0588235, 0.945098, 0.258824, 0.352941)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u4jh5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c3pjw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jtt6"]
+albedo_color = Color(0.109804, 0.215686, 0.133333, 1)
+
+[sub_resource type="Gradient" id="Gradient_otk80"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kxlbf"]
+gradient = SubResource("Gradient_otk80")
+
+[sub_resource type="Curve3D" id="Curve3D_me3c6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qbcku"]
+viewport_path = NodePath("Node3D/direction_select")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GoalStuff" type="Node3D" parent="."]
+script = ExtResource("1_et3lr")
+
+[node name="Goal" type="Area3D" parent="GoalStuff"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 1)
+shape = SubResource("BoxShape3D_uutfu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Goal/CollisionShape3D"]
+transform = Transform3D(7.32, 0, 0, 0, 2.44, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_djm41")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2mh0g")
+
+[node name="Field" type="Node3D" parent="GoalStuff"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GoalStuff/Field"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/Field/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_u4jh5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Field/StaticBody3D/CollisionShape3D"]
+transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 0, 0, 0)
+mesh = SubResource("PlaneMesh_c3pjw")
+surface_material_override/0 = SubResource("StandardMaterial3D_5jtt6")
+
+[node name="Lines" type="Node3D" parent="GoalStuff/Field"]
+
+[node name="GoalLine" type="Decal" parent="GoalStuff/Field/Lines"]
+size = Vector3(60, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="CenterLine" type="Decal" parent="GoalStuff/Field/Lines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+size = Vector3(60, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="16er" type="Node3D" parent="GoalStuff/Field/Lines"]
+
+[node name="16Line" type="Decal" parent="GoalStuff/Field/Lines/16er"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+size = Vector3(40.1, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="16Line2" type="Decal" parent="GoalStuff/Field/Lines/16er"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 0, -8)
+size = Vector3(16, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="16Line3" type="Decal" parent="GoalStuff/Field/Lines/16er"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 0, -8)
+size = Vector3(16, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="5er" type="Node3D" parent="GoalStuff/Field/Lines"]
+
+[node name="16Line" type="Decal" parent="GoalStuff/Field/Lines/5er"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
+size = Vector3(18.1, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="16Line2" type="Decal" parent="GoalStuff/Field/Lines/5er"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0, -2.75)
+size = Vector3(5.5, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="16Line3" type="Decal" parent="GoalStuff/Field/Lines/5er"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -2.75)
+size = Vector3(5.5, 2, 0.1)
+texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.7631)
+
+[node name="BallLauncher" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302729, 6.64762)
+script = ExtResource("1_3hdld")
+my_force = Vector3(0, 0, 10)
+my_rot = Vector3(1, 0, 0)
+
+[node name="Path3D" type="Path3D" parent="Node3D/BallLauncher"]
+curve = SubResource("Curve3D_me3c6")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.99806e-08, 0.939358, 0.342938, 8.21213e-08, 0.342938, -0.939358, 0, 1.05975, 4.67625)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 7.05589)
+texture = SubResource("ViewportTexture_qbcku")
+
+[node name="direction_select" type="SubViewport" parent="Node3D"]
+disable_3d = true
+transparent_bg = true
+
+[node name="Node2D" type="Node2D" parent="Node3D/direction_select"]
+
+[node name="Control" type="Control" parent="Node3D/direction_select/Node2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Node3D/direction_select/Node2D/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.686275, 0.0235294, 1, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.994151, 0.104071, -0.0288616, 0, 0.267238, 0.96363, 0.107999, 0.957994, -0.265675, 0, 9.0446, 0)

@@ -1,0 +1,14 @@
+Sprite3D
+Node2D
+ColorRect
+Control
+SubViewport
+SubViewportContainer
+Node3D
+Path3D
+DirectionalLight3D
+Camera3D
+MeshInstance3D
+Decal
+CollisionShape3D
+RigidBody3D
