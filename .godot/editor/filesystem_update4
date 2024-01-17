@@ -1,2 +1,7 @@
 res://Scenes/Pitch.tscn
+res://Scenes/Mouse3DGetter.gd
 res://Scenes/ball.tscn
+res://Scenes/ShowShotPositionGUI.gd
+res://Scripts/BallLauncher.gd
+res://Scenes/Ball.gd
+res://Scenes/PathFollow_ball.gd
