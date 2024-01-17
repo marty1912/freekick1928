@@ -5,3 +5,7 @@ res://Scenes/ShowShotPositionGUI.gd
 res://Scripts/BallLauncher.gd
 res://Scenes/Ball.gd
 res://Scenes/PathFollow_ball.gd
+res://Scenes/SetLineCurve.gd
+res://addons/godot-polyliner/demos/demo/Spatial.tscn
+res://addons/godot-polyliner/shaders/line_glow.tres
+res://Scenes/CustomLineDraw.gd
