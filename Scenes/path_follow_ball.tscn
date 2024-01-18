@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://yooc6dxo001a"]
+
+[ext_resource type="Script" path="res://Scenes/PathFollow_ball.gd" id="1_m0ekd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wjux8"]
+radius = 0.01
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7nf7"]
+shading_mode = 0
+
+[node name="PathFollow3D" type="PathFollow3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+script = ExtResource("1_m0ekd")
+duration = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_wjux8")
+surface_material_override/0 = SubResource("StandardMaterial3D_s7nf7")

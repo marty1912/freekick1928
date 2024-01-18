@@ -8,6 +8,7 @@ var my_ball:Ball = null
 var my_direction:Vector3 = Vector3(0,0,0)
 @onready var path_3d: Path3D = $Path3D
 
+var rotation_mult: float = 20
 
 func set_direction(position_hit:Vector2):
 	# position hit shows us where we hit the ball when we kick it
@@ -16,12 +17,12 @@ func set_direction(position_hit:Vector2):
 	my_direction =  (ending_point-starting_point).normalized()
 
 func set_position_hit(position_hit:Vector2):
-	set_direction(position_hit)
-	return
+	#set_direction(position_hit)
+	#return
 	# position hit shows us where we hit the ball when we kick it
 	var starting_point = Vector3(position_hit.x,position_hit.y,-1).normalized()
 	var ending_point = Vector3(0,0,0)
-	my_rot = ending_point-starting_point
+	my_rot =(Vector3(position_hit.y,position_hit.x,0.0))*rotation_mult
 	
 	
 # Called when the node enters the scene tree for the first time.
@@ -40,14 +41,14 @@ func launch_ball(ball:Ball,force:Vector3,rot:Vector3):
 	#ball.apply_central_impulse(force)
 	#ball.apply_torque_impulse(rotation)
 	ball.apply_impulse(force)
-	ball.apply_rotation(Vector3(0,5,0))
+	ball.apply_rotation(my_rot)
 
 func ball_preview(delta:float):
 	my_ball.disableCollisions()
 	var ball = spawn_ball()
 	launch_ball_with_current_settings(ball)
 	path_3d.curve.clear_points()
-	for i in range(0,100):
+	for i in range(0,25):
 		ball.simulate_physics(delta)
 		path_3d.curve.add_point(ball.position)
 		#print("ball_pos: {x}".format({"x":ball.position}))

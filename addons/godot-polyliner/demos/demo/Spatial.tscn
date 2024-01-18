@@ -185,7 +185,7 @@ bake_resolution = 67
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.094, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_6kk5m"]
+[sub_resource type="CurveTexture" id="CurveTexture_gwiqb"]
 texture_mode = 1
 curve = SubResource("53")
 
@@ -198,7 +198,7 @@ shader_parameter/tangent_facing = false
 shader_parameter/rounded = true
 shader_parameter/color = Color(0, 0.4, 1, 1)
 shader_parameter/glow_curve = 0.05
-shader_parameter/width_curve = SubResource("CurveTexture_6kk5m")
+shader_parameter/width_curve = SubResource("CurveTexture_gwiqb")
 
 [sub_resource type="Curve3D" id="12"]
 bake_interval = 0.13
@@ -478,7 +478,7 @@ shader_parameter/color = Color(0.1, 0.1, 0.1, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="wormspinner" type="Node3D" parent="."]
-transform = Transform3D(0.996381, 0, -0.0848147, 0, 0.999999, 0, 0.084814, 0, 0.996389, 0.143764, 0.016, 3.531)
+transform = Transform3D(-0.950381, 0, 0.311041, 0, 0.999999, 0, -0.311039, 0, -0.950388, 0.264599, 0.016, 3.531)
 script = SubResource("1")
 mul = 1.59
 

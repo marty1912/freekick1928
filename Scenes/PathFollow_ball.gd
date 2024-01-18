@@ -1,4 +1,4 @@
-extends PathFollow3D
+class_name PathFollowBall extends PathFollow3D
 
 @export var duration:float = 1
 var time = 0

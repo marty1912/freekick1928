@@ -5,6 +5,16 @@ signal on_have_mouse_pos_rel(Vector2)
 
 @export var sizeXY:Vector2 = Vector2(1,1)
 
+var input_disabled:bool = false
+
+func disable_inputs():
+	input_disabled = true
+
+func enable_inputs():
+	input_disabled = false
+
+func reset_aim():
+	on_have_mouse_pos_rel.emit(Vector2(0,0))
 
 func getPositionOfMouseIn3D() -> Dictionary:
 	#https://stackoverflow.com/questions/76893256/how-to-get-the-3d-mouse-pos-in-godot-4-1
@@ -35,6 +45,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func getPosition2DOnMe():
 	var raycast_res = getPositionOfMouseIn3D()
 	if(raycast_res.is_empty()):
@@ -49,6 +60,10 @@ func getPosition2DOnMe():
 
 
 func _physics_process(delta: float) -> void:
+	if(input_disabled):
+		return
+	if(not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+		return
 	var pos = getPosition2DOnMe()
 	if(pos == null):
 		return
