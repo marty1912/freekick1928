@@ -18,3 +18,5 @@ res://Scenes/ShowPosition.gd
 res://Scenes/WASD_Direction_2D.gd
 res://Scenes/Mouse3DGetter.gd
 res://Scenes/power_select.tscn
+res://godot_reuse/FilledSprite/FilledCI.gd
+res://Scenes/power_select.gd

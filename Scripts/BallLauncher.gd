@@ -7,8 +7,14 @@ var my_ball:Ball = null
 @export var my_rot: Vector3 = Vector3(0,0,0)
 var my_direction:Vector3 = Vector3(0,0,0)
 @onready var path_3d: Path3D = $Path3D
-
+var my_power:float = 0
+var power_mult:float = 20
 var rotation_mult: float = 20
+
+func set_relative_power(val:float):
+	
+	my_power = power_mult*val
+
 
 func set_direction(position_hit:Vector2):
 	# position hit shows us where we hit the ball when we kick it
@@ -22,7 +28,7 @@ func set_position_hit(position_hit:Vector2):
 	# position hit shows us where we hit the ball when we kick it
 	var starting_point = Vector3(position_hit.x,position_hit.y,-1).normalized()
 	var ending_point = Vector3(0,0,0)
-	my_rot =(Vector3(position_hit.y,position_hit.x,0.0))*rotation_mult
+	my_rot =(Vector3(-position_hit.y,position_hit.x,0.0))*rotation_mult
 	
 	
 # Called when the node enters the scene tree for the first time.
@@ -60,7 +66,7 @@ func ball_preview(delta:float):
 func launch_ball_with_current_settings(ball:Ball):
 	# top speed with 20 here is 180 km/h. could be max force
 	# min should be like 45km/h (use 5 here) 
-	my_force = 10*my_direction
+	my_force = my_power*my_direction
 	launch_ball(ball,my_force,my_rot)
 	
 func _physics_process(delta: float) -> void:

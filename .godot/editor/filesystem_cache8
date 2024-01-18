@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1705593524
+::res://::1705597975
 default_env.tres::Environment::-1::1705422112::0::1::::<><>::
 icon.png::CompressedTexture2D::2928299814546265018::1705400339::1705402259::1::::<><>::
 line.png::CompressedTexture2D::190626204053190015::1705422112::1705422112::1::::<><>::
@@ -16,8 +16,8 @@ plugin.gd::GDScript::-1::1705509452::0::1::::<>EditorPlugin<>::
 ::res://addons/godot-polyliner/demos/::1705509451
 default_bus_layout.tres::AudioBusLayout::-1::1705509451::0::1::::<><>::
 default_env.tres::Environment::7431848558658864130::1705509451::0::1::::<><>::
-::res://addons/godot-polyliner/demos/demo/::1705596341
-Spatial.tscn::PackedScene::3153264249488895296::1705596341::0::1::::<><>::uid://dd5bpvybxmy6u::::res://addons/godot-polyliner/demos/default_env.tres<>res://addons/godot-polyliner/Line3D/LinePath3D.gd<>res://addons/godot-polyliner/Trail3D/Trail3D.gd<>uid://c30na0obdky88::::res://addons/godot-polyliner/shaders/line_pbr.tres<>uid://bpkesrnyx2hr5::::res://addons/godot-polyliner/shaders/line_fade.tres<>res://addons/godot-polyliner/shaders/parallax/raymarch_rope.gdshader<>res://addons/godot-polyliner/shaders/parallax/raymarch_ticker.gdshader<>uid://c2c7sknvw28nm::::res://addons/godot-polyliner/shaders/line_glow.tres<>res://addons/godot-polyliner/shaders/parallax/raymarch_xmaslightbulbs.gdshader<>res://addons/godot-polyliner/shaders/parallax/raymarch_driverpassenger.gdshader<>uid://dno2b0s1fv77i::::res://addons/godot-polyliner/shaders/parallax/raymarch_xmasgarland.tres<>res://addons/godot-polyliner/shaders/parallax/raymarch_chain.gdshader
+::res://addons/godot-polyliner/demos/demo/::1705596863
+Spatial.tscn::PackedScene::3153264249488895296::1705596862::0::1::::<><>::uid://dd5bpvybxmy6u::::res://addons/godot-polyliner/demos/default_env.tres<>res://addons/godot-polyliner/Line3D/LinePath3D.gd<>res://addons/godot-polyliner/Trail3D/Trail3D.gd<>uid://c30na0obdky88::::res://addons/godot-polyliner/shaders/line_pbr.tres<>uid://bpkesrnyx2hr5::::res://addons/godot-polyliner/shaders/line_fade.tres<>res://addons/godot-polyliner/shaders/parallax/raymarch_rope.gdshader<>res://addons/godot-polyliner/shaders/parallax/raymarch_ticker.gdshader<>uid://c2c7sknvw28nm::::res://addons/godot-polyliner/shaders/line_glow.tres<>res://addons/godot-polyliner/shaders/parallax/raymarch_xmaslightbulbs.gdshader<>res://addons/godot-polyliner/shaders/parallax/raymarch_driverpassenger.gdshader<>uid://dno2b0s1fv77i::::res://addons/godot-polyliner/shaders/parallax/raymarch_xmasgarland.tres<>res://addons/godot-polyliner/shaders/parallax/raymarch_chain.gdshader
 ::res://addons/godot-polyliner/demos/line3d fix/::1705509451
 Line3D.gd::GDScript::-1::1705509451::0::1::::<>Node3D<>::
 new scene.tscn::PackedScene::3352396111796216274::1705509451::0::1::::<><>::res://addons/godot-polyliner/demos/line3d fix/Line3D.gd<>res://addons/godot-polyliner/shaders/line_pbr.gdshader
@@ -49,9 +49,9 @@ line_pbr.tres::Shader::-1::1705509451::0::1::::<><>::
 ImmediateSurface.gd::GDScript::-1::1705509451::0::1::::ImmediateSurface<>RefCounted<>::
 LineGen3D.gd::GDScript::-1::1705509451::0::1::::LineGen3D<>Resource<>::
 README.md::TextFile::-1::1705509451::0::1::::<><>::
-::res://addons/godot-polyliner/shaders/::1705596341
+::res://addons/godot-polyliner/shaders/::1705597429
 line_fade.tres::Shader::3460173042167204228::1705509452::0::1::::<><>::
-line_glow.tres::Shader::6674044535480612962::1705596341::0::1::::<><>::
+line_glow.tres::Shader::6674044535480612962::1705597429::0::1::::<><>::
 line_pbr.tres::Shader::6790529088769449091::1705509452::0::1::::<><>::
 line_pbr_vertexlit.tres::Shader::6081056048919754380::1705509452::0::1::::<><>::
 ::res://addons/godot-polyliner/shaders/include/::1705509452
@@ -78,29 +78,67 @@ README.md::TextFile::-1::1705529284::0::1::::<><>::
 ::res://addons/GPUTrail/defaults/::1705590370
 curve.tres::CurveTexture::6165819948555381221::1705590370::0::1::::<><>::
 texture.tres::GradientTexture1D::5988605028696468514::1705590370::0::1::::<><>::
-::res://addons/GPUTrail/shaders/::1705596341
-custom_example_alpha_erosion.gdshader::Shader::-1::1705596341::0::1::::<><>::
-custom_example_blank.gdshader::Shader::-1::1705596341::0::1::::<><>::
+::res://addons/GPUTrail/shaders/::1705597429
+custom_example_alpha_erosion.gdshader::Shader::-1::1705597429::0::1::::<><>::
+custom_example_blank.gdshader::Shader::-1::1705597429::0::1::::<><>::
 gputrail_lib.gdshaderinc::ShaderInclude::-1::1705529284::0::1::::<><>::
-trail.gdshader::Shader::-1::1705596341::0::1::::<><>::
-trail_draw_pass.gdshader::Shader::-1::1705596341::0::1::::<><>::
-::res://Scenes/::1705596341
+trail.gdshader::Shader::-1::1705597429::0::1::::<><>::
+trail_draw_pass.gdshader::Shader::-1::1705597429::0::1::::<><>::
+::res://godot_reuse/::1705597975
+::res://godot_reuse/ColorPaletteLimit/::1705597975
+ColorPaletteLimit.gdshader::Shader::-1::1705597975::0::1::::<><>::
+ColorPaletteLimit.tres::ShaderMaterial::2111261413106225435::1705597975::0::1::::<><>::res://godot_reuseable_stuff/ColorPaletteLimit/ColorPaletteLimit.gdshader<>uid://dvk0r622h4mi3::::res://godot_reuseable_stuff/ColorPaletteLimit/palettes/gloom-8-1x.png
+ColorPaletteSwap.tres::ShaderMaterial::7204857917857670659::1705597975::0::1::::<><>::res://godot_reuseable_stuff/ColorPaletteLimit/paletteReplace.gdshader<>uid://dvk0r622h4mi3::::res://godot_reuseable_stuff/ColorPaletteLimit/palettes/gloom-8-1x.png<>uid://cmu51h5g6f4yq::::res://godot_reuseable_stuff/ColorPaletteLimit/palettes/slso8-1x.png
+color_palette_filter.tscn::PackedScene::9159392508915566959::1705597975::0::1::::<><>::res://Scenes/AlwaysOnTopCL.gd<>uid://dawc7suku20yx::::res://godot_reuseable_stuff/ColorPaletteLimit/ColorPaletteSwap.tres
+paletteReplace.gdshader::Shader::-1::1705597975::0::1::::<><>::
+::res://godot_reuse/ColorPaletteLimit/palettes/::1705597975
+ayy4-1x.png::CompressedTexture2D::3479975777031037992::1705597975::1705598001::1::::<><>::
+ayy4-1x_transparent.png::CompressedTexture2D::7380611424096642706::1705597975::1705598001::1::::<><>::
+cherrymelon-1x.png::CompressedTexture2D::5609017564329644714::1705597975::1705598001::1::::<><>::
+dustbyte-1x.png::CompressedTexture2D::2073363327216277913::1705597975::1705598001::1::::<><>::
+fuzzyfour-1x.png::CompressedTexture2D::4707469127359166882::1705597975::1705598001::1::::<><>::
+gloom-8-1x.png::CompressedTexture2D::8655421499504964308::1705597975::1705598001::1::::<><>::
+gold-gb-1x.png::CompressedTexture2D::8966902651368903260::1705597975::1705598001::1::::<><>::
+kankei4-1x.png::CompressedTexture2D::2475088255200149900::1705597975::1705598001::1::::<><>::
+lava-gb-1x.png::CompressedTexture2D::3004167075054223956::1705597975::1705598001::1::::<><>::
+slso8-1x.png::CompressedTexture2D::5658263400870160780::1705597975::1705598001::1::::<><>::
+::res://godot_reuse/FilledSprite/::1705597975
+FillTopBottom.gdshader::Shader::-1::1705597975::0::1::::<><>::
+FillTopBottomMaterial.tres::ShaderMaterial::2965852753895765403::1705597975::0::1::::<><>::res://godot_reuseable_stuff/FilledSprite/FillTopBottom.gdshader
+::res://godot_reuse/Fonts/::1705597975
+Abaddon Bold.ttf::FontFile::978583204749757690::1705597975::1705598001::1::::<><>::
+Abaddon Light.ttf::FontFile::982328396044609067::1705597975::1705598001::1::::<><>::
+Bullpen3D.ttf::FontFile::6205657386608818410::1705597975::1705598001::1::::<><>::
+Freesans-991K.ttf::FontFile::2599251260854628837::1705597975::1705598001::1::::<><>::
+Louis George Cafe.ttf::FontFile::2344428046376259431::1705597975::1705598001::1::::<><>::
+MarioWorldPixelColor-3zBwX.ttf::FontFile::2937295356320291478::1705597975::1705598001::1::::<><>::
+OhOkey-vm82O.ttf::FontFile::7180835389614497053::1705597975::1705598001::1::::<><>::
+Pixelsix00-z7DD.ttf::FontFile::5752060547611049201::1705597975::1705598001::1::::<><>::
+Pixelsix10-5BJG.ttf::FontFile::5306195541714697005::1705597975::1705598001::1::::<><>::
+Pixelsix14-68JD.ttf::FontFile::2876464361090291042::1705597975::1705598001::1::::<><>::
+Silverfinster-x3L2K.ttf::FontFile::7715744730999000986::1705597975::1705598001::1::::<><>::
+Stripy-Reg.ttf::FontFile::6629328596556822330::1705597975::1705598001::1::::<><>::
+::res://godot_reuse/RichtTextEffects/::1705597975
+effect_label.gd::GDScript::-1::1705597975::0::1::::<>RichTextLabel<>::
+wobble_effect.gd::GDScript::-1::1705597975::0::1::::<>RichTextEffect<>::
+::res://Scenes/::1705597429
 Ball.gd::GDScript::-1::1705508676::0::1::::Ball<>CharacterBody3D<>::
-ball.tscn::PackedScene::6149611762389214309::1705596340::0::1::::<><>::res://Scenes/Ball.gd
+ball.tscn::PackedScene::6149611762389214309::1705596862::0::1::::<><>::res://Scenes/Ball.gd
 CustomLineDraw.gd::GDScript::-1::1705513000::0::1::::<>Node3D<>::
 GoalScore.gd::GDScript::-1::1705404601::0::1::::<>Node3D<>::
-Mouse3DGetter.gd::GDScript::-1::1705596074::0::1::::<>StaticBody3D<>::
+Mouse3DGetter.gd::GDScript::-1::1705597081::0::1::::<>StaticBody3D<>::
 PathFollow_ball.gd::GDScript::-1::1705590893::0::1::::PathFollowBall<>PathFollow3D<>::
-Pitch.tscn::PackedScene::2927836443149405765::1705596340::0::1::::<><>::res://Scripts/BallLauncher.gd<>res://Scenes/GoalScore.gd<>res://Scenes/Mouse3DGetter.gd<>uid://bbvllqgdod6v6::::res://Scenes/WASD_Direction_2D.tscn<>res://Scenes/SetLineCurve.gd<>uid://cjgag2twnyb11::::res://Scenes/effet_select.tscn
+Pitch.tscn::PackedScene::2927836443149405765::1705597429::0::1::::<><>::res://Scripts/BallLauncher.gd<>res://Scenes/GoalScore.gd<>res://Scenes/Mouse3DGetter.gd<>uid://bbvllqgdod6v6::::res://Scenes/WASD_Direction_2D.tscn<>res://Scenes/SetLineCurve.gd<>uid://cjgag2twnyb11::::res://Scenes/effet_select.tscn<>uid://baget2kdhyi5h::::res://Scenes/power_select.tscn
 path_follow_ball.tscn::PackedScene::1714288779279157920::1705590706::0::1::::<><>::res://Scenes/PathFollow_ball.gd
-effet_select.tscn::PackedScene::5416939389915916450::1705596341::0::1::::<><>::res://Scenes/ShowShotPositionGUI.gd<>uid://cmdxnicg3cpno::::res://Sprites/ShotGUI/OutlineEffet.png<>uid://bl034ukpwbfox::::res://Sprites/ShotGUI/aimCenter_effet.png
+effet_select.tscn::PackedScene::5416939389915916450::1705596863::0::1::::<><>::res://Scenes/ShowShotPositionGUI.gd<>uid://cmdxnicg3cpno::::res://Sprites/ShotGUI/OutlineEffet.png<>uid://bl034ukpwbfox::::res://Sprites/ShotGUI/aimCenter_effet.png
+power_select.tscn::PackedScene::2399085181997830835::1705597355::0::1::::<><>::
 ShowPosition.gd::GDScript::-1::1705593552::0::1::::ShowPosition<>Node2D<>::
-WASD_Direction_2D.gd::GDScript::-1::1705595516::0::1::::<>Node2D<>::
-WASD_Direction_2D.tscn::PackedScene::2500649840617371965::1705596341::0::1::::<><>::res://Scenes/WASD_Direction_2D.gd<>res://Scenes/ShowPosition.gd<>uid://cmdxnicg3cpno::::res://Sprites/ShotGUI/OutlineEffet.png<>uid://bhyqw1whvkw8a::::res://icon.png<>uid://22hje8wlemqs::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_70.png<>uid://xlhlbe7d6b4r::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_71.png<>uid://dtufcr1gxadhb::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_72.png<>uid://dx3r7dvsn35ag::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_73.png
-SetLineCurve.gd::GDScript::-1::1705591027::0::1::::<>Path3D<>::
+WASD_Direction_2D.gd::GDScript::-1::1705597038::0::1::::<>Node2D<>::
+WASD_Direction_2D.tscn::PackedScene::2500649840617371965::1705596863::0::1::::<><>::res://Scenes/WASD_Direction_2D.gd<>res://Scenes/ShowPosition.gd<>uid://cmdxnicg3cpno::::res://Sprites/ShotGUI/OutlineEffet.png<>uid://bhyqw1whvkw8a::::res://icon.png<>uid://22hje8wlemqs::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_70.png<>uid://xlhlbe7d6b4r::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_71.png<>uid://dtufcr1gxadhb::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_72.png<>uid://dx3r7dvsn35ag::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_73.png
+SetLineCurve.gd::GDScript::-1::1705596744::0::1::::<>Path3D<>::
 ShowShotPositionGUI.gd::GDScript::-1::1705591755::0::1::::<>Node2D<>::
-::res://Scripts/::1705595452
-BallLauncher.gd::GDScript::-1::1705595452::0::1::::<>Node3D<>::
+::res://Scripts/::1705596668
+BallLauncher.gd::GDScript::-1::1705596668::0::1::::<>Node3D<>::
 ::res://Sprites/::1705595937
 ::res://Sprites/Pixel Fantasy Icons Keyboard/::1705595937
 EULA - READ ME.txt::TextFile::-1::1705595853::0::1::::<><>::
@@ -322,7 +360,7 @@ keyboard_213.png::CompressedTexture2D::6331027622196212033::1705595850::17055959
 keyboard_214.png::CompressedTexture2D::704548156055346334::1705595850::1705595946::1::::<><>::
 keyboard_215.png::CompressedTexture2D::5688116586579573072::1705595850::1705595946::1::::<><>::
 keyboard_216.png::CompressedTexture2D::9168358352809741704::1705595850::1705595946::1::::<><>::
-::res://Sprites/ShotGUI/::1705596459
+::res://Sprites/ShotGUI/::1705596462
 aimCenter_effet.png::CompressedTexture2D::3211860338009678031::1705479572::1705479595::1::::<><>::
 aim_arrow.png::CompressedTexture2D::5904953964909142085::1705596459::1705596462::1::::<><>::
 OutlineEffet.png::CompressedTexture2D::5622720754045698708::1705591467::1705591469::1::::<><>::

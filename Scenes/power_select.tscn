@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://baget2kdhyi5h"]
+[gd_scene load_steps=7 format=3 uid="uid://baget2kdhyi5h"]
+
+[ext_resource type="Shader" path="res://godot_reuse/FilledSprite/FillTopBottom.gdshader" id="1_dndbb"]
+[ext_resource type="Script" path="res://Scenes/power_select.gd" id="1_xsrcf"]
+[ext_resource type="Script" path="res://godot_reuse/FilledSprite/FilledCI.gd" id="2_3vjdk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yykmc"]
+shader = ExtResource("1_dndbb")
+shader_parameter/fill = 1.0
+shader_parameter/left_right = true
+shader_parameter/reverse = false
+
+[sub_resource type="Gradient" id="Gradient_5nd4h"]
+offsets = PackedFloat32Array(0, 0.487013, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0.94902, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1opn7"]
+gradient = SubResource("Gradient_5nd4h")
 
 [node name="PowerSelect" type="Node2D"]
+script = ExtResource("1_xsrcf")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(512, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_yykmc")
+custom_minimum_size = Vector2(384, 64)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 448.0
+offset_bottom = 96.0
+texture = SubResource("GradientTexture1D_1opn7")
+flip_h = true
+script = ExtResource("2_3vjdk")
+
+[connection signal="on_have_new_power_val" from="." to="Control/TextureRect" method="set_fill"]
