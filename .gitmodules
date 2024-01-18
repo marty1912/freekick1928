@@ -1,0 +1,3 @@
+[submodule "godot_reuse"]
+	path = godot_reuse
+	url = git@github.com:marty1912/godot_reuse.git
