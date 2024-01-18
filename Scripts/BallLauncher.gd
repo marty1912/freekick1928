@@ -8,12 +8,13 @@ var my_ball:Ball = null
 var my_direction:Vector3 = Vector3(0,0,0)
 @onready var path_3d: Path3D = $Path3D
 var my_power:float = 0
-var power_mult:float = 20
+var power_max:float = 20
+var power_min:float = 5
 var rotation_mult: float = 20
 
 func set_relative_power(val:float):
 	
-	my_power = power_mult*val
+	my_power = lerpf(power_min,power_max,val)
 
 
 func set_direction(position_hit:Vector2):

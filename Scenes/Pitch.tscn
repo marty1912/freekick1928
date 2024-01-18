@@ -167,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 shape = SubResource("BoxShape3D_ch1wp")
 
 [node name="power_control" type="StaticBody3D" parent="Node3D/BallLauncher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0434968, -0.130799, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0434968, -0.130799, -0.361061)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_1h72p")
