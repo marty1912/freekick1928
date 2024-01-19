@@ -11,6 +11,11 @@ var my_power:float = 0
 var power_max:float = 20
 var power_min:float = 5
 var rotation_mult: float = 20
+@onready var power_select: PowerSelect = $power_control/Sprite3D/power_select/PowerSelect
+
+
+signal on_disable_all_inputs()
+signal on_enable_all_inputs()
 
 func set_relative_power(val:float):
 	
@@ -29,13 +34,28 @@ func set_position_hit(position_hit:Vector2):
 	# position hit shows us where we hit the ball when we kick it
 	var starting_point = Vector3(position_hit.x,position_hit.y,-1).normalized()
 	var ending_point = Vector3(0,0,0)
-	my_rot =(Vector3(-position_hit.y,position_hit.x,0.0))*rotation_mult
+	my_rot =(Vector3(position_hit.y,position_hit.x,0.0))*rotation_mult
 	
-	
+
+func disable_all_inputs():
+	on_disable_all_inputs.emit()
+
+func enable_all_inputs():
+	on_enable_all_inputs.emit()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	my_ball = spawn_ball()
+	power_select.on_power_select_start.connect(on_start_selecting_power)
+	power_select.on_power_selected.connect(on_done_selecting_power)
 	pass # Replace with function body.
+
+func on_start_selecting_power():
+	return
+func on_abort_selecting_power():
+	return
+	
+func on_done_selecting_power():
+	launch_ball_with_current_settings(my_ball)
 
 func spawn_ball() ->Ball:
 	var ball = ball_scene.instantiate()
@@ -77,6 +97,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
+	#print("action: {x}".format({"x":event.as_text()}))
+	if(event.is_action_pressed("ball_fire")):
+		power_select.on_ball_fire_pressed()
+	return
 	if(event is InputEventKey):
 		var key_evt:InputEventKey = event
 		if(key_evt.is_pressed() and key_evt.keycode == KEY_SPACE):

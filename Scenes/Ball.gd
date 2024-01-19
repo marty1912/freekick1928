@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 func apply_impulse(imp:Vector3):
 	
 	my_velocity = imp/mass
-	print("myvel: {x} km/h".format({"x":my_velocity.length()*3.6}))
+	#print("myvel: {x} km/h".format({"x":my_velocity.length()*3.6}))
 
 
 

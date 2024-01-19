@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var sprite_2d: Sprite2D = $Node2D/Sprite2D
 
-var resoultion = Vector2(256,256)
+@export var resoultion = Vector2(256,256)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

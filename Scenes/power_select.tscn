@@ -44,7 +44,6 @@ offset_top = 32.0
 offset_right = 448.0
 offset_bottom = 96.0
 texture = SubResource("GradientTexture1D_1opn7")
-flip_h = true
 script = ExtResource("2_3vjdk")
 
 [connection signal="on_have_new_power_val" from="." to="Control/TextureRect" method="set_fill"]
