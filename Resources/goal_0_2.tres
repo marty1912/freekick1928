@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LiveTickerEvent" load_steps=2 format=3 uid="uid://dyfw4s1pl02jo"]
+
+[ext_resource type="Script" path="res://Resources/LiveTickerEvent.gd" id="1_36tc3"]
+
+[resource]
+script = ExtResource("1_36tc3")
+add_live_text = "GOAL for Hungary"
+time = 2436.0
+is_goal = true
+for_team = 1
+is_free_kick = false
+player_name = "Test Player"

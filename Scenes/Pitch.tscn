@@ -1,12 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhyjbkpqxorgv"]
+[gd_scene load_steps=26 format=3 uid="uid://bhyjbkpqxorgv"]
 
-[ext_resource type="Script" path="res://Scripts/BallLauncher.gd" id="1_3hdld"]
 [ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
-[ext_resource type="Script" path="res://Scenes/Mouse3DGetter.gd" id="3_1h72p"]
-[ext_resource type="PackedScene" uid="uid://bbvllqgdod6v6" path="res://Scenes/WASD_Direction_2D.tscn" id="3_1tsth"]
-[ext_resource type="Script" path="res://Scenes/SetLineCurve.gd" id="4_43uxg"]
-[ext_resource type="PackedScene" uid="uid://cjgag2twnyb11" path="res://Scenes/effet_select.tscn" id="5_1nroo"]
-[ext_resource type="PackedScene" uid="uid://baget2kdhyi5h" path="res://Scenes/power_select.tscn" id="6_l83xo"]
+[ext_resource type="PackedScene" uid="uid://dopbj55bsn5bw" path="res://Scenes/ball_fire_thing.tscn" id="2_ajqs2"]
+[ext_resource type="PackedScene" uid="uid://lv55707iljm0" path="res://Scenes/grass.tscn" id="2_m2tpv"]
+[ext_resource type="Script" path="res://Scenes/FreeKickGUI.gd" id="4_3dsk0"]
+[ext_resource type="FontFile" uid="uid://cuocjgxyka8ta" path="res://godot_reuse/Fonts/Bullpen3D.ttf" id="5_rkbjw"]
+[ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="6_hk0e2"]
+[ext_resource type="Texture2D" uid="uid://c7oxthlayrkve" path="res://Sprites/Teams/italy_flag.png" id="6_txnm5"]
+[ext_resource type="Texture2D" uid="uid://bsl2rhvnbqvtt" path="res://Sprites/Teams/hungary_flag.png" id="7_ofqeu"]
+[ext_resource type="Resource" uid="uid://yfaj1h3jv2b6" path="res://Resources/goal_0_1.tres" id="7_setfv"]
+[ext_resource type="Resource" uid="uid://dyfw4s1pl02jo" path="res://Resources/goal_0_2.tres" id="8_fus63"]
+[ext_resource type="Script" path="res://Scenes/LiveTickerList.gd" id="9_im1lu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pim35"]
 sky_horizon_color = Color(0.59625, 0.667422, 0.666912, 1)
@@ -40,38 +44,53 @@ albedo_color = Color(0.0588235, 0.945098, 0.258824, 0.352941)
 albedo_color = Color(0.109804, 0.215686, 0.133333, 1)
 grow = true
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_uu3di"]
+viewport_path = NodePath("GoalStuff/Field/StaticBody3D/Sprite3D/SubViewport")
+
 [sub_resource type="Gradient" id="Gradient_otk80"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kxlbf"]
 gradient = SubResource("Gradient_otk80")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rs4nq"]
-viewport_path = NodePath("BallFireThing/BallLauncher/WASD_Direction/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_qbcku"]
-viewport_path = NodePath("BallFireThing/BallLauncher/Effet_Control/Sprite3D/direction_select")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ch1wp"]
-size = Vector3(0.3, 0.1, 0.3)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_2ow2m"]
-viewport_path = NodePath("BallFireThing/BallLauncher/power_control/Sprite3D/power_select")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kk138"]
-size = Vector3(0.792236, 0.1, 0.25)
-
-[sub_resource type="Curve3D" id="Curve3D_me3c6"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, -0.746984, 1.32232, 0.692562, 0, 0, 0, 0, 0, 0, -1.12523, 1.76839, 1.86579, 0, 0, 0, 0, 0, 0, -1.78113, 1.93895, 3.27183, 0, 0, 0, 0, 0, 0, -2.74618, 0.600735, 3.68434, 0, 0, 0, 0, 0, 0, -3.20852, 0.312101, 4.24932),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+[sub_resource type="Animation" id="Animation_igfly"]
+resource_name = "goalAnimatino"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1278, -0.25, 0, 0.25, 0, 285.284, -1.5, 50.5447, 1.5, -35.3813, -572, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
 }
-point_count = 7
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(236, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xkm1j"]
+_data = {
+"goalAnimatino": SubResource("Animation_igfly")
+}
+
+[node name="BasePitch" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_loa0x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.994151, 0.104071, -0.0288614, 0, 0.267238, 0.963631, 0.107999, 0.957994, -0.265675, 0, 9.0446, 0)
 
 [node name="GoalStuff" type="Node3D" parent="."]
 script = ExtResource("1_et3lr")
@@ -97,8 +116,22 @@ shape = SubResource("WorldBoundaryShape3D_u4jh5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Field/StaticBody3D/CollisionShape3D"]
 transform = Transform3D(500, 0, 0, 0, 1, 0, 0, 0, 500, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_c3pjw")
 surface_material_override/0 = SubResource("StandardMaterial3D_5jtt6")
+
+[node name="Sprite3D" type="Sprite3D" parent="GoalStuff/Field/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+pixel_size = 0.1
+axis = 1
+transparent = false
+texture_filter = 1
+texture = SubResource("ViewportTexture_uu3di")
+
+[node name="SubViewport" type="SubViewport" parent="GoalStuff/Field/StaticBody3D/Sprite3D"]
+size = Vector2i(1024, 1024)
+
+[node name="Grass" parent="GoalStuff/Field/StaticBody3D/Sprite3D/SubViewport" instance=ExtResource("2_m2tpv")]
 
 [node name="Lines" type="Node3D" parent="GoalStuff/Field"]
 
@@ -145,83 +178,138 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0,
 size = Vector3(5.5, 2, 0.1)
 texture_albedo = SubResource("GradientTexture2D_kxlbf")
 
-[node name="BallFireThing" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.7631)
+[node name="BallFireThing" parent="." instance=ExtResource("2_ajqs2")]
+transform = Transform3D(0.887663, 0, 0.460494, 0, 1, 0, -0.460494, 0, 0.887663, -4.90935, 0, -23.7631)
 
-[node name="BallLauncher" type="Node3D" parent="BallFireThing"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
-script = ExtResource("1_3hdld")
-my_force = Vector3(0, 0, 10)
-my_rot = Vector3(1, 0, 0)
+[node name="FreeKickGUI" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_3dsk0")
 
-[node name="WASD_Direction" type="Sprite3D" parent="BallFireThing/BallLauncher"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-texture = SubResource("ViewportTexture_rs4nq")
+[node name="RichTextLabel" type="RichTextLabel" parent="FreeKickGUI"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1148.0
+offset_top = -88.0
+offset_right = -636.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_rkbjw")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[rainbow] [wave] GOAL!"
+fit_content = true
 
-[node name="SubViewport" type="SubViewport" parent="BallFireThing/BallLauncher/WASD_Direction"]
-transparent_bg = true
+[node name="GoalAnimation" type="AnimationPlayer" parent="FreeKickGUI"]
+libraries = {
+"": SubResource("AnimationLibrary_xkm1j")
+}
 
-[node name="Node2D" parent="BallFireThing/BallLauncher/WASD_Direction/SubViewport" instance=ExtResource("3_1tsth")]
+[node name="OverallGUI" type="Control" parent="." node_paths=PackedStringArray("label_score", "label_time")]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_hk0e2")
+label_score = NodePath("Control/HBox/Score/RichTextLabel")
+label_time = NodePath("Control/HBox/TimeLabel")
+events_to_handle = Array[Resource]([ExtResource("7_setfv"), ExtResource("8_fus63")])
 
-[node name="Effet_Control" type="StaticBody3D" parent="BallFireThing/BallLauncher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.5)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_1h72p")
-sizeXY = Vector2(0.3, 0.3)
+[node name="Control" type="Control" parent="OverallGUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 64.0
+grow_horizontal = 2
 
-[node name="Sprite3D" type="Sprite3D" parent="BallFireThing/BallLauncher/Effet_Control"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-texture = SubResource("ViewportTexture_qbcku")
+[node name="ColorRect" type="ColorRect" parent="OverallGUI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -273.5
+offset_right = 273.5
+offset_bottom = 40.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
 
-[node name="direction_select" type="SubViewport" parent="BallFireThing/BallLauncher/Effet_Control/Sprite3D"]
-disable_3d = true
-transparent_bg = true
+[node name="HBox" type="HBoxContainer" parent="OverallGUI/Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.0
+offset_right = 266.0
+offset_bottom = 40.0
+grow_horizontal = 2
 
-[node name="Node2D" parent="BallFireThing/BallLauncher/Effet_Control/Sprite3D/direction_select" instance=ExtResource("5_1nroo")]
+[node name="TextureRect" type="TextureRect" parent="OverallGUI/Control/HBox"]
+layout_mode = 2
+texture = ExtResource("6_txnm5")
+stretch_mode = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BallFireThing/BallLauncher/Effet_Control"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00488281, 0, 0)
-shape = SubResource("BoxShape3D_ch1wp")
+[node name="RichTextLabel" type="RichTextLabel" parent="OverallGUI/Control/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[p align=center]ITA
+"
 
-[node name="power_control" type="StaticBody3D" parent="BallFireThing/BallLauncher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.5)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_1h72p")
-sizeXY = Vector2(0.8, 1)
+[node name="Score" type="Control" parent="OverallGUI/Control/HBox"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 
-[node name="Sprite3D" type="Sprite3D" parent="BallFireThing/BallLauncher/power_control"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-texture = SubResource("ViewportTexture_2ow2m")
+[node name="RichTextLabel" type="RichTextLabel" parent="OverallGUI/Control/HBox/Score"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]0:0"
 
-[node name="power_select" type="SubViewport" parent="BallFireThing/BallLauncher/power_control/Sprite3D"]
-disable_3d = true
-transparent_bg = true
-size = Vector2i(512, 128)
+[node name="TextureRect2" type="TextureRect" parent="OverallGUI/Control/HBox"]
+layout_mode = 2
+texture = ExtResource("7_ofqeu")
+stretch_mode = 5
 
-[node name="PowerSelect" parent="BallFireThing/BallLauncher/power_control/Sprite3D/power_select" instance=ExtResource("6_l83xo")]
+[node name="RichTextLabel2" type="RichTextLabel" parent="OverallGUI/Control/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]HUN
+"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BallFireThing/BallLauncher/power_control"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00500488, 0, 0)
-shape = SubResource("BoxShape3D_kk138")
+[node name="TimeLabel" type="RichTextLabel" parent="OverallGUI/Control/HBox"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[right] 00:00"
 
-[node name="Path3D" type="Path3D" parent="BallFireThing/BallLauncher"]
-curve = SubResource("Curve3D_me3c6")
-script = ExtResource("4_43uxg")
-ball_move_duration = 15.0
+[node name="LiveTickerList" type="VBoxContainer" parent="OverallGUI"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 118.0
+offset_right = 542.0
+offset_bottom = 158.0
+script = ExtResource("9_im1lu")
 
-[node name="Camera3D" type="Camera3D" parent="BallFireThing"]
-transform = Transform3D(-1, 0, -8.74228e-08, -2.99806e-08, 0.939358, 0.342938, 8.21213e-08, 0.342938, -0.939358, 0, 1.06, -1.5)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.994151, 0.104071, -0.0288616, 0, 0.267238, 0.96363, 0.107999, 0.957994, -0.265675, 0, 9.0446, 0)
-
-[connection signal="on_disable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/WASD_Direction/SubViewport/Node2D" method="disable_inputs"]
-[connection signal="on_disable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/Effet_Control" method="disable_inputs"]
-[connection signal="on_enable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/WASD_Direction/SubViewport/Node2D" method="enable_inputs"]
-[connection signal="on_enable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/Effet_Control" method="enable_inputs"]
-[connection signal="on_have_position" from="BallFireThing/BallLauncher/WASD_Direction/SubViewport/Node2D" to="BallFireThing/BallLauncher" method="set_direction"]
-[connection signal="on_have_mouse_pos_rel" from="BallFireThing/BallLauncher/Effet_Control" to="BallFireThing/BallLauncher" method="set_position_hit"]
-[connection signal="on_have_mouse_pos_rel" from="BallFireThing/BallLauncher/Effet_Control" to="BallFireThing/BallLauncher/Effet_Control/Sprite3D/direction_select/Node2D" method="on_set_position"]
-[connection signal="on_have_new_power_val" from="BallFireThing/BallLauncher/power_control/Sprite3D/power_select/PowerSelect" to="BallFireThing/BallLauncher" method="set_relative_power"]
+[connection signal="on_goal_scored" from="GoalStuff" to="FreeKickGUI" method="_on_goal_stuff_on_goal_scored"]

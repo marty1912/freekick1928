@@ -11,3 +11,13 @@ res://Scripts/BallLauncher.gd
 res://Scenes/Ball.gd
 res://Scenes/power_select.gd
 res://Scenes/WASD_Direction_2D.gd
+res://Scenes/GoalScore.gd
+res://Scenes/ball_fire_thing.tscn
+res://Scenes/grass.tscn
+res://Scenes/FreeKickGUI.gd
+res://Scenes/OverallGUI.gd
+res://Resources/LiveTickerEvent.gd
+res://Resources/LiveTickerEvent_Goal.gd
+res://Scenes/LiveTickerList.gd
+res://Resources/goal_0_1.tres
+res://Resources/goal_0_2.tres

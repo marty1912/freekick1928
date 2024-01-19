@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dpftljplj84pe"]
+
+[node name="LiveTickerText" type="RichTextLabel"]
+custom_minimum_size = Vector2(512, 64)
+bbcode_enabled = true
+text = "live ticker text"

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://lv55707iljm0"]
+
+[node name="Grass" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.32549, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(512, 175)
+
+[node name="Line2D" type="Line2D" parent="Node2D"]
+points = PackedVector2Array(0, 0, 0, 700, 700, 700, 700, 0)
+closed = true
+width = 5.0
+
+[node name="16" type="Line2D" parent="Node2D"]
+position = Vector2(160, 150)
+points = PackedVector2Array(0, 0, 0, 400, -160, 400, -160, 0)
+closed = true
+width = 5.0
+
+[node name="5er" type="Line2D" parent="Node2D"]
+position = Vector2(50, 282)
+scale = Vector2(0.3, 0.3)
+points = PackedVector2Array(0, 0, 0, 400, -160, 400, -160, 0)
+closed = true
+width = 16.665
+
+[node name="5er2" type="Line2D" parent="Node2D"]
+position = Vector2(160, 341)
+points = PackedVector2Array(0, -50, 15, -40, 25, -25, 30, 0, 25, 25, 15, 40, 0, 50)
+closed = true
+width = 5.0
+
+[node name="5er3" type="Line2D" parent="Node2D"]
+position = Vector2(101, 341)
+points = PackedVector2Array(0, 0, 1, 0)
+closed = true
+width = 5.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
