@@ -47,16 +47,16 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_otk80")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rs4nq"]
-viewport_path = NodePath("Node3D/BallLauncher/WASD_Direction/SubViewport")
+viewport_path = NodePath("BallFireThing/BallLauncher/WASD_Direction/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qbcku"]
-viewport_path = NodePath("Node3D/BallLauncher/Effet_Control/Sprite3D/direction_select")
+viewport_path = NodePath("BallFireThing/BallLauncher/Effet_Control/Sprite3D/direction_select")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ch1wp"]
 size = Vector3(0.3, 0.1, 0.3)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2ow2m"]
-viewport_path = NodePath("Node3D/BallLauncher/power_control/Sprite3D/power_select")
+viewport_path = NodePath("BallFireThing/BallLauncher/power_control/Sprite3D/power_select")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kk138"]
 size = Vector3(0.792236, 0.1, 0.25)
@@ -145,84 +145,83 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0,
 size = Vector3(5.5, 2, 0.1)
 texture_albedo = SubResource("GradientTexture2D_kxlbf")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="BallFireThing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.7631)
 
-[node name="BallLauncher" type="Node3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302729, 6.64762)
+[node name="BallLauncher" type="Node3D" parent="BallFireThing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
 script = ExtResource("1_3hdld")
 my_force = Vector3(0, 0, 10)
 my_rot = Vector3(1, 0, 0)
 
-[node name="WASD_Direction" type="Sprite3D" parent="Node3D/BallLauncher"]
+[node name="WASD_Direction" type="Sprite3D" parent="BallFireThing/BallLauncher"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture = SubResource("ViewportTexture_rs4nq")
 
-[node name="SubViewport" type="SubViewport" parent="Node3D/BallLauncher/WASD_Direction"]
+[node name="SubViewport" type="SubViewport" parent="BallFireThing/BallLauncher/WASD_Direction"]
 transparent_bg = true
 
-[node name="Node2D" parent="Node3D/BallLauncher/WASD_Direction/SubViewport" instance=ExtResource("3_1tsth")]
+[node name="Node2D" parent="BallFireThing/BallLauncher/WASD_Direction/SubViewport" instance=ExtResource("3_1tsth")]
 
-[node name="Effet_Control" type="StaticBody3D" parent="Node3D/BallLauncher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+[node name="Effet_Control" type="StaticBody3D" parent="BallFireThing/BallLauncher"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_1h72p")
 sizeXY = Vector2(0.3, 0.3)
 
-[node name="Sprite3D" type="Sprite3D" parent="Node3D/BallLauncher/Effet_Control"]
+[node name="Sprite3D" type="Sprite3D" parent="BallFireThing/BallLauncher/Effet_Control"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 texture = SubResource("ViewportTexture_qbcku")
 
-[node name="direction_select" type="SubViewport" parent="Node3D/BallLauncher/Effet_Control/Sprite3D"]
+[node name="direction_select" type="SubViewport" parent="BallFireThing/BallLauncher/Effet_Control/Sprite3D"]
 disable_3d = true
 transparent_bg = true
 
-[node name="Node2D" parent="Node3D/BallLauncher/Effet_Control/Sprite3D/direction_select" instance=ExtResource("5_1nroo")]
+[node name="Node2D" parent="BallFireThing/BallLauncher/Effet_Control/Sprite3D/direction_select" instance=ExtResource("5_1nroo")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/BallLauncher/Effet_Control"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallFireThing/BallLauncher/Effet_Control"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00488281, 0, 0)
 shape = SubResource("BoxShape3D_ch1wp")
 
-[node name="power_control" type="StaticBody3D" parent="Node3D/BallLauncher"]
+[node name="power_control" type="StaticBody3D" parent="BallFireThing/BallLauncher"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_1h72p")
 sizeXY = Vector2(0.8, 1)
 
-[node name="Sprite3D" type="Sprite3D" parent="Node3D/BallLauncher/power_control"]
+[node name="Sprite3D" type="Sprite3D" parent="BallFireThing/BallLauncher/power_control"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture = SubResource("ViewportTexture_2ow2m")
 
-[node name="power_select" type="SubViewport" parent="Node3D/BallLauncher/power_control/Sprite3D"]
+[node name="power_select" type="SubViewport" parent="BallFireThing/BallLauncher/power_control/Sprite3D"]
 disable_3d = true
 transparent_bg = true
 size = Vector2i(512, 128)
 
-[node name="PowerSelect" parent="Node3D/BallLauncher/power_control/Sprite3D/power_select" instance=ExtResource("6_l83xo")]
+[node name="PowerSelect" parent="BallFireThing/BallLauncher/power_control/Sprite3D/power_select" instance=ExtResource("6_l83xo")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/BallLauncher/power_control"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallFireThing/BallLauncher/power_control"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00500488, 0, 0)
 shape = SubResource("BoxShape3D_kk138")
 
-[node name="Path3D" type="Path3D" parent="Node3D/BallLauncher"]
+[node name="Path3D" type="Path3D" parent="BallFireThing/BallLauncher"]
 curve = SubResource("Curve3D_me3c6")
 script = ExtResource("4_43uxg")
 ball_move_duration = 15.0
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, -2.99806e-08, 0.939358, 0.342938, 8.21213e-08, 0.342938, -0.939358, 0, 1.05975, 4.67625)
+[node name="Camera3D" type="Camera3D" parent="BallFireThing"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.99806e-08, 0.939358, 0.342938, 8.21213e-08, 0.342938, -0.939358, 0, 1.06, -1.5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994151, 0.104071, -0.0288616, 0, 0.267238, 0.96363, 0.107999, 0.957994, -0.265675, 0, 9.0446, 0)
 
-[connection signal="on_disable_all_inputs" from="Node3D/BallLauncher" to="Node3D/BallLauncher/WASD_Direction/SubViewport/Node2D" method="disable_inputs"]
-[connection signal="on_disable_all_inputs" from="Node3D/BallLauncher" to="Node3D/BallLauncher/Effet_Control" method="disable_inputs"]
-[connection signal="on_enable_all_inputs" from="Node3D/BallLauncher" to="Node3D/BallLauncher/WASD_Direction/SubViewport/Node2D" method="enable_inputs"]
-[connection signal="on_enable_all_inputs" from="Node3D/BallLauncher" to="Node3D/BallLauncher/Effet_Control" method="enable_inputs"]
-[connection signal="on_have_position" from="Node3D/BallLauncher/WASD_Direction/SubViewport/Node2D" to="Node3D/BallLauncher" method="set_direction"]
-[connection signal="on_have_mouse_pos_rel" from="Node3D/BallLauncher/Effet_Control" to="Node3D/BallLauncher" method="set_position_hit"]
-[connection signal="on_have_mouse_pos_rel" from="Node3D/BallLauncher/Effet_Control" to="Node3D/BallLauncher/Effet_Control/Sprite3D/direction_select/Node2D" method="on_set_position"]
-[connection signal="on_have_mouse_pos_rel" from="Node3D/BallLauncher/power_control" to="Node3D/BallLauncher/power_control/Sprite3D/power_select/PowerSelect" method="on_input_mouse"]
-[connection signal="on_have_new_power_val" from="Node3D/BallLauncher/power_control/Sprite3D/power_select/PowerSelect" to="Node3D/BallLauncher" method="set_relative_power"]
+[connection signal="on_disable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/WASD_Direction/SubViewport/Node2D" method="disable_inputs"]
+[connection signal="on_disable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/Effet_Control" method="disable_inputs"]
+[connection signal="on_enable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/WASD_Direction/SubViewport/Node2D" method="enable_inputs"]
+[connection signal="on_enable_all_inputs" from="BallFireThing/BallLauncher" to="BallFireThing/BallLauncher/Effet_Control" method="enable_inputs"]
+[connection signal="on_have_position" from="BallFireThing/BallLauncher/WASD_Direction/SubViewport/Node2D" to="BallFireThing/BallLauncher" method="set_direction"]
+[connection signal="on_have_mouse_pos_rel" from="BallFireThing/BallLauncher/Effet_Control" to="BallFireThing/BallLauncher" method="set_position_hit"]
+[connection signal="on_have_mouse_pos_rel" from="BallFireThing/BallLauncher/Effet_Control" to="BallFireThing/BallLauncher/Effet_Control/Sprite3D/direction_select/Node2D" method="on_set_position"]
+[connection signal="on_have_new_power_val" from="BallFireThing/BallLauncher/power_control/Sprite3D/power_select/PowerSelect" to="BallFireThing/BallLauncher" method="set_relative_power"]

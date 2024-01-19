@@ -1,4 +1,4 @@
-extends StaticBody3D
+class_name UI_InputStaticBody extends StaticBody3D
 
 
 signal on_have_mouse_pos_rel(Vector2)

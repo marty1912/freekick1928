@@ -1,4 +1,4 @@
-extends Node2D
+class_name aimWASD extends Node2D
 
 
 

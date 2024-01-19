@@ -12,10 +12,13 @@ var power_max:float = 20
 var power_min:float = 5
 var rotation_mult: float = 20
 @onready var power_select: PowerSelect = $power_control/Sprite3D/power_select/PowerSelect
+@onready var effet_control: UI_InputStaticBody = $Effet_Control
+@onready var aim_control: aimWASD = $WASD_Direction/SubViewport/Node2D
 
 
 signal on_disable_all_inputs()
 signal on_enable_all_inputs()
+
 
 func set_relative_power(val:float):
 	
@@ -37,7 +40,18 @@ func set_position_hit(position_hit:Vector2):
 	my_rot =(Vector3(position_hit.y,position_hit.x,0.0))*rotation_mult
 	
 
+func disable_aim():
+	aim_control.disable_inputs()
+	effet_control.disable_inputs()
+	
+func enable_aim():
+	aim_control.enable_inputs()
+	aim_control.enable_inputs()
+	
 func disable_all_inputs():
+	aim_control.disable_inputs()
+	effet_control.disable_inputs()
+	power_select.disable_inputs()
 	on_disable_all_inputs.emit()
 
 func enable_all_inputs():
@@ -50,8 +64,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func on_start_selecting_power():
+	disable_aim()
 	return
 func on_abort_selecting_power():
+	enable_aim()
 	return
 	
 func on_done_selecting_power():
