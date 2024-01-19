@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dopbj55bsn5bw"]
+[gd_scene load_steps=14 format=3 uid="uid://dopbj55bsn5bw"]
 
 [ext_resource type="Script" path="res://Scripts/BallLauncher.gd" id="1_f6yui"]
+[ext_resource type="Script" path="res://Scenes/ball_fire_thing.gd" id="1_fra6a"]
 [ext_resource type="PackedScene" uid="uid://bbvllqgdod6v6" path="res://Scenes/WASD_Direction_2D.tscn" id="2_em4ap"]
 [ext_resource type="Script" path="res://Scenes/Mouse3DGetter.gd" id="3_a6bhy"]
 [ext_resource type="PackedScene" uid="uid://cjgag2twnyb11" path="res://Scenes/effet_select.tscn" id="4_xn77m"]
@@ -31,6 +32,7 @@ point_count = 7
 
 [node name="BallFireThing" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.7631)
+script = ExtResource("1_fra6a")
 
 [node name="BallLauncher" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)

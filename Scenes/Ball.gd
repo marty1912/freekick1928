@@ -5,7 +5,7 @@ var currentRotationSpeed:Vector3 = Vector3(0,0,0)
 var gravity:float = -9.8
 var mass:float = 0.4
 
-
+var preview_mode = false
 var stopped = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

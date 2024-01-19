@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_cv57g")
-add_live_text = "GOAL for Hungary!"
-time = 1140.0
+add_live_text = "GOAL! for Hungary"
+time = 2312.0
 is_goal = true
 for_team = 1
 is_free_kick = false

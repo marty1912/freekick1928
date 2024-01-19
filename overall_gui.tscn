@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://tg2mj32566kj"]
+
+[ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
+[ext_resource type="Resource" uid="uid://yfaj1h3jv2b6" path="res://Resources/goal_0_1.tres" id="2_wkvxu"]
+[ext_resource type="Resource" uid="uid://dyfw4s1pl02jo" path="res://Resources/goal_0_2.tres" id="3_c4tc2"]
+[ext_resource type="Resource" uid="uid://bjlcwqs8ndwls" path="res://Resources/free_kick_1.tres" id="4_b1npe"]
+[ext_resource type="Texture2D" uid="uid://c7oxthlayrkve" path="res://Sprites/Teams/italy_flag.png" id="4_fvgfc"]
+[ext_resource type="Resource" uid="uid://dm8tvmjxl7gja" path="res://Resources/free_kick_2.tres" id="5_8nrom"]
+[ext_resource type="Texture2D" uid="uid://bsl2rhvnbqvtt" path="res://Sprites/Teams/hungary_flag.png" id="5_cexs5"]
+[ext_resource type="Script" path="res://Scenes/LiveTickerList.gd" id="6_6amx0"]
+
+[node name="OverallGUI" type="Control" node_paths=PackedStringArray("label_score", "label_time")]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sn41t")
+label_score = NodePath("Control/HBox/Score/RichTextLabel")
+label_time = NodePath("Control/HBox/TimeLabel")
+events_to_handle = Array[Resource("res://Resources/LiveTickerEvent.gd")]([ExtResource("2_wkvxu"), ExtResource("3_c4tc2"), ExtResource("4_b1npe"), ExtResource("5_8nrom")])
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -273.5
+offset_right = 273.5
+offset_bottom = 40.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBox" type="HBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.0
+offset_right = 266.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBox"]
+layout_mode = 2
+texture = ExtResource("4_fvgfc")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[p align=center]ITA
+"
+
+[node name="Score" type="Control" parent="Control/HBox"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBox/Score"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]0:0"
+
+[node name="TextureRect2" type="TextureRect" parent="Control/HBox"]
+layout_mode = 2
+texture = ExtResource("5_cexs5")
+stretch_mode = 5
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]HUN
+"
+
+[node name="TimeLabel" type="RichTextLabel" parent="Control/HBox"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[right] 00:00"
+
+[node name="LiveTickerList" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 118.0
+offset_right = 542.0
+offset_bottom = 158.0
+script = ExtResource("6_6amx0")
+
+[node name="Level" type="Node3D" parent="."]

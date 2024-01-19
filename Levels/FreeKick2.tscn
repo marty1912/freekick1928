@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1c88jk6x70vo"]
+
+[ext_resource type="PackedScene" uid="uid://bhyjbkpqxorgv" path="res://Scenes/Pitch.tscn" id="1_gocs3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sl1mj"]
+viewport_path = NodePath("GoalStuff/Field/StaticBody3D/Sprite3D/SubViewport")
+
+[node name="BasePitch" instance=ExtResource("1_gocs3")]
+
+[node name="Sprite3D" parent="GoalStuff/Field/StaticBody3D" index="1"]
+texture = SubResource("ViewportTexture_sl1mj")
+
+[node name="BallFireThing" parent="." index="3"]
+transform = Transform3D(0.887663, 0, 0.460494, 0, 1, 0, -0.460494, 0, 0.887663, -12.7875, 0, -21.1119)

@@ -1,4 +1,4 @@
-extends Node3D
+class_name BallLauncher extends Node3D
 
 var ball_scene = preload("res://Scenes/ball.tscn")
 var have_ball:bool = false
@@ -19,6 +19,7 @@ var rotation_mult: float = 20
 signal on_disable_all_inputs()
 signal on_enable_all_inputs()
 
+signal on_ball_was_fired()
 
 func set_relative_power(val:float):
 	
@@ -72,6 +73,7 @@ func on_abort_selecting_power():
 	
 func on_done_selecting_power():
 	launch_ball_with_current_settings(my_ball)
+	on_ball_was_fired.emit()
 
 func spawn_ball() ->Ball:
 	var ball = ball_scene.instantiate()

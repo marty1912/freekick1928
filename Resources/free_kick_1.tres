@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LiveTickerEvent" load_steps=2 format=3 uid="uid://bjlcwqs8ndwls"]
+
+[ext_resource type="Script" path="res://Resources/LiveTickerEvent.gd" id="1_34uhl"]
+
+[resource]
+script = ExtResource("1_34uhl")
+add_live_text = "Foul! Free kick for italy!"
+time = 60.0
+is_goal = false
+for_team = 0
+is_free_kick = true
+player_name = "Test Player"
