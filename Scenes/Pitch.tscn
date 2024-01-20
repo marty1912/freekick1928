@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bhyjbkpqxorgv"]
+[gd_scene load_steps=31 format=3 uid="uid://bhyjbkpqxorgv"]
 
 [ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel.gd" id="1_f805a"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://b10ybt2rm6e8g" path="res://Models/Net_material.tres" id="5_gk0pm"]
 [ext_resource type="FontFile" uid="uid://cuocjgxyka8ta" path="res://godot_reuse/Fonts/Bullpen3D.ttf" id="5_rkbjw"]
 [ext_resource type="ArrayMesh" uid="uid://ck4gyxeym1lef" path="res://Models/Goal_net.obj" id="7_0ou34"]
+[ext_resource type="PackedScene" uid="uid://dhediem6a0i7" path="res://Players/player_a.tscn" id="7_x1m2b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pim35"]
 sky_horizon_color = Color(0.59625, 0.667422, 0.666912, 1)
@@ -257,6 +258,20 @@ mesh = SubResource("CapsuleMesh_now03")
 
 [node name="BallFireThing" parent="." instance=ExtResource("2_ajqs2")]
 transform = Transform3D(0.887663, 0, 0.460494, 0, 1, 0, -0.460494, 0, 0.887663, -4.90935, 0, -23.7631)
+
+[node name="Wall" type="Node3D" parent="."]
+transform = Transform3D(0.92166, 0, 0.387998, 0, 1, 0, -0.387998, 0, 0.92166, -4.48219, 0, -17.0854)
+
+[node name="PlayerA" parent="Wall" instance=ExtResource("7_x1m2b")]
+
+[node name="PlayerA2" parent="Wall" instance=ExtResource("7_x1m2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536508, 0, 0)
+
+[node name="PlayerA3" parent="Wall" instance=ExtResource("7_x1m2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10623, 0, 0)
+
+[node name="PlayerA4" parent="Wall" instance=ExtResource("7_x1m2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67104, 0, 0)
 
 [node name="FreeKickGUI" type="Control" parent="."]
 custom_minimum_size = Vector2(1152, 648)

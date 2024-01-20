@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhediem6a0i7"]
+
+[ext_resource type="Texture2D" uid="uid://b2ywqmaxoq0p0" path="res://Sprites/Teams/hungarian_players_1.png" id="1_ok6o3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vl28f"]
+size = Vector3(0.502075, 1.5323, 0.130509)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_krfuo"]
+size = Vector3(0.178253, 0.243304, 0.18538)
+
+[node name="PlayerA" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53847, 1.0991, -0.295)
+texture = ExtResource("1_ok6o3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00494385, 0.76615, -0.282252)
+shape = SubResource("BoxShape3D_vl28f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0211639, 1.62692, -0.243326)
+shape = SubResource("BoxShape3D_krfuo")

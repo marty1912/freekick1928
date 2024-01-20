@@ -1,14 +1,14 @@
 Node3D
+Skeleton3D
 Sprite3D
-MeshInstance3D
 CollisionShape3D
+StaticBody3D
+MeshInstance3D
 RigidBody3D
 Camera3D
 SoftBody3D
-StaticBody3D
 RichTextLabel
 VBoxContainer
 Control
 ColorRect
 HBoxContainer
-TextureRect
