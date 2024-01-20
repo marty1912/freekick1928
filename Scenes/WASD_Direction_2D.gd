@@ -2,6 +2,7 @@ class_name aimWASD extends Node2D
 
 
 
+@onready var cam_platform: Node3D = $"../../../CamPlatform"
 
 
 var my_position:Vector2 = Vector2(0,0)
@@ -48,6 +49,8 @@ func _process(delta: float) -> void:
 	my_position.x = clampf(my_position.x,min_x,max_x)
 	my_position.y = clampf(my_position.y,min_y,max_y)
 	on_have_position.emit(my_position)
+	var angle = atan2(my_position.x,1)
+	cam_platform.rotation = Vector3(0,-angle,0)
 	pass
 
 

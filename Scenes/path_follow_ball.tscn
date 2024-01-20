@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://Scenes/PathFollow_ball.gd" id="1_m0ekd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_wjux8"]
-radius = 0.01
-height = 0.02
+radius = 0.02
+height = 0.04
+radial_segments = 16
+rings = 16
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7nf7"]
 shading_mode = 0

@@ -56,7 +56,7 @@ func _ready() -> void:
 		var position_I_want = camera.to_global(position_before+ball_position_local)
 		global_position = position_I_want
 		#global_position = get_parent().global_position + dist.normalized()*z
-		
+	reset_aim()
 	pass # Replace with function body.
 
 

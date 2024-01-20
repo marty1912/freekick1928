@@ -11,4 +11,4 @@ viewport_path = NodePath("GoalStuff/Field/StaticBody3D/Sprite3D/SubViewport")
 texture = SubResource("ViewportTexture_sl1mj")
 
 [node name="BallFireThing" parent="." index="3"]
-transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -24.0332, 0, -15.3673)
+transform = Transform3D(0.543804, 0, 0.839213, 0, 1, 0, -0.839213, 0, 0.543804, -24.0332, 0, -15.3673)

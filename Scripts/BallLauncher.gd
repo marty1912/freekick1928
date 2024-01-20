@@ -11,9 +11,11 @@ var my_power:float = 0
 var power_max:float = 20
 var power_min:float = 5
 var rotation_mult: float = 20
-@onready var power_select: PowerSelect = $Camera3D/power_control/Sprite3D/power_select/PowerSelect
-@onready var effet_control: UI_InputStaticBody = $Camera3D/Effet_Control
+@onready var power_select: PowerSelect = $CamPlatform/Camera3D/GUI/power_control/Sprite3D/power_select/PowerSelect
+@onready var effet_control: UI_InputStaticBody = $CamPlatform/Camera3D/GUI/Effet_Control
 @onready var aim_control: aimWASD = $WASD_Direction/SubViewport/Node2D
+@onready var camera_3d: CameraFreeKick = $CamPlatform/Camera3D
+
 
 
 signal on_disable_all_inputs()
@@ -74,6 +76,7 @@ func on_abort_selecting_power():
 func on_done_selecting_power():
 	launch_ball_with_current_settings(my_ball)
 	on_ball_was_fired.emit()
+	camera_3d.on_ball_launch(my_ball)
 
 func spawn_ball() ->Ball:
 	var ball = ball_scene.instantiate()
@@ -85,7 +88,9 @@ func launch_ball(ball:Ball,force:Vector3,rot:Vector3):
 	ball.stopped = false
 	#ball.apply_central_impulse(force)
 	#ball.apply_torque_impulse(rotation)
-	ball.apply_impulse(force)
+	var my_rotation = global_rotation
+	
+	ball.apply_impulse(force.rotated(Vector3(0,1,0),my_rotation.y))
 	ball.apply_rotation(my_rot)
 
 func ball_preview(delta:float):
