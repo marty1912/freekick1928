@@ -4,7 +4,7 @@ class_name UI_InputStaticBody extends StaticBody3D
 signal on_have_mouse_pos_rel(Vector2)
 
 @export var sizeXY:Vector2 = Vector2(1,1)
-@export var align_to_cam:bool = true
+@export var align_to_cam:bool = false
  
 var currently_selected:bool = false
 var input_disabled:bool = false

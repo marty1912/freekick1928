@@ -1,3 +1,9 @@
+MeshInstance3D
+CollisionShape3D
+RigidBody3D
+Camera3D
+SoftBody3D
+StaticBody3D
 Node3D
 RichTextLabel
 VBoxContainer
@@ -6,10 +12,3 @@ ColorRect
 HBoxContainer
 TextureRect
 AnimationPlayer
-Panel
-Label
-Node2D
-Line2D
-SubViewport
-Sprite3D
-HSlider

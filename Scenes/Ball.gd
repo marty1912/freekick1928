@@ -1,14 +1,20 @@
 class_name Ball extends CharacterBody3D
 
-var my_velocity:Vector3 = Vector3(0,0,0)
+@export var my_velocity:Vector3 = Vector3(0,0,0)
 var currentRotationSpeed:Vector3 = Vector3(0,0,0)
 var gravity:float = -9.8
 var mass:float = 0.4
 
 var preview_mode = false
 var stopped = true
+var in_goal:Area3D = null
+var in_net:bool =false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#var t:Tween = create_tween()
+	#t.tween_interval(3)
+	#t.tween_callback(func(): stopped=false)
+	
 	pass # Replace with function body.
 
 
@@ -23,10 +29,25 @@ func disableCollisions():
 	collision_layer = 0
 	pass
 
+func on_goal_entered(goal:Area3D):
+	in_goal = goal
+	pass
+	
+	
 func _physics_process(delta: float) -> void:
 	#move_and_collide(linear_velocity)
 	if(stopped):
 		return
+	var f_back_into_goal = Vector3(0,0,0)
+	if(in_goal != null):
+		if(self in in_goal.get_overlapping_bodies()):
+			pass
+		else:
+			f_back_into_goal = (in_goal.global_position - self.global_position).normalized()*10
+			in_net = true
+	if(in_net):
+		var drag = -my_velocity.normalized() *(my_velocity.length_squared()*1)
+		f_back_into_goal += drag
 	
 	rotation += delta*currentRotationSpeed
 	currentRotationSpeed *= (1 - 0.4*delta)
@@ -37,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	# magnus force: https://farside.ph.utexas.edu/teaching/329/lectures/node43.html
 	var f_magnus = currentRotationSpeed.cross(my_velocity)*0.02
 	#my_velocity.y += gravity * delta
-	my_velocity += ((f_gravity+f_drag+f_magnus)/mass) * delta
+	my_velocity += ((f_gravity+f_drag+f_magnus + f_back_into_goal)/mass) * delta
 	var collision = move_and_collide(my_velocity*delta)
 	if not collision:
 		return

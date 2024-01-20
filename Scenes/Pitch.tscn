@@ -1,11 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://bhyjbkpqxorgv"]
+[gd_scene load_steps=30 format=3 uid="uid://bhyjbkpqxorgv"]
 
 [ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel.gd" id="1_f805a"]
 [ext_resource type="PackedScene" uid="uid://dopbj55bsn5bw" path="res://Scenes/ball_fire_thing.tscn" id="2_ajqs2"]
 [ext_resource type="PackedScene" uid="uid://lv55707iljm0" path="res://Scenes/grass.tscn" id="2_m2tpv"]
 [ext_resource type="Script" path="res://Scenes/FreeKickGUI.gd" id="4_3dsk0"]
+[ext_resource type="Material" uid="uid://b10ybt2rm6e8g" path="res://Models/Net_material.tres" id="5_gk0pm"]
 [ext_resource type="FontFile" uid="uid://cuocjgxyka8ta" path="res://godot_reuse/Fonts/Bullpen3D.ttf" id="5_rkbjw"]
+[ext_resource type="ArrayMesh" uid="uid://ck4gyxeym1lef" path="res://Models/Goal_net.obj" id="7_0ou34"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pim35"]
 sky_horizon_color = Color(0.59625, 0.667422, 0.666912, 1)
@@ -56,6 +58,22 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kxlbf"]
 gradient = SubResource("Gradient_otk80")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_032xf"]
+radius = 0.1
+height = 2.44
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bs60g"]
+radius = 0.11
+height = 2.64
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6o4yj"]
+radius = 0.1
+height = 7.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_now03"]
+radius = 0.11
+height = 7.6
 
 [sub_resource type="Animation" id="Animation_igfly"]
 resource_name = "goalAnimatino"
@@ -108,6 +126,7 @@ shape = SubResource("BoxShape3D_uutfu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Goal/CollisionShape3D"]
 transform = Transform3D(7.32, 0, 0, 0, 2.44, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_djm41")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_2mh0g")
@@ -204,6 +223,37 @@ texture_albedo = SubResource("GradientTexture2D_kxlbf")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -2.75)
 size = Vector3(5.5, 2, 0.1)
 texture_albedo = SubResource("GradientTexture2D_kxlbf")
+
+[node name="Net" type="MeshInstance3D" parent="GoalStuff"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 1.13284, 0.917981)
+mesh = ExtResource("7_0ou34")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_gk0pm")
+
+[node name="GoalPosts" type="StaticBody3D" parent="GoalStuff"]
+
+[node name="LeftPost" type="CollisionShape3D" parent="GoalStuff/GoalPosts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 1.22, 0)
+shape = SubResource("CapsuleShape3D_032xf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/GoalPosts/LeftPost"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("CapsuleMesh_bs60g")
+
+[node name="RightPost" type="CollisionShape3D" parent="GoalStuff/GoalPosts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 1.22, 0)
+shape = SubResource("CapsuleShape3D_032xf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/GoalPosts/RightPost"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("CapsuleMesh_bs60g")
+
+[node name="Top" type="CollisionShape3D" parent="GoalStuff/GoalPosts"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 2.34, 0)
+shape = SubResource("CapsuleShape3D_6o4yj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/GoalPosts/Top"]
+mesh = SubResource("CapsuleMesh_now03")
 
 [node name="BallFireThing" parent="." instance=ExtResource("2_ajqs2")]
 transform = Transform3D(0.887663, 0, 0.460494, 0, 1, 0, -0.460494, 0, 0.887663, -4.90935, 0, -23.7631)

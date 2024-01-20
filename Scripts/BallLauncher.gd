@@ -11,8 +11,8 @@ var my_power:float = 0
 var power_max:float = 20
 var power_min:float = 5
 var rotation_mult: float = 20
-@onready var power_select: PowerSelect = $power_control/Sprite3D/power_select/PowerSelect
-@onready var effet_control: UI_InputStaticBody = $Effet_Control
+@onready var power_select: PowerSelect = $Camera3D/power_control/Sprite3D/power_select/PowerSelect
+@onready var effet_control: UI_InputStaticBody = $Camera3D/Effet_Control
 @onready var aim_control: aimWASD = $WASD_Direction/SubViewport/Node2D
 
 

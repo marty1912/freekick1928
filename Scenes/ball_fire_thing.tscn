@@ -8,20 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://baget2kdhyi5h" path="res://Scenes/power_select.tscn" id="5_vxtpb"]
 [ext_resource type="Script" path="res://Scenes/SetLineCurve.gd" id="6_x0hg7"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d5se5"]
-viewport_path = NodePath("BallLauncher/WASD_Direction/SubViewport")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_xfmgl"]
-viewport_path = NodePath("BallLauncher/Effet_Control/Sprite3D/direction_select")
+viewport_path = NodePath("BallLauncher/Camera3D/Effet_Control/Sprite3D/direction_select")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ch1wp"]
 size = Vector3(0.3, 0.1, 0.3)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fjup0"]
-viewport_path = NodePath("BallLauncher/power_control/Sprite3D/power_select")
+viewport_path = NodePath("BallLauncher/Camera3D/power_control/Sprite3D/power_select")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kk138"]
 size = Vector3(0.792236, 0.1, 0.25)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d5se5"]
+viewport_path = NodePath("BallLauncher/WASD_Direction/SubViewport")
 
 [sub_resource type="Curve3D" id="Curve3D_me3c6"]
 _data = {
@@ -40,6 +40,52 @@ script = ExtResource("1_f6yui")
 my_force = Vector3(0, 0, 10)
 my_rot = Vector3(1, 0, 0)
 
+[node name="Camera3D" type="Camera3D" parent="BallLauncher"]
+transform = Transform3D(-1, 2.99003e-08, -8.21506e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.06, -1.5)
+
+[node name="Effet_Control" type="StaticBody3D" parent="BallLauncher/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41, -1.5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_a6bhy")
+sizeXY = Vector2(0.3, 0.3)
+
+[node name="Sprite3D" type="Sprite3D" parent="BallLauncher/Camera3D/Effet_Control"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = SubResource("ViewportTexture_xfmgl")
+
+[node name="direction_select" type="SubViewport" parent="BallLauncher/Camera3D/Effet_Control/Sprite3D"]
+disable_3d = true
+transparent_bg = true
+
+[node name="Node2D" parent="BallLauncher/Camera3D/Effet_Control/Sprite3D/direction_select" instance=ExtResource("4_xn77m")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallLauncher/Camera3D/Effet_Control"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00488281, 0, 0)
+shape = SubResource("BoxShape3D_ch1wp")
+
+[node name="power_control" type="StaticBody3D" parent="BallLauncher/Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.7, -1.5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_a6bhy")
+sizeXY = Vector2(0.8, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="BallLauncher/Camera3D/power_control"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = SubResource("ViewportTexture_fjup0")
+
+[node name="power_select" type="SubViewport" parent="BallLauncher/Camera3D/power_control/Sprite3D"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(512, 128)
+
+[node name="PowerSelect" parent="BallLauncher/Camera3D/power_control/Sprite3D/power_select" instance=ExtResource("5_vxtpb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallLauncher/Camera3D/power_control"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00500488, 0, 0)
+shape = SubResource("BoxShape3D_kk138")
+
 [node name="WASD_Direction" type="Sprite3D" parent="BallLauncher"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture = SubResource("ViewportTexture_d5se5")
@@ -49,62 +95,16 @@ transparent_bg = true
 
 [node name="Node2D" parent="BallLauncher/WASD_Direction/SubViewport" instance=ExtResource("2_em4ap")]
 
-[node name="Effet_Control" type="StaticBody3D" parent="BallLauncher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_a6bhy")
-sizeXY = Vector2(0.3, 0.3)
-
-[node name="Sprite3D" type="Sprite3D" parent="BallLauncher/Effet_Control"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-texture = SubResource("ViewportTexture_xfmgl")
-
-[node name="direction_select" type="SubViewport" parent="BallLauncher/Effet_Control/Sprite3D"]
-disable_3d = true
-transparent_bg = true
-
-[node name="Node2D" parent="BallLauncher/Effet_Control/Sprite3D/direction_select" instance=ExtResource("4_xn77m")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BallLauncher/Effet_Control"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00488281, 0, 0)
-shape = SubResource("BoxShape3D_ch1wp")
-
-[node name="power_control" type="StaticBody3D" parent="BallLauncher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.5)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_a6bhy")
-sizeXY = Vector2(0.8, 1)
-
-[node name="Sprite3D" type="Sprite3D" parent="BallLauncher/power_control"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-texture = SubResource("ViewportTexture_fjup0")
-
-[node name="power_select" type="SubViewport" parent="BallLauncher/power_control/Sprite3D"]
-disable_3d = true
-transparent_bg = true
-size = Vector2i(512, 128)
-
-[node name="PowerSelect" parent="BallLauncher/power_control/Sprite3D/power_select" instance=ExtResource("5_vxtpb")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BallLauncher/power_control"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00500488, 0, 0)
-shape = SubResource("BoxShape3D_kk138")
-
 [node name="Path3D" type="Path3D" parent="BallLauncher"]
 curve = SubResource("Curve3D_me3c6")
 script = ExtResource("6_x0hg7")
 ball_move_duration = 15.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.06, -1.5)
-
 [connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/WASD_Direction/SubViewport/Node2D" method="disable_inputs"]
-[connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/Effet_Control" method="disable_inputs"]
+[connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/Camera3D/Effet_Control" method="disable_inputs"]
 [connection signal="on_enable_all_inputs" from="BallLauncher" to="BallLauncher/WASD_Direction/SubViewport/Node2D" method="enable_inputs"]
-[connection signal="on_enable_all_inputs" from="BallLauncher" to="BallLauncher/Effet_Control" method="enable_inputs"]
+[connection signal="on_enable_all_inputs" from="BallLauncher" to="BallLauncher/Camera3D/Effet_Control" method="enable_inputs"]
+[connection signal="on_have_mouse_pos_rel" from="BallLauncher/Camera3D/Effet_Control" to="BallLauncher" method="set_position_hit"]
+[connection signal="on_have_mouse_pos_rel" from="BallLauncher/Camera3D/Effet_Control" to="BallLauncher/Camera3D/Effet_Control/Sprite3D/direction_select/Node2D" method="on_set_position"]
+[connection signal="on_have_new_power_val" from="BallLauncher/Camera3D/power_control/Sprite3D/power_select/PowerSelect" to="BallLauncher" method="set_relative_power"]
 [connection signal="on_have_position" from="BallLauncher/WASD_Direction/SubViewport/Node2D" to="BallLauncher" method="set_direction"]
-[connection signal="on_have_mouse_pos_rel" from="BallLauncher/Effet_Control" to="BallLauncher" method="set_position_hit"]
-[connection signal="on_have_mouse_pos_rel" from="BallLauncher/Effet_Control" to="BallLauncher/Effet_Control/Sprite3D/direction_select/Node2D" method="on_set_position"]
-[connection signal="on_have_new_power_val" from="BallLauncher/power_control/Sprite3D/power_select/PowerSelect" to="BallLauncher" method="set_relative_power"]

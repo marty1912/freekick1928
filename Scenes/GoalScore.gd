@@ -51,6 +51,8 @@ func on_body_enter(body:Node3D):
 		print("goal")
 		abort_countdown()
 		on_goal_scored.emit()
+		var ball = body as Ball
+		ball.on_goal_entered(goal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
