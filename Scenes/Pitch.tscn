@@ -256,6 +256,9 @@ shape = SubResource("CapsuleShape3D_6o4yj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/GoalPosts/Top"]
 mesh = SubResource("CapsuleMesh_now03")
 
+[node name="Skeleton3D" type="Skeleton3D" parent="GoalStuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52799, 0)
+
 [node name="BallFireThing" parent="." instance=ExtResource("2_ajqs2")]
 transform = Transform3D(0.887663, 0, 0.460494, 0, 1, 0, -0.460494, 0, 0.887663, -4.90935, 0, -23.7631)
 
