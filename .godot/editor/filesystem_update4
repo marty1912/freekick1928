@@ -1,3 +1,4 @@
+res://Scenes/GoalKeeperScene.tscn
 res://Models/Net_material.tres
 res://addons/godot-polyliner/shaders/line_glow.tres
 res://Scenes/wireframe.gdshader

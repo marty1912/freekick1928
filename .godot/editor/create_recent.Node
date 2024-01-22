@@ -1,3 +1,8 @@
+Marker2D
+Skeleton2D
+Bone2D
+Node2D
+Sprite2D
 Node3D
 Skeleton3D
 Sprite3D
@@ -7,8 +12,3 @@ MeshInstance3D
 RigidBody3D
 Camera3D
 SoftBody3D
-RichTextLabel
-VBoxContainer
-Control
-ColorRect
-HBoxContainer

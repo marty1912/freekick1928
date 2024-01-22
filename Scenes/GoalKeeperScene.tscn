@@ -1,3 +1,113 @@
-[gd_scene format=3 uid="uid://b5k0vv2ccia1v"]
+[gd_scene load_steps=12 format=3 uid="uid://b5k0vv2ccia1v"]
+
+[ext_resource type="Texture2D" uid="uid://bq6kcbe0hyihy" path="res://Sprites/Teams/goalie/layer-13.png" id="1_07phw"]
+[ext_resource type="Texture2D" uid="uid://cfeavhpldm2v8" path="res://Sprites/Teams/goalie/layer-12.png" id="2_m135a"]
+[ext_resource type="Texture2D" uid="uid://ba3b4lbifbhrt" path="res://Sprites/Teams/goalie/layer-16.png" id="3_c2x7k"]
+[ext_resource type="Texture2D" uid="uid://c6xf2gfn7i7cd" path="res://Sprites/Teams/goalie/layer-17.png" id="4_pf44h"]
+[ext_resource type="Texture2D" uid="uid://xai6j64no1t4" path="res://Sprites/Teams/goalie/layer-15.png" id="5_5asuh"]
+[ext_resource type="Texture2D" uid="uid://6uhm0vh6wp3p" path="res://Sprites/Teams/goalie/layer-14.png" id="6_rawpx"]
+[ext_resource type="Texture2D" uid="uid://hml5jfvu622u" path="res://Sprites/Teams/goalie/layer-11.png" id="7_6y07a"]
+[ext_resource type="Texture2D" uid="uid://cqrbb1xniy5cv" path="res://Sprites/Teams/goalie/layer-10.png" id="8_gu3sm"]
+[ext_resource type="Texture2D" uid="uid://mqui7jrvkd52" path="res://Sprites/Teams/goalie/layer-8.png" id="9_dd02e"]
+[ext_resource type="Texture2D" uid="uid://dg7uwgvn71i2d" path="res://Sprites/Teams/goalie/layer-9.png" id="10_o2l7x"]
+[ext_resource type="Texture2D" uid="uid://f47ao5mv4kwf" path="res://Sprites/Teams/goalie/layer-7.png" id="11_ksjyy"]
 
 [node name="GoalKeeperScene" type="Node2D"]
+
+[node name="Goalie" type="Skeleton2D" parent="."]
+
+[node name="hipBone2D" type="Bone2D" parent="Goalie"]
+
+[node name="hip" type="Sprite2D" parent="Goalie/hipBone2D"]
+texture = ExtResource("1_07phw")
+
+[node name="torsoBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip"]
+position = Vector2(-2, -9)
+
+[node name="torso" type="Sprite2D" parent="Goalie/hipBone2D/hip/torsoBone2D"]
+texture = ExtResource("2_m135a")
+offset = Vector2(3, -57)
+
+[node name="arm_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso"]
+position = Vector2(-34, -97)
+
+[node name="arm_l" type="Sprite2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_lBone2D"]
+texture = ExtResource("3_c2x7k")
+offset = Vector2(-5, 26)
+
+[node name="hand_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_lBone2D"]
+position = Vector2(-9, 55)
+
+[node name="hand_l" type="Sprite2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_lBone2D/hand_lBone2D"]
+texture = ExtResource("4_pf44h")
+offset = Vector2(-14, 42)
+
+[node name="endBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_lBone2D/hand_lBone2D"]
+position = Vector2(-16, 72)
+
+[node name="end" type="Marker2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_lBone2D/hand_lBone2D/endBone2D"]
+
+[node name="arm_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso"]
+position = Vector2(41, -97)
+
+[node name="arm_r" type="Sprite2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_rBone2D"]
+texture = ExtResource("5_5asuh")
+offset = Vector2(9, 25)
+
+[node name="hand_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_rBone2D"]
+position = Vector2(11, 56)
+
+[node name="hand_r" type="Sprite2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_rBone2D/hand_rBone2D"]
+texture = ExtResource("6_rawpx")
+offset = Vector2(16, 41)
+
+[node name="endBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_rBone2D/hand_rBone2D"]
+position = Vector2(19, 71)
+
+[node name="end" type="Marker2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/arm_rBone2D/hand_rBone2D/endBone2D"]
+position = Vector2(-1.00001, -0.999996)
+
+[node name="headBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso"]
+position = Vector2(6, -117)
+
+[node name="head" type="Sprite2D" parent="Goalie/hipBone2D/hip/torsoBone2D/torso/headBone2D"]
+texture = ExtResource("7_6y07a")
+offset = Vector2(0, -25)
+
+[node name="leg_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip"]
+position = Vector2(-21, 15)
+
+[node name="foot_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/leg_lBone2D"]
+position = Vector2(4, 78)
+
+[node name="Marker2DBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/leg_lBone2D/foot_lBone2D"]
+position = Vector2(1, 94)
+
+[node name="Marker2D" type="Marker2D" parent="Goalie/hipBone2D/hip/leg_lBone2D/foot_lBone2D/Marker2DBone2D"]
+
+[node name="foot_l" type="Sprite2D" parent="Goalie/hipBone2D/hip/leg_lBone2D/foot_lBone2D"]
+texture = ExtResource("9_dd02e")
+offset = Vector2(3, 44)
+
+[node name="leg_l" type="Sprite2D" parent="Goalie/hipBone2D/hip/leg_lBone2D"]
+texture = ExtResource("8_gu3sm")
+offset = Vector2(3, 42)
+
+[node name="leg_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip"]
+position = Vector2(20, 13)
+
+[node name="leg_r" type="Sprite2D" parent="Goalie/hipBone2D/hip/leg_rBone2D"]
+texture = ExtResource("10_o2l7x")
+offset = Vector2(2, 43)
+
+[node name="foot_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/leg_rBone2D"]
+position = Vector2(4, 86)
+
+[node name="foot_r" type="Sprite2D" parent="Goalie/hipBone2D/hip/leg_rBone2D/foot_rBone2D"]
+texture = ExtResource("11_ksjyy")
+offset = Vector2(0, 43)
+
+[node name="Marker2DBone2D" type="Bone2D" parent="Goalie/hipBone2D/hip/leg_rBone2D/foot_rBone2D"]
+position = Vector2(0, 84)
+
+[node name="Marker2D" type="Marker2D" parent="Goalie/hipBone2D/hip/leg_rBone2D/foot_rBone2D/Marker2DBone2D"]
