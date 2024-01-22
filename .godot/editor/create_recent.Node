@@ -1,8 +1,10 @@
+Sprite2D
+Line2D
+Node2D
 Marker2D
+AnimationPlayer
 Skeleton2D
 Bone2D
-Node2D
-Sprite2D
 Node3D
 Skeleton3D
 Sprite3D
@@ -10,5 +12,3 @@ CollisionShape3D
 StaticBody3D
 MeshInstance3D
 RigidBody3D
-Camera3D
-SoftBody3D
