@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bhyjbkpqxorgv"]
+[gd_scene load_steps=39 format=3 uid="uid://bhyjbkpqxorgv"]
 
 [ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel.gd" id="1_f805a"]
@@ -7,8 +7,13 @@
 [ext_resource type="Script" path="res://Scenes/FreeKickGUI.gd" id="4_3dsk0"]
 [ext_resource type="Material" uid="uid://b10ybt2rm6e8g" path="res://Models/Net_material.tres" id="5_gk0pm"]
 [ext_resource type="FontFile" uid="uid://cuocjgxyka8ta" path="res://godot_reuse/Fonts/Bullpen3D.ttf" id="5_rkbjw"]
+[ext_resource type="PackedScene" uid="uid://b5k0vv2ccia1v" path="res://Scenes/GoalKeeperScene.tscn" id="6_1c44d"]
+[ext_resource type="Script" path="res://Scenes/GoalKeeperIn3D.gd" id="6_taudu"]
 [ext_resource type="ArrayMesh" uid="uid://ck4gyxeym1lef" path="res://Models/Goal_net.obj" id="7_0ou34"]
 [ext_resource type="PackedScene" uid="uid://dhediem6a0i7" path="res://Players/player_a.tscn" id="7_x1m2b"]
+[ext_resource type="Script" path="res://Scenes/StaticBody3D.gd" id="8_x32uj"]
+[ext_resource type="Script" path="res://Scenes/Area3D_Debug_ball_impact.gd" id="9_1owui"]
+[ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="10_fc3i6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pim35"]
 sky_horizon_color = Color(0.59625, 0.667422, 0.666912, 1)
@@ -25,7 +30,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uutfu"]
-size = Vector3(7.4, 2.44, 2)
+size = Vector3(7.4, 2.44, 1.74707)
 
 [sub_resource type="BoxMesh" id="BoxMesh_djm41"]
 
@@ -76,6 +81,15 @@ height = 7.6
 radius = 0.11
 height = 7.6
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_qgvlp"]
+viewport_path = NodePath("GoalStuff/GoalKeeper/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3aqd"]
+size = Vector3(8.896, 3.217, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2xell"]
+size = Vector3(8.016, 3.466, 0.1)
+
 [sub_resource type="Animation" id="Animation_igfly"]
 resource_name = "goalAnimatino"
 length = 3.0
@@ -122,7 +136,7 @@ script = ExtResource("1_et3lr")
 [node name="Goal" type="Area3D" parent="GoalStuff"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/Goal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 1.12646)
 shape = SubResource("BoxShape3D_uutfu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Goal/CollisionShape3D"]
@@ -259,11 +273,45 @@ mesh = SubResource("CapsuleMesh_now03")
 [node name="Skeleton3D" type="Skeleton3D" parent="GoalStuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52799, 0)
 
+[node name="GoalKeeper" type="Sprite3D" parent="GoalStuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, -0.218)
+pixel_size = 0.005
+texture = SubResource("ViewportTexture_qgvlp")
+script = ExtResource("6_taudu")
+
+[node name="SubViewport" type="SubViewport" parent="GoalStuff/GoalKeeper"]
+transparent_bg = true
+size = Vector2i(2000, 512)
+size_2d_override_stretch = true
+
+[node name="GoalKeeperScene" parent="GoalStuff/GoalKeeper/SubViewport" instance=ExtResource("6_1c44d")]
+goalie_start = 0.5
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GoalStuff/GoalKeeper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.170978)
+collision_layer = 0
+script = ExtResource("8_x32uj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/GoalKeeper/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.051, 0.076, 0.31)
+shape = SubResource("BoxShape3D_v3aqd")
+
+[node name="Area3D" type="Area3D" parent="GoalStuff/GoalKeeper"]
+script = ExtResource("9_1owui")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/GoalKeeper/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168, 0.029, 0.31)
+shape = SubResource("BoxShape3D_2xell")
+
+[node name="Sprite3D" type="Sprite3D" parent="GoalStuff/GoalKeeper/Area3D"]
+visible = false
+texture = ExtResource("10_fc3i6")
+
 [node name="BallFireThing" parent="." instance=ExtResource("2_ajqs2")]
 transform = Transform3D(0.887663, 0, 0.460494, 0, 1, 0, -0.460494, 0, 0.887663, -4.90935, 0, -23.7631)
 
 [node name="Wall" type="Node3D" parent="."]
-transform = Transform3D(0.92166, 0, 0.387998, 0, 1, 0, -0.387998, 0, 0.92166, -4.48219, 0, -17.0854)
+transform = Transform3D(0.92166, 0, 0.387998, 0, 1, 0, -0.387998, 0, 0.92166, 6.49237, 0, -17.0854)
 
 [node name="PlayerA" parent="Wall" instance=ExtResource("7_x1m2b")]
 
@@ -310,4 +358,6 @@ libraries = {
 }
 
 [connection signal="on_goal_scored" from="GoalStuff" to="FreeKickGUI" method="_on_goal_stuff_on_goal_scored"]
+[connection signal="body_entered" from="GoalStuff/GoalKeeper/Area3D" to="GoalStuff/GoalKeeper/Area3D" method="_on_body_entered"]
 [connection signal="onBallWasFired" from="BallFireThing" to="GoalStuff" method="ball_was_fired"]
+[connection signal="on_have_predicted_path" from="BallFireThing" to="GoalStuff/GoalKeeper" method="on_ball_fired"]

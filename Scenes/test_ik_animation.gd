@@ -8,14 +8,16 @@ class_name Goalie_Control extends Node2D
 
 @export var stop_at_y:float = 600
 @export var goalie_reach:Node2D
+@onready var reach_position_debug: Sprite2D = $"../reach_position_debug"
 
 var trajectory_vel:Vector2 = Vector2(0,0)
 @export var vel_max:float = 1000.0
 var my_gravity:float = 980*2
 var starting_position:Vector2 = Vector2(0,0)
 var time_passed:float = 0.0
-@onready var jump_target: Sprite2D = $jump_target
+@onready var jump_target: Sprite2D = $"../jump_target"
 
+@export var goalie_radius:float = 200
 var legs_positions_default:Array[Vector2]= []
 var targets_positions_default:Array[Vector2] = []
 var goalie_default_y:float = 0
@@ -24,6 +26,7 @@ var goalie_default_y:float = 0
 var legs_positions_start_global:Array[Vector2] = []
 var in_jump:bool = false
 var jump_done:bool = false
+var reaction_time:float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,6 +69,7 @@ func get_jump_target() -> Vector2:
 	var dist_to_reach:float = (goalie_base.global_position - goalie_reach.global_position).length()
 	var offset = (goalie_base.global_position- global_position).normalized()*dist_to_reach
 	var goalie_base_target = global_position+offset
+	
 	return goalie_base_target
 	
 func debug_trajectory_line():
@@ -110,6 +114,8 @@ func stand_up():
 	var pos_target = goalie_base.global_position
 	pos_target.y = goalie_default_y
 	t.tween_property(goalie_base,"global_position",pos_target,1.0)
+	t.tween_callback(func(): jump_done = false)
+	t.tween_callback(func(): in_jump = false)
 
 func _process(delta: float) -> void:
 	time_passed += delta
@@ -125,12 +131,16 @@ func _process(delta: float) -> void:
 func get_time_to_arrive(start:Vector2, target:Vector2) ->float:
 	var dist = (start-target).length()
 	var duration = dist/vel_max
+	if(dist < 10):
+		pass
+		#print("duration: %f" %duration )
 	return duration
 	
 	
 func get_time_needed(jump_here:Vector2):
 	self.global_position = jump_here
 	var target = get_jump_target()
+	
 	return get_time_to_arrive(goalie_base.global_position,target)
 	
 
@@ -139,14 +149,61 @@ func on_jump_here(jump_here:Vector2):
 	start_jump()
 	
 
-func jump_to_be_here_in(jump_here:Vector2,time:float) -> bool:
-	var need_time = get_time_needed(jump_here)
+func can_jump_here_in_time(jump_here:Vector2,time:float)-> bool:
+	var dist_to_goalie = (jump_here-goalie_base.global_position).length()
+	if(dist_to_goalie < goalie_radius):
+		# no need to jump even
+		return true
+		
+	var jump_time = get_time_needed(jump_here)
+	var need_time = reaction_time+jump_time
+	
+	self.global_position = jump_here
+	var target = get_jump_target()
+	var dist = (goalie_base.global_position-target).length()
+	
 	if(need_time < time):
+		return true
+	else:
+		return false
+
+func reach_to_ball_without_jump(jump_here:Vector2):
+	targets_positions_default.clear()
+	legs_positions_default.clear()
+	legs_positions_start_global.clear()
+	goalie_default_y = goalie_base.global_position.y
+	for i in targets:
+		var t:Tween = create_tween()
+		targets_positions_default.append(i.position)
+		t.tween_property(i,"global_position",jump_here,0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	for i in legs:
+		var t:Tween = create_tween()
+		legs_positions_start_global.append(i.global_position)
+		legs_positions_default.append(i.position)
+	
+	var t:Tween = create_tween()
+	t.tween_interval(2.0)
+	t.tween_callback(func(): stand_up())
+
+func jump_to_be_here_in(jump_here:Vector2,time:float) -> bool:
+	reach_position_debug.global_position = jump_here
+	var dist_to_goalie = (jump_here-goalie_base.global_position).length()
+	if(dist_to_goalie < goalie_radius):
+		# no need to jump even
+		reach_to_ball_without_jump(jump_here)
+		return true
+		
+	var jump_time = get_time_needed(jump_here)
+	var need_time = reaction_time+jump_time
+	if(can_jump_here_in_time(jump_here,time)):
 		var diff = time -need_time
+		print("need time: {x} have {to_spare} to spare".format({"x":need_time,"to_spare":diff}))
 		var t:Tween = create_tween()
 		t.tween_interval(diff)
 		t.tween_callback(func(): on_jump_here(jump_here))
 		return true
 	else:
-		on_jump_here(jump_here)
+		var t:Tween = create_tween()
+		t.tween_interval(reaction_time)
+		t.tween_callback(func(): on_jump_here(jump_here))
 		return false

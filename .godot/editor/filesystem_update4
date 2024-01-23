@@ -20,3 +20,9 @@ res://Scenes/live_ticker_text.tscn
 res://Scenes/path_follow_ball.tscn
 res://Scenes/MouseInputTester.gd
 res://Scenes/GoalKeeperScene.gd
+res://Scenes/ball_fire_thing.gd
+res://Scripts/BallLauncher.gd
+res://Scenes/GoalKeeperIn3D.gd
+res://Scenes/GoalieReachDebug.gd
+res://Scenes/Ball.gd
+res://Scenes/Area3D_Debug_ball_impact.gd

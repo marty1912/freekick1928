@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b5k0vv2ccia1v"]
+[gd_scene load_steps=25 format=3 uid="uid://b5k0vv2ccia1v"]
 
 [ext_resource type="Texture2D" uid="uid://bq6kcbe0hyihy" path="res://Sprites/Teams/goalie/layer-13.png" id="1_07phw"]
 [ext_resource type="Script" path="res://Scenes/GoalKeeperScene.gd" id="1_j8omo"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scenes/test_ik_animation.gd" id="12_ip8vn"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="12_puysw"]
 [ext_resource type="Script" path="res://Scenes/MouseInputTester.gd" id="13_qdp07"]
+[ext_resource type="Script" path="res://Scenes/GoalieReachDebug.gd" id="16_ba6qh"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_t2jhv"]
 target_nodepath = NodePath("Targets/head")
@@ -123,20 +124,29 @@ _data = {
 [node name="GoalKeeperScene" type="Node2D"]
 script = ExtResource("1_j8omo")
 
+[node name="jump_target" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.00392157, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+z_index = 1000
+position = Vector2(491, 208)
+texture = ExtResource("12_puysw")
+
+[node name="reach_position_debug" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0, 1, 0.470588, 1)
+position = Vector2(208, 208)
+texture = ExtResource("12_puysw")
+
 [node name="Goalie_Control" type="Node2D" parent="." node_paths=PackedStringArray("targets", "legs", "goalie_base", "goalie_reach")]
 position = Vector2(208, 208)
 script = ExtResource("12_ip8vn")
 targets = [NodePath("../Goalie/Targets/LeftHand"), NodePath("../Goalie/Targets/RightHand"), NodePath("../Goalie/Targets/head")]
 legs = [NodePath("../Goalie/Targets/leg_l"), NodePath("../Goalie/Targets/leg_r")]
 goalie_base = NodePath("../Goalie")
+stop_at_y = 456.0
 goalie_reach = NodePath("../Goalie/reach_here")
-
-[node name="Sprite2D" type="Sprite2D" parent="Goalie_Control"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_puysw")
-
-[node name="jump_target" type="Sprite2D" parent="Goalie_Control"]
-texture = ExtResource("12_puysw")
+vel_max = 500.0
 
 [node name="Goalie" type="Skeleton2D" parent="."]
 position = Vector2(960, 304)
@@ -281,6 +291,7 @@ position = Vector2(24, 188)
 position = Vector2(16, -205)
 
 [node name="Sprite2D" type="Sprite2D" parent="Goalie"]
+visible = false
 texture = ExtResource("12_puysw")
 
 [node name="reach_here" type="Marker2D" parent="Goalie"]
@@ -296,16 +307,27 @@ position = Vector2(615, 203)
 script = ExtResource("13_qdp07")
 
 [node name="Line2D" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(243, 115, 371, 194)
 
 [node name="Goal_OUt_Line" type="Line2D" parent="."]
-position = Vector2(-61, -300)
+visible = false
+position = Vector2(-20, -708)
+scale = Vector2(2, 2)
 points = PackedVector2Array(150, 600, 150, 360, 890, 360, 890, 600)
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(2000, 500)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoalieReachDebug" type="Node2D" parent="."]
+visible = false
+script = ExtResource("16_ba6qh")
+
+[node name="ColorRect" type="ColorRect" parent="GoalieReachDebug"]
 offset_right = 40.0
 offset_bottom = 40.0
 

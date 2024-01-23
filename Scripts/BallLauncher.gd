@@ -15,8 +15,8 @@ var rotation_mult: float = 20
 @onready var effet_control: UI_InputStaticBody = $CamPlatform/Camera3D/GUI/Effet_Control
 @onready var aim_control: aimWASD = $WASD_Direction/SubViewport/Node2D
 @onready var camera_3d: CameraFreeKick = $CamPlatform/Camera3D
-
-
+var last_physics_delta:float = 0.1
+var predicted_path_for_current_shot:Array[Vector3]=[]
 
 signal on_disable_all_inputs()
 signal on_enable_all_inputs()
@@ -73,7 +73,22 @@ func on_abort_selecting_power():
 	enable_aim()
 	return
 	
+func predict_shot_before_fire():
+	
+	my_ball.disableCollisions()
+	var ball = spawn_ball()
+	launch_ball_with_current_settings(ball)
+	predicted_path_for_current_shot.clear()
+	for i in range(0,300):
+		ball.simulate_physics(last_physics_delta)
+		predicted_path_for_current_shot.append(ball.global_position)
+		#print("ball_pos: {x}".format({"x":ball.position}))
+	ball.queue_free()
+	my_ball.enableCollisions()
+	
+	
 func on_done_selecting_power():
+	predict_shot_before_fire()
 	launch_ball_with_current_settings(my_ball)
 	on_ball_was_fired.emit()
 	camera_3d.on_ball_launch(my_ball)
@@ -98,7 +113,7 @@ func ball_preview(delta:float):
 	var ball = spawn_ball()
 	launch_ball_with_current_settings(ball)
 	path_3d.curve.clear_points()
-	for i in range(0,25):
+	for i in range(0,100):
 		ball.simulate_physics(delta)
 		path_3d.curve.add_point(ball.position)
 		#print("ball_pos: {x}".format({"x":ball.position}))
@@ -114,6 +129,7 @@ func launch_ball_with_current_settings(ball:Ball):
 	launch_ball(ball,my_force,my_rot)
 	
 func _physics_process(delta: float) -> void:
+	last_physics_delta = delta
 	ball_preview(delta)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
