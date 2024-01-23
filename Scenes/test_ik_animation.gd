@@ -1,22 +1,25 @@
-extends Node2D
+class_name Goalie_Control extends Node2D
 
 
 @export var targets:Array[Node2D] = []
 @export var legs:Array[Node2D] = []
 @export var goalie_base:Node2D
-@onready var line_2d: Line2D = $Line2D
+@onready var line_2d: Line2D = $"../Line2D"
+
 @export var stop_at_y:float = 600
 @export var goalie_reach:Node2D
 
 var trajectory_vel:Vector2 = Vector2(0,0)
-@export var vel_max:float = 10.0
-var my_gravity:float = 980
+@export var vel_max:float = 1000.0
+var my_gravity:float = 980*2
 var starting_position:Vector2 = Vector2(0,0)
 var time_passed:float = 0.0
+@onready var jump_target: Sprite2D = $jump_target
 
 var legs_positions_default:Array[Vector2]= []
 var targets_positions_default:Array[Vector2] = []
 var goalie_default_y:float = 0
+@export var golie_starting_x:float = 0
 
 var legs_positions_start_global:Array[Vector2] = []
 var in_jump:bool = false
@@ -28,6 +31,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func start_jump():
+	var dist_to_reach:float = (goalie_base.global_position - goalie_reach.global_position).length()
+	var offset = (goalie_base.global_position- global_position).normalized()*dist_to_reach
+	var goalie_base_target = global_position+offset
+	goalie_default_y = goalie_base.global_position.y
+	
 	targets_positions_default.clear()
 	legs_positions_default.clear()
 	legs_positions_start_global.clear()
@@ -35,25 +43,30 @@ func start_jump():
 	for i in targets:
 		var t:Tween = create_tween()
 		targets_positions_default.append(i.position)
-		t.tween_property(i,"global_position",global_position,0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+		t.tween_property(i,"position",-offset,0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	for i in legs:
 		var t:Tween = create_tween()
 		legs_positions_start_global.append(i.global_position)
 		legs_positions_default.append(i.position)
 		#t.tween_property(i,"global_position",i.global_position,5.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-	var dist_to_reach:float = (goalie_base.global_position - goalie_reach.global_position).length()
-	var offset = (goalie_base.global_position- global_position).normalized()*dist_to_reach
-	var goalie_base_target = global_position+offset
-	goalie_default_y = goalie_base.global_position.y
+	
 	# formula for trajectory:
 	# https://www.omnicalculator.com/physics/trajectory-projectile-motion
 	# y = h + xtan(α) - gx²/2V₀²cos²(α)
 	# x= V.x * t
 	# y = h+ V.y*t - (g*t*t)/2
-	set_trajectory_params(goalie_base.global_position,goalie_base_target,0.5)
+	var time_needed = get_time_to_arrive(goalie_base.global_position,goalie_base_target)
+	set_trajectory_params(goalie_base.global_position,goalie_base_target,time_needed)
 	debug_trajectory_line()
 	in_jump = true
 	jump_done = false
+	time_passed = 0
+
+func get_jump_target() -> Vector2:
+	var dist_to_reach:float = (goalie_base.global_position - goalie_reach.global_position).length()
+	var offset = (goalie_base.global_position- global_position).normalized()*dist_to_reach
+	var goalie_base_target = global_position+offset
+	return goalie_base_target
 	
 func debug_trajectory_line():
 	# debug trajectory line
@@ -67,10 +80,11 @@ func debug_trajectory_line():
 	return
 
 func set_trajectory_params(start:Vector2, target:Vector2, time_arrive:float):
+	jump_target.global_position = target
 	starting_position = start
 	var diff = (target-start)
 	trajectory_vel.x = diff.x/time_arrive
-	trajectory_vel.y = (diff.y-(my_gravity*time_arrive*time_arrive))/time_arrive
+	trajectory_vel.y = (diff.y-(my_gravity*time_arrive*time_arrive*0.5))/time_arrive
 
 func get_position_on_trajectory(cur_time:float) -> Vector2:
 	var x = trajectory_vel.x * cur_time
@@ -107,7 +121,32 @@ func _process(delta: float) -> void:
 			update_jump_position()
 		pass
 
+
+func get_time_to_arrive(start:Vector2, target:Vector2) ->float:
+	var dist = (start-target).length()
+	var duration = dist/vel_max
+	return duration
+	
+	
+func get_time_needed(jump_here:Vector2):
+	self.global_position = jump_here
+	var target = get_jump_target()
+	return get_time_to_arrive(goalie_base.global_position,target)
+	
+
 func on_jump_here(jump_here:Vector2):
 	self.global_position = jump_here
 	start_jump()
 	
+
+func jump_to_be_here_in(jump_here:Vector2,time:float) -> bool:
+	var need_time = get_time_needed(jump_here)
+	if(need_time < time):
+		var diff = time -need_time
+		var t:Tween = create_tween()
+		t.tween_interval(diff)
+		t.tween_callback(func(): on_jump_here(jump_here))
+		return true
+	else:
+		on_jump_here(jump_here)
+		return false

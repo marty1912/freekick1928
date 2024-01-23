@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5k0vv2ccia1v"]
+[gd_scene load_steps=24 format=3 uid="uid://b5k0vv2ccia1v"]
 
 [ext_resource type="Texture2D" uid="uid://bq6kcbe0hyihy" path="res://Sprites/Teams/goalie/layer-13.png" id="1_07phw"]
+[ext_resource type="Script" path="res://Scenes/GoalKeeperScene.gd" id="1_j8omo"]
 [ext_resource type="Texture2D" uid="uid://cfeavhpldm2v8" path="res://Sprites/Teams/goalie/layer-12.png" id="2_m135a"]
 [ext_resource type="Texture2D" uid="uid://ba3b4lbifbhrt" path="res://Sprites/Teams/goalie/layer-16.png" id="3_c2x7k"]
 [ext_resource type="Texture2D" uid="uid://c6xf2gfn7i7cd" path="res://Sprites/Teams/goalie/layer-17.png" id="4_pf44h"]
@@ -120,9 +121,25 @@ _data = {
 }
 
 [node name="GoalKeeperScene" type="Node2D"]
+script = ExtResource("1_j8omo")
+
+[node name="Goalie_Control" type="Node2D" parent="." node_paths=PackedStringArray("targets", "legs", "goalie_base", "goalie_reach")]
+position = Vector2(208, 208)
+script = ExtResource("12_ip8vn")
+targets = [NodePath("../Goalie/Targets/LeftHand"), NodePath("../Goalie/Targets/RightHand"), NodePath("../Goalie/Targets/head")]
+legs = [NodePath("../Goalie/Targets/leg_l"), NodePath("../Goalie/Targets/leg_r")]
+goalie_base = NodePath("../Goalie")
+goalie_reach = NodePath("../Goalie/reach_here")
+
+[node name="Sprite2D" type="Sprite2D" parent="Goalie_Control"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_puysw")
+
+[node name="jump_target" type="Sprite2D" parent="Goalie_Control"]
+texture = ExtResource("12_puysw")
 
 [node name="Goalie" type="Skeleton2D" parent="."]
-position = Vector2(600, 447)
+position = Vector2(960, 304)
 modification_stack = SubResource("SkeletonModificationStack2D_yg8gh")
 
 [node name="hipBone2D" type="Bone2D" parent="Goalie"]
@@ -278,20 +295,18 @@ libraries = {
 position = Vector2(615, 203)
 script = ExtResource("13_qdp07")
 
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("targets", "legs", "goalie_base", "goalie_reach")]
-position = Vector2(208, 208)
-script = ExtResource("12_ip8vn")
-targets = [NodePath("../Goalie/Targets/LeftHand"), NodePath("../Goalie/Targets/RightHand"), NodePath("../Goalie/Targets/head")]
-legs = [NodePath("../Goalie/Targets/leg_l"), NodePath("../Goalie/Targets/leg_r")]
-goalie_base = NodePath("../Goalie")
-goalie_reach = NodePath("../Goalie/reach_here")
-
-[node name="Line2D" type="Line2D" parent="Node2D"]
-position = Vector2(-208, -208)
+[node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(243, 115, 371, 194)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_puysw")
+[node name="Goal_OUt_Line" type="Line2D" parent="."]
+position = Vector2(-61, -300)
+points = PackedVector2Array(150, 600, 150, 360, 890, 360, 890, 600)
 
-[connection signal="on_have_position" from="MouseInputTester" to="Node2D" method="on_jump_here"]
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(2000, 500)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="on_have_position" from="MouseInputTester" to="Goalie_Control" method="on_jump_here"]

@@ -1,6 +1,7 @@
+Sprite2D
+Control
 Node2D
 Marker2D
-Sprite2D
 Line2D
 AnimationPlayer
 Skeleton2D
@@ -11,4 +12,3 @@ Sprite3D
 CollisionShape3D
 StaticBody3D
 MeshInstance3D
-RigidBody3D

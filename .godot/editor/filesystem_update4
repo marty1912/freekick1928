@@ -19,3 +19,4 @@ res://Levels/FreeKick4.tscn
 res://Scenes/live_ticker_text.tscn
 res://Scenes/path_follow_ball.tscn
 res://Scenes/MouseInputTester.gd
+res://Scenes/GoalKeeperScene.gd
