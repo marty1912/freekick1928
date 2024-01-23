@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5k0vv2ccia1v"]
+[gd_scene load_steps=23 format=3 uid="uid://b5k0vv2ccia1v"]
 
 [ext_resource type="Texture2D" uid="uid://bq6kcbe0hyihy" path="res://Sprites/Teams/goalie/layer-13.png" id="1_07phw"]
 [ext_resource type="Texture2D" uid="uid://cfeavhpldm2v8" path="res://Sprites/Teams/goalie/layer-12.png" id="2_m135a"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://f47ao5mv4kwf" path="res://Sprites/Teams/goalie/layer-7.png" id="11_ksjyy"]
 [ext_resource type="Script" path="res://Scenes/test_ik_animation.gd" id="12_ip8vn"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="12_puysw"]
+[ext_resource type="Script" path="res://Scenes/MouseInputTester.gd" id="13_qdp07"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_t2jhv"]
 target_nodepath = NodePath("Targets/head")
@@ -265,17 +266,25 @@ position = Vector2(16, -205)
 [node name="Sprite2D" type="Sprite2D" parent="Goalie"]
 texture = ExtResource("12_puysw")
 
+[node name="reach_here" type="Marker2D" parent="Goalie"]
+position = Vector2(15, -244)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_c5u72")
 }
 
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("targets", "legs", "goalie_base")]
+[node name="MouseInputTester" type="Node2D" parent="."]
+position = Vector2(615, 203)
+script = ExtResource("13_qdp07")
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("targets", "legs", "goalie_base", "goalie_reach")]
 position = Vector2(208, 208)
 script = ExtResource("12_ip8vn")
 targets = [NodePath("../Goalie/Targets/LeftHand"), NodePath("../Goalie/Targets/RightHand"), NodePath("../Goalie/Targets/head")]
 legs = [NodePath("../Goalie/Targets/leg_l"), NodePath("../Goalie/Targets/leg_r")]
 goalie_base = NodePath("../Goalie")
+goalie_reach = NodePath("../Goalie/reach_here")
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
 position = Vector2(-208, -208)
@@ -284,3 +293,5 @@ points = PackedVector2Array(243, 115, 371, 194)
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("12_puysw")
+
+[connection signal="on_have_position" from="MouseInputTester" to="Node2D" method="on_jump_here"]

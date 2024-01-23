@@ -6,37 +6,57 @@ extends Node2D
 @export var goalie_base:Node2D
 @onready var line_2d: Line2D = $Line2D
 @export var stop_at_y:float = 600
+@export var goalie_reach:Node2D
 
 var trajectory_vel:Vector2 = Vector2(0,0)
 @export var vel_max:float = 10.0
 var my_gravity:float = 980
 var starting_position:Vector2 = Vector2(0,0)
+var time_passed:float = 0.0
+
+var legs_positions_default:Array[Vector2]= []
+var targets_positions_default:Array[Vector2] = []
+var goalie_default_y:float = 0
+
+var legs_positions_start_global:Array[Vector2] = []
+var in_jump:bool = false
+var jump_done:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#start_jump()
+	pass # Replace with function body.
+
+func start_jump():
+	targets_positions_default.clear()
+	legs_positions_default.clear()
+	legs_positions_start_global.clear()
 	
 	for i in targets:
 		var t:Tween = create_tween()
+		targets_positions_default.append(i.position)
 		t.tween_property(i,"global_position",global_position,0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	for i in legs:
 		var t:Tween = create_tween()
-		t.tween_property(i,"global_position",i.global_position,5.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-	var tween_base:Tween = create_tween()
-	tween_base.tween_interval(0.0)
-	
-	var offset = (goalie_base.global_position- global_position).normalized()*300
+		legs_positions_start_global.append(i.global_position)
+		legs_positions_default.append(i.position)
+		#t.tween_property(i,"global_position",i.global_position,5.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	var dist_to_reach:float = (goalie_base.global_position - goalie_reach.global_position).length()
+	var offset = (goalie_base.global_position- global_position).normalized()*dist_to_reach
 	var goalie_base_target = global_position+offset
-	#tween_base.tween_property(goalie_base,"global_position",goalie_base_target,1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-	var my_height = 600
-	var fall_down_target = Vector2(goalie_base_target.x-offset.x * 1,my_height)
-	#tween_base.tween_property(goalie_base,"global_position",fall_down_target,1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	goalie_default_y = goalie_base.global_position.y
 	# formula for trajectory:
 	# https://www.omnicalculator.com/physics/trajectory-projectile-motion
 	# y = h + xtan(α) - gx²/2V₀²cos²(α)
 	# x= V.x * t
 	# y = h+ V.y*t - (g*t*t)/2
 	set_trajectory_params(goalie_base.global_position,goalie_base_target,0.5)
+	debug_trajectory_line()
+	in_jump = true
+	jump_done = false
 	
+func debug_trajectory_line():
+	# debug trajectory line
 	line_2d.clear_points()
 	var prec = 60
 	var total_time = 5.0
@@ -44,8 +64,7 @@ func _ready() -> void:
 		var pos = get_position_on_trajectory((i as float / prec)*total_time)
 		
 		line_2d.add_point((pos))
-	pass # Replace with function body.
-
+	return
 
 func set_trajectory_params(start:Vector2, target:Vector2, time_arrive:float):
 	starting_position = start
@@ -58,13 +77,37 @@ func get_position_on_trajectory(cur_time:float) -> Vector2:
 	var y = trajectory_vel.y*cur_time+(my_gravity*cur_time*cur_time)/2
 	return Vector2(x,y)+starting_position
 
-var time_passed:float = 0.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func update_jump_position():
+	goalie_base.global_position = get_position_on_trajectory(time_passed)
+	for i in range(0,len(legs)):
+		legs[i].global_position = legs_positions_start_global[i]
+
+func stand_up():
+	for i in range(0,len(targets)):
+		var t :Tween = create_tween()
+		t.tween_property(targets[i],"position",targets_positions_default[i],1.0)
+	for i in range(0,len(legs)):
+		var t :Tween = create_tween()
+		t.tween_property(legs[i],"position",legs_positions_default[i],1.0)
+	var t:Tween = create_tween()
+	var pos_target = goalie_base.global_position
+	pos_target.y = goalie_default_y
+	t.tween_property(goalie_base,"global_position",pos_target,1.0)
+
 func _process(delta: float) -> void:
 	time_passed += delta
-	
-	if(goalie_base.global_position.y > stop_at_y):
+	if(in_jump and not jump_done):
+		if(goalie_base.global_position.y > stop_at_y):
+			jump_done = true
+			stand_up()
+		else:
+			update_jump_position()
 		pass
-	else:
-		goalie_base.global_position = get_position_on_trajectory(time_passed)
-	pass
+
+func on_jump_here(jump_here:Vector2):
+	self.global_position = jump_here
+	start_jump()
+	

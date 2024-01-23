@@ -2,6 +2,7 @@ res://Scenes/GoalKeeperScene.tscn
 res://Models/Net_material.tres
 res://addons/godot-polyliner/shaders/line_glow.tres
 res://Scenes/wireframe.gdshader
+res://Scenes/test_ik_animation.gd
 res://Scenes/Pitch.tscn
 res://Scenes/ball.tscn
 res://addons/godot-polyliner/demos/demo/Spatial.tscn
@@ -17,4 +18,4 @@ res://Levels/FreeKick3.tscn
 res://Levels/FreeKick4.tscn
 res://Scenes/live_ticker_text.tscn
 res://Scenes/path_follow_ball.tscn
-res://Scenes/test_ik_animation.gd
+res://Scenes/MouseInputTester.gd
