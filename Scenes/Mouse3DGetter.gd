@@ -8,6 +8,21 @@ signal on_have_mouse_pos_rel(Vector2)
  
 var currently_selected:bool = false
 var input_disabled:bool = false
+@onready var sprite_3d: Sprite3D = $Sprite3D
+
+func fade_out(duration:float = 0.5):
+	var t:Tween = create_tween()
+	var old_mod = sprite_3d.modulate
+	var invis = old_mod
+	invis.a = 0
+	t.tween_property(sprite_3d,"modulate",invis,duration)
+	
+func fade_in(duration:float = 0.5):
+	var t:Tween = create_tween()
+	var old_mod = sprite_3d.modulate
+	var invis = old_mod
+	invis.a = 1
+	t.tween_property(sprite_3d,"modulate",invis,duration)
 
 func disable_inputs():
 	input_disabled = true
@@ -17,6 +32,15 @@ func enable_inputs():
 
 func reset_aim():
 	on_have_mouse_pos_rel.emit(Vector2(0,0))
+
+func getMousePosOrigin()->Vector3:
+	var viewport := get_viewport()
+	var mouse_position := viewport.get_mouse_position()
+	var camera := viewport.get_camera_3d()
+	var origin := camera.project_ray_origin(mouse_position)
+	var direction := camera.project_ray_normal(mouse_position)
+	var end := origin + direction * (camera.global_position-self.global_position).length()
+	return end
 
 func getPositionOfMouseIn3D() -> Dictionary:
 	#https://stackoverflow.com/questions/76893256/how-to-get-the-3d-mouse-pos-in-godot-4-1
@@ -64,25 +88,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func get_mouse_pos_outside_me():
+	getMousePosOrigin()
+	var offset = to_local(getMousePosOrigin())
+	var size_half = sizeXY/2
+	var clamped = Vector2(clampf(offset.x,-size_half.x,size_half.x),clampf(offset.y,-size_half.y,size_half.y) )
+	return clamped
 
 func getPosition2DOnMe():
 	var raycast_res = getPositionOfMouseIn3D()
 	if(raycast_res.is_empty()):
-		#print("empty")
-		return null
+		#print("collided with something else! {x}, my_pos: {y}".format({"x":to_local(mouse_position),"y":self.position}))
+		return get_mouse_pos_outside_me()
 	if(raycast_res["collider"] == self):
-		
 		var mouse_position = raycast_res["position"]
 		#print("collided with me! {x}, my_pos: {y}".format({"x":to_local(mouse_position),"y":self.position}))
 		var offset = to_local(mouse_position)
 		return Vector2(offset.x,offset.y)
 	else:
-		var mouse_position = raycast_res["position"]
-		#print("collided with something else! {x}, my_pos: {y}".format({"x":to_local(mouse_position),"y":self.position}))
-		var offset = to_local(mouse_position)
-		var size_half = sizeXY/2
-		var clamped = Vector2(clampf(offset.x,-size_half.x,size_half.x),clampf(offset.y,-size_half.y,size_half.y) )
-		return clamped
+		return get_mouse_pos_outside_me()
 	return null
 
 func is_clicked_on_me() ->bool:

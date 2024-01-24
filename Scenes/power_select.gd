@@ -3,6 +3,7 @@ class_name PowerSelect extends Node2D
 
 signal on_power_selected()
 signal on_power_select_start()
+signal on_power_select_abort()
 
 var my_power:float = 0.5
 	
@@ -62,12 +63,16 @@ func stop_power_adjust():
 	power_adjust_tween = null
 	selected_already = true
 	
+	
 func abort_power_adjust():
-	power_adjust_tween.stop()
+	reset_aim()
+	if(power_adjust_tween != null):
+		power_adjust_tween.stop()
 	set_my_power_val(my_power)
 	#on_power_selected.emit()
 	power_adjust_tween = null
 	selected_already = false
+	on_power_select_abort.emit()
 	
 func on_ball_fire_pressed():
 	print("on_ball fire pressed")
@@ -78,6 +83,7 @@ func on_ball_fire_pressed():
 
 
 func _input(event: InputEvent) -> void:
+	
 	if(event is InputEventAction):
 			var action = event as InputEventAction
 			if(action.is_action("ball_fire")):

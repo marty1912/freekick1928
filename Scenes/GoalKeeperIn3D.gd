@@ -6,6 +6,7 @@ extends Sprite3D
 @onready var static_body_3d: StaticBody3D = $StaticBody3D
 @onready var sub_viewport: SubViewport = $SubViewport
 @onready var area_3d: Area3D = $Area3D
+@onready var staticbody_collision_shape_3d: CollisionShape3D = $StaticBody3D/CollisionShape3D
 
 var time_until_hit:float = 0
 signal on_ball_held()
@@ -48,7 +49,7 @@ func on_ball_fired(ball_launch:BallLauncher):
 	var my_target:Vector2 = get_position_on_plane(ball_launch.predicted_path_for_current_shot,ball_launch.last_physics_delta)
 	var held:bool = goal_keeper_scene.ball_will_reach_at(my_target,time_until_hit)
 	if(held):
-		static_body_3d.collision_layer = 1
+		staticbody_collision_shape_3d.disabled = false
 		area_3d.set_collisions_enabled(true)
 		
 		area_3d.stop_ball_enabled = true
@@ -58,7 +59,8 @@ func on_ball_fired(ball_launch:BallLauncher):
 		t.tween_callback(func():on_ball_held.emit())
 		
 	else:
-		static_body_3d.collision_layer = 0
+		staticbody_collision_shape_3d.disabled = true
+		
 		area_3d.set_collisions_enabled(false)
 		area_3d.stop_ball_enabled = false
 		print("will not hold ball")

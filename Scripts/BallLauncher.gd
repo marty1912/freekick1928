@@ -53,7 +53,7 @@ func disable_aim():
 	
 func enable_aim():
 	aim_control.enable_inputs()
-	aim_control.enable_inputs()
+	effet_control.enable_inputs()
 	
 func disable_all_inputs():
 	aim_control.disable_inputs()
@@ -68,11 +68,13 @@ func _ready() -> void:
 	my_ball = spawn_ball()
 	power_select.on_power_select_start.connect(on_start_selecting_power)
 	power_select.on_power_selected.connect(on_done_selecting_power)
+	power_select.on_power_select_abort.connect(on_abort_selecting_power)
 	pass # Replace with function body.
 
 func on_start_selecting_power():
 	disable_aim()
 	return
+	
 func on_abort_selecting_power():
 	enable_aim()
 	return

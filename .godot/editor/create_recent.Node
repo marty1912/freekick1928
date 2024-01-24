@@ -1,3 +1,7 @@
+RichTextLabel
+HBoxContainer
+Control
+Node2D
 Camera3D
 MeshInstance3D
 CollisionShape3D
@@ -9,7 +13,3 @@ Sprite3D
 Area3D
 ReferenceRect
 CollisionShape2D
-Area2D
-ColorRect
-Node2D
-SubViewport

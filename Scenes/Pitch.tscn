@@ -86,10 +86,10 @@ height = 7.6
 viewport_path = NodePath("GoalStuff/GoalKeeper/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v3aqd"]
-size = Vector3(7.58696, 2.546, 0.397656)
+size = Vector3(7.58696, 2.56304, 0.850781)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2xell"]
-size = Vector3(7.72309, 2.84801, 0.1)
+size = Vector3(7.72309, 2.84801, 0.242896)
 
 [sub_resource type="Animation" id="Animation_igfly"]
 resource_name = "goalAnimatino"
@@ -290,18 +290,17 @@ goalie_start = 0.5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GoalStuff/GoalKeeper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.170978)
-collision_layer = 0
 script = ExtResource("8_x32uj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/GoalKeeper/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181702, -0.2595, 0.458828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181702, -0.26802, 0.232266)
 shape = SubResource("BoxShape3D_v3aqd")
 
 [node name="Area3D" type="Area3D" parent="GoalStuff/GoalKeeper"]
 script = ExtResource("9_1owui")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/GoalKeeper/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00296998, -0.279998, 0.31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00296998, -0.279998, 0.238552)
 shape = SubResource("BoxShape3D_2xell")
 
 [node name="Sprite3D" type="Sprite3D" parent="GoalStuff/GoalKeeper/Area3D"]

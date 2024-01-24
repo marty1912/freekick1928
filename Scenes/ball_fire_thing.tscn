@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dopbj55bsn5bw"]
+[gd_scene load_steps=18 format=3 uid="uid://dopbj55bsn5bw"]
 
 [ext_resource type="Script" path="res://Scripts/BallLauncher.gd" id="1_f6yui"]
 [ext_resource type="Script" path="res://Scenes/ball_fire_thing.gd" id="1_fra6a"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/SetLineCurve.gd" id="6_x0hg7"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="8_hia72"]
 [ext_resource type="PackedScene" uid="uid://ctu6hbuba6mp6" path="res://Scenes/ball.tscn" id="9_eehny"]
+[ext_resource type="Script" path="res://Scenes/Controls_gui.gd" id="11_lpqr2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xfmgl"]
 viewport_path = NodePath("BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control/Sprite3D/direction_select")
@@ -45,9 +46,10 @@ my_rot = Vector3(1, 0, 0)
 
 [node name="CamPlatform" type="Node3D" parent="BallLauncher"]
 
-[node name="Camera3D" type="Camera3D" parent="BallLauncher/CamPlatform"]
+[node name="Camera3D" type="Camera3D" parent="BallLauncher/CamPlatform" node_paths=PackedStringArray("position_gui_here")]
 transform = Transform3D(-1, 2.99003e-08, -8.21506e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.8, -1.5)
 script = ExtResource("3_bp6hr")
+position_gui_here = NodePath("../..")
 
 [node name="GUI" type="Node3D" parent="BallLauncher/CamPlatform/Camera3D"]
 
@@ -81,6 +83,7 @@ sizeXY = Vector2(0.8, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="BallLauncher/CamPlatform/Camera3D/GUI/power_control"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
 texture = SubResource("ViewportTexture_fjup0")
 
 [node name="power_select" type="SubViewport" parent="BallLauncher/CamPlatform/Camera3D/GUI/power_control/Sprite3D"]
@@ -93,6 +96,8 @@ size = Vector2i(512, 128)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallLauncher/CamPlatform/Camera3D/GUI/power_control"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00500488, 0, 0)
 shape = SubResource("BoxShape3D_kk138")
+
+[node name="Node2D" type="Node2D" parent="BallLauncher/CamPlatform/Camera3D/GUI"]
 
 [node name="WASD_Direction" type="Sprite3D" parent="BallLauncher"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -116,6 +121,44 @@ transform = Transform3D(1, 0, 0, 0, -2.18557e-05, -1, 0, 500, -4.37114e-08, 0, 0
 visible = false
 texture = ExtResource("8_hia72")
 
+[node name="Controls_gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_lpqr2")
+
+[node name="controls_before_power" type="RichTextLabel" parent="Controls_gui"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[left][WASD] - adjust direction 
+[MOUSE] control curve 
+[SPACE] confirm"
+
+[node name="controls_power_select" type="RichTextLabel" parent="Controls_gui"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[left] [SPACE] select power
+[MOUSE] abort"
+
 [connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" method="disable_inputs"]
 [connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/WASD_Direction/SubViewport/Node2D" method="disable_inputs"]
 [connection signal="on_enable_all_inputs" from="BallLauncher" to="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" method="enable_inputs"]
@@ -123,4 +166,6 @@ texture = ExtResource("8_hia72")
 [connection signal="on_have_mouse_pos_rel" from="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" to="BallLauncher" method="set_position_hit"]
 [connection signal="on_have_mouse_pos_rel" from="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" to="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control/Sprite3D/direction_select/Node2D" method="on_set_position"]
 [connection signal="on_have_new_power_val" from="BallLauncher/CamPlatform/Camera3D/GUI/power_control/Sprite3D/power_select/PowerSelect" to="BallLauncher" method="set_relative_power"]
+[connection signal="on_power_select_abort" from="BallLauncher/CamPlatform/Camera3D/GUI/power_control/Sprite3D/power_select/PowerSelect" to="BallLauncher/CamPlatform/Camera3D" method="on_abort_selecting_power"]
+[connection signal="on_power_select_start" from="BallLauncher/CamPlatform/Camera3D/GUI/power_control/Sprite3D/power_select/PowerSelect" to="BallLauncher/CamPlatform/Camera3D" method="on_start_selecting_power"]
 [connection signal="on_have_position" from="BallLauncher/WASD_Direction/SubViewport/Node2D" to="BallLauncher" method="set_direction"]
