@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b10lrou8rw33v"]
+[gd_scene load_steps=4 format=3 uid="uid://b10lrou8rw33v"]
 
 [ext_resource type="PackedScene" uid="uid://bhyjbkpqxorgv" path="res://Scenes/Pitch.tscn" id="1_asmei"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sl1mj"]
 viewport_path = NodePath("GoalStuff/Field/StaticBody3D/Sprite3D/SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_67ppg"]
+viewport_path = NodePath("GoalStuff/GoalKeeper/SubViewport")
+
 [node name="BasePitch" instance=ExtResource("1_asmei")]
 
 [node name="Sprite3D" parent="GoalStuff/Field/StaticBody3D" index="1"]
 texture = SubResource("ViewportTexture_sl1mj")
+
+[node name="GoalKeeper" parent="GoalStuff" index="6"]
+texture = SubResource("ViewportTexture_67ppg")
 
 [node name="BallFireThing" parent="." index="3"]
 transform = Transform3D(0.543804, 0, 0.839213, 0, 1, 0, -0.839213, 0, 0.543804, -24.0332, 0, -15.3673)

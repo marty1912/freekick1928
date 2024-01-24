@@ -1,8 +1,10 @@
-GPUParticles3D
-Node3D
+Camera3D
 MeshInstance3D
 CollisionShape3D
 StaticBody3D
+CharacterBody3D
+GPUParticles3D
+Node3D
 Sprite3D
 Area3D
 ReferenceRect
@@ -11,5 +13,3 @@ Area2D
 ColorRect
 Node2D
 SubViewport
-Sprite2D
-Control

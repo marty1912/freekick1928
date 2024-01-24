@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://clai3uorhwyj7"]
+
+[ext_resource type="Script" path="res://Scenes/test_charBody.gd" id="1_yuafy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wlyx3"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y0tgi"]
+sky_material = SubResource("ProceduralSkyMaterial_wlyx3")
+
+[sub_resource type="Environment" id="Environment_3ixjn"]
+background_mode = 2
+sky = SubResource("Sky_y0tgi")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5v5h1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vufxp"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_juvib"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1mjdi"]
+size = Vector3(40, 1, 40)
+
+[node name="TestCharacterBodyScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ixjn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00211, 2.6791)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83167, 0)
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_yuafy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_5v5h1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("SphereMesh_vufxp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_juvib")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499207, 0)
+mesh = SubResource("BoxMesh_1mjdi")

@@ -1,9 +1,7 @@
-res://Scenes/GoalKeeperScene.tscn
+res://Scenes/Pitch.tscn
 res://Models/Net_material.tres
 res://addons/godot-polyliner/shaders/line_glow.tres
 res://Scenes/wireframe.gdshader
-res://Scenes/test_ik_animation.gd
-res://Scenes/Pitch.tscn
 res://Scenes/ball.tscn
 res://addons/godot-polyliner/demos/demo/Spatial.tscn
 res://Scenes/effet_select.tscn
@@ -18,11 +16,10 @@ res://Levels/FreeKick3.tscn
 res://Levels/FreeKick4.tscn
 res://Scenes/live_ticker_text.tscn
 res://Scenes/path_follow_ball.tscn
-res://Scenes/MouseInputTester.gd
-res://Scenes/GoalKeeperScene.gd
-res://Scenes/ball_fire_thing.gd
+res://Scenes/GoalKeeperScene.tscn
+res://Scenes/force_emitting.gd
+res://Scenes/stadium_wall.tscn
 res://Scripts/BallLauncher.gd
-res://Scenes/GoalKeeperIn3D.gd
-res://Scenes/GoalieReachDebug.gd
 res://Scenes/Ball.gd
-res://Scenes/Area3D_Debug_ball_impact.gd
+res://Scenes/test_character_body_scene.tscn
+res://Scenes/test_charBody.gd

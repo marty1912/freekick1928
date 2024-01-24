@@ -5,7 +5,7 @@ var currentRotationSpeed:Vector3 = Vector3(0,0,0)
 var gravity:float = -9.8
 var mass:float = 0.4
 
-var preview_mode = false
+
 var stopped = true
 var in_goal:Area3D = null
 var in_net:bool =false
@@ -33,11 +33,8 @@ func on_goal_entered(goal:Area3D):
 	in_goal = goal
 	pass
 	
-	
-func _physics_process(delta: float) -> void:
-	#move_and_collide(linear_velocity)
-	if(stopped):
-		return
+func my_physics_stuff(delta:float):
+	#print("ball physics")
 	var f_back_into_goal = Vector3(0,0,0)
 	if(in_goal != null):
 		if(self in in_goal.get_overlapping_bodies()):
@@ -59,10 +56,16 @@ func _physics_process(delta: float) -> void:
 	var f_magnus = currentRotationSpeed.cross(my_velocity)*0.02
 	#my_velocity.y += gravity * delta
 	my_velocity += ((f_gravity+f_drag+f_magnus + f_back_into_goal)/mass) * delta
+	var my_pos_before = self.position 
 	var collision = move_and_collide(my_velocity*delta)
+	position.z = my_velocity.z*delta + my_pos_before.z
+	velocity = Vector3(0,0,0)
+	
+	#position = my_pos_before+my_velocity*delta
 	if not collision:
 		return
 	else:
+		print("ball collision!")
 		if(my_velocity.length() < 1):
 			my_velocity = Vector3(0.0,0.0,0.0)
 			if(!stopped):
@@ -81,6 +84,12 @@ func _physics_process(delta: float) -> void:
 			return
 			#playBlobSound(velocity.length())
 	pass
+	
+func _physics_process(delta: float) -> void:
+	#move_and_collide(linear_velocity)
+	if(stopped):
+		return
+	my_physics_stuff(delta)
 
 func apply_impulse(imp:Vector3):
 	
@@ -93,11 +102,13 @@ func apply_rotation(rot:Vector3):
 	self.currentRotationSpeed = rot
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	print("integrate forces")
 	pass
 	
 func simulate_physics(delta:float) ->void:
 	#var body_state = PhysicsServer3D.body_get_direct_state(self.get_rid())
 	#var space_state : PhysicsDirectBodyState3D = get_world_3d().direct_space_state
 	#_integrate_forces(body_state)
-	_physics_process(delta)
+	#_physics_process(delta)
+	my_physics_stuff(delta)
 	

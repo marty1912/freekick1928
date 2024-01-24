@@ -17,6 +17,9 @@ var rotation_mult: float = 20
 @onready var camera_3d: CameraFreeKick = $CamPlatform/Camera3D
 var last_physics_delta:float = 0.1
 var predicted_path_for_current_shot:Array[Vector3]=[]
+var ball_launched = false
+var launch_ball_in_next_physics = false
+var actual_ball_path:Array[Vector3] = []
 
 signal on_disable_all_inputs()
 signal on_enable_all_inputs()
@@ -78,20 +81,22 @@ func predict_shot_before_fire():
 	my_ball.disableCollisions()
 	var ball = spawn_ball()
 	launch_ball_with_current_settings(ball)
+	var old_path = predicted_path_for_current_shot.slice(0,100)
 	predicted_path_for_current_shot.clear()
 	for i in range(0,300):
-		ball.simulate_physics(last_physics_delta)
+		if(i<len(old_path) and i < 10):
+			print("old path: {x} new path: {y}".format({"x":old_path[i],"y":ball.global_position}))
 		predicted_path_for_current_shot.append(ball.global_position)
+		ball.simulate_physics(last_physics_delta)
 		#print("ball_pos: {x}".format({"x":ball.position}))
 	ball.queue_free()
 	my_ball.enableCollisions()
 	
 	
 func on_done_selecting_power():
-	predict_shot_before_fire()
-	launch_ball_with_current_settings(my_ball)
-	on_ball_was_fired.emit()
-	camera_3d.on_ball_launch(my_ball)
+	#predict_shot_before_fire()
+	launch_ball_in_next_physics = true
+	ball_launched = false
 
 func spawn_ball() ->Ball:
 	var ball = ball_scene.instantiate()
@@ -101,8 +106,6 @@ func spawn_ball() ->Ball:
 
 func launch_ball(ball:Ball,force:Vector3,rot:Vector3):
 	ball.stopped = false
-	#ball.apply_central_impulse(force)
-	#ball.apply_torque_impulse(rotation)
 	var my_rotation = global_rotation
 	
 	ball.apply_impulse(force.rotated(Vector3(0,1,0),my_rotation.y))
@@ -114,13 +117,30 @@ func ball_preview(delta:float):
 	launch_ball_with_current_settings(ball)
 	path_3d.curve.clear_points()
 	for i in range(0,100):
-		ball.simulate_physics(delta)
 		path_3d.curve.add_point(ball.position)
+		ball.simulate_physics(delta)
 		#print("ball_pos: {x}".format({"x":ball.position}))
 	ball.queue_free()
 	
 	my_ball.enableCollisions()
+
+func launch_ball_for_real():
+	predict_shot_before_fire()
+	predict_shot_before_fire()
+	predict_shot_before_fire()
+	predict_shot_before_fire()
 	
+		
+	
+	my_ball.queue_free()
+	my_ball.disableCollisions()
+	my_ball = spawn_ball()
+	launch_ball_with_current_settings(my_ball)
+	my_ball.simulate_physics(last_physics_delta)
+	on_ball_was_fired.emit()
+	camera_3d.on_ball_launch(my_ball)
+	print("launched ball!")
+		
 
 func launch_ball_with_current_settings(ball:Ball):
 	# top speed with 20 here is 180 km/h. could be max force
@@ -130,7 +150,25 @@ func launch_ball_with_current_settings(ball:Ball):
 	
 func _physics_process(delta: float) -> void:
 	last_physics_delta = delta
-	ball_preview(delta)
+	if(not ball_launched):
+		ball_preview(delta)
+	if(launch_ball_in_next_physics and not ball_launched):
+		launch_ball_for_real()
+		ball_launched = true
+		
+	if(ball_launched):
+		if(len(actual_ball_path) < 100):
+			actual_ball_path.append(my_ball.global_position)
+			var i = len(actual_ball_path)-1
+			#print("append_ to path: {i}: {x} , {y}".format({"i":i,"x":actual_ball_path[i],"y":predicted_path_for_current_shot[i]}))
+			#print("break : {x}".format({"x":delta}))
+		else:
+			pass
+			for i in range(0,len(actual_ball_path)):
+				if(actual_ball_path[i] != predicted_path_for_current_shot[i]):
+					pass
+					#print("difference in paths! {i}: {x} , {y}".format({"i":i,"x":actual_ball_path[i],"y":predicted_path_for_current_shot[i]}))
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

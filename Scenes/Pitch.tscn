@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bhyjbkpqxorgv"]
+[gd_scene load_steps=40 format=3 uid="uid://bhyjbkpqxorgv"]
 
 [ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel.gd" id="1_f805a"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scenes/StaticBody3D.gd" id="8_x32uj"]
 [ext_resource type="Script" path="res://Scenes/Area3D_Debug_ball_impact.gd" id="9_1owui"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="10_fc3i6"]
+[ext_resource type="PackedScene" uid="uid://qikf0662xhcl" path="res://Scenes/stadium_wall.tscn" id="15_rle0j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pim35"]
 sky_horizon_color = Color(0.59625, 0.667422, 0.666912, 1)
@@ -120,16 +121,6 @@ tracks/1/keys = {
 _data = {
 "goalAnimatino": SubResource("Animation_igfly")
 }
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_81kt1"]
-size = Vector3(97.3354, 5.95215, 15.5479)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pppki"]
-size = Vector3(200, 10, 30)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d5att"]
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
 
 [node name="BasePitch" type="Node3D"]
 script = ExtResource("1_f805a")
@@ -369,84 +360,13 @@ libraries = {
 
 [node name="Stadium" type="Node3D" parent="."]
 
-[node name="WallB" type="Node3D" parent="Stadium"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.63918, 0)
+[node name="StadiumWall" parent="Stadium" instance=ExtResource("15_rle0j")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Stadium/WallB"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.93154)
+[node name="StadiumWall2" parent="Stadium" instance=ExtResource("15_rle0j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.4606, -2.63918, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stadium/WallB/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57597, 1.15088, 5.69189)
-shape = SubResource("BoxShape3D_81kt1")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Stadium/WallB/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.867765, 0.496974, 0, -0.496974, 0.867765, 6.57597, 5.44188, 6.22198)
-shape = SubResource("BoxShape3D_81kt1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stadium/WallB"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.909255, 19.63)
-mesh = SubResource("BoxMesh_pppki")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stadium/WallB"]
-transform = Transform3D(1, 0, 0, 0, 0.899863, 0.436174, 0, -0.436174, 0.899863, 0, 5.40377, 20.486)
-mesh = SubResource("BoxMesh_pppki")
-skeleton = NodePath("../..")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Stadium/WallB"]
-transform = Transform3D(1, 0, 0, 0, 0.852868, 0.522126, 0, -0.522126, 0.852868, 0, 9.63206, 20.2598)
-lifetime = 600.0
-speed_scale = 0.0
-visibility_aabb = AABB(-55.7422, -12.1105, -13.7832, 108.743, 15.2379, 27.5665)
-process_material = SubResource("ParticleProcessMaterial_d5att")
-
-[node name="WallB2" type="Node3D" parent="Stadium"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -34.6132, -2.63918, -22.4986)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Stadium/WallB2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.93154)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stadium/WallB2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57597, 1.15088, 5.69189)
-shape = SubResource("BoxShape3D_81kt1")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Stadium/WallB2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.867765, 0.496974, 0, -0.496974, 0.867765, 6.57597, 5.44188, 6.22198)
-shape = SubResource("BoxShape3D_81kt1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stadium/WallB2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.909255, 19.63)
-mesh = SubResource("BoxMesh_pppki")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stadium/WallB2"]
-transform = Transform3D(1, 0, 0, 0, 0.899863, 0.436174, 0, -0.436174, 0.899863, 0, 5.40377, 20.486)
-mesh = SubResource("BoxMesh_pppki")
-skeleton = NodePath("../..")
-
-[node name="WallB3" type="Node3D" parent="Stadium"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.0122, -2.63918, -22.4986)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Stadium/WallB3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.93154)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stadium/WallB3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57597, 1.15088, 5.69189)
-shape = SubResource("BoxShape3D_81kt1")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Stadium/WallB3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.867765, 0.496974, 0, -0.496974, 0.867765, 6.57597, 5.44188, 6.22198)
-shape = SubResource("BoxShape3D_81kt1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stadium/WallB3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.909255, 19.63)
-mesh = SubResource("BoxMesh_pppki")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stadium/WallB3"]
-transform = Transform3D(1, 0, 0, 0, 0.899863, 0.436174, 0, -0.436174, 0.899863, 0, 5.40377, 20.486)
-mesh = SubResource("BoxMesh_pppki")
-skeleton = NodePath("../..")
+[node name="StadiumWall3" parent="Stadium" instance=ExtResource("15_rle0j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.2254, -2.63918, 0)
 
 [connection signal="on_goal_scored" from="GoalStuff" to="FreeKickGUI" method="_on_goal_stuff_on_goal_scored"]
 [connection signal="body_entered" from="GoalStuff/GoalKeeper/Area3D" to="GoalStuff/GoalKeeper/Area3D" method="_on_body_entered"]

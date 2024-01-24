@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://qikf0662xhcl"]
+
+[ext_resource type="Texture2D" uid="uid://ca1uwcsyjcif6" path="res://Sprites/Spectators/pexels-fwstudio-131667.jpg" id="1_yx7xs"]
+[ext_resource type="Texture2D" uid="uid://cosebg4m2xuif" path="res://Sprites/Spectators/spectators.png" id="2_lwf4q"]
+[ext_resource type="Script" path="res://Scenes/force_emitting.gd" id="3_irld0"]
+[ext_resource type="Texture2D" uid="uid://b6xpnlksl06bf" path="res://Sprites/Spectators/spectators2.png" id="4_vkgjd"]
+[ext_resource type="Texture2D" uid="uid://5x6mu3j4yl7e" path="res://Sprites/Spectators/auditorium-1867130_1920.jpg" id="5_qmyha"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_81kt1"]
+size = Vector3(201.126, 5.95215, 16.5756)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlrbb"]
+size = Vector3(203.835, 5.95215, 76.8416)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbvlw"]
+albedo_texture = ExtResource("1_yx7xs")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pppki"]
+size = Vector3(200, 10, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ghrd"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_lwf4q")
+uv1_scale = Vector3(1, -1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2o0t2"]
+emission_shape = 3
+emission_box_extents = Vector3(50, 0.3, 10)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qkwet"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hk6m"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_vkgjd")
+uv1_scale = Vector3(1, -1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ob4e"]
+albedo_texture = ExtResource("5_qmyha")
+uv1_scale = Vector3(200, 50, 1)
+
+[node name="StadiumWall" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.63918, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.93154)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70055, 1.15088, 5.13397)
+shape = SubResource("BoxShape3D_81kt1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 2.56771, 20.7653, 32.7629)
+shape = SubResource("BoxShape3D_hlrbb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.909255, 19.63)
+material_override = SubResource("StandardMaterial3D_fbvlw")
+mesh = SubResource("BoxMesh_pppki")
+skeleton = NodePath("../..")
+
+[node name="spectatorsA" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999848, -0.0174524, 0, 0.0151142, 0.865894, 0.5, -0.0087262, -0.499924, 0.866026, 0, 9.99926, 13.7784)
+material_override = SubResource("StandardMaterial3D_4ghrd")
+emitting = false
+amount = 512
+lifetime = 1000.0
+one_shot = true
+preprocess = 1.0
+explosiveness = 1.0
+visibility_aabb = AABB(-47.2718, -4.01206, -10.7859, 92.701, 8.02413, 21.5718)
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2o0t2")
+draw_pass_1 = SubResource("QuadMesh_qkwet")
+script = ExtResource("3_irld0")
+
+[node name="spectatorsB" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999848, -0.0174524, 0, 0.0151142, 0.865894, 0.5, -0.0087262, -0.499924, 0.866026, 0, 9.99926, 13.7784)
+material_override = SubResource("StandardMaterial3D_3hk6m")
+emitting = false
+amount = 512
+lifetime = 1000.0
+one_shot = true
+preprocess = 1.0
+explosiveness = 1.0
+visibility_aabb = AABB(-47.2718, -4.01206, -10.7859, 92.701, 8.02413, 21.5718)
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_2o0t2")
+draw_pass_1 = SubResource("QuadMesh_qkwet")
+script = ExtResource("3_irld0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.899863, 0.436174, 0, -0.436174, 0.899863, 0, 6.04128, 20.4762)
+material_override = SubResource("StandardMaterial3D_8ob4e")
+mesh = SubResource("BoxMesh_pppki")
+skeleton = NodePath("../..")
