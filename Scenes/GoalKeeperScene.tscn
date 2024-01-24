@@ -154,7 +154,6 @@ modification_stack = SubResource("SkeletonModificationStack2D_yg8gh")
 
 [node name="hipBone2D" type="Bone2D" parent="Goalie"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="hip" type="Sprite2D" parent="Goalie/hipBone2D"]
 texture = ExtResource("1_07phw")
@@ -162,7 +161,6 @@ texture = ExtResource("1_07phw")
 [node name="torsoBone2D" type="Bone2D" parent="Goalie/hipBone2D"]
 position = Vector2(-2, -9)
 rest = Transform2D(1, 0, 0, 1, -2, -9)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="torso" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D"]
 texture = ExtResource("2_m135a")
@@ -170,7 +168,6 @@ offset = Vector2(3, -57)
 
 [node name="arm_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D"]
 position = Vector2(-34, -97)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="arm_l" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D"]
 texture = ExtResource("3_c2x7k")
@@ -178,7 +175,6 @@ offset = Vector2(-5, 26)
 
 [node name="hand_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D"]
 position = Vector2(-9, 55)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="hand_l" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D"]
 texture = ExtResource("4_pf44h")
@@ -191,7 +187,6 @@ position = Vector2(-16, 72)
 
 [node name="arm_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D"]
 position = Vector2(41, -97)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="arm_r" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D"]
 texture = ExtResource("5_5asuh")
@@ -199,7 +194,6 @@ offset = Vector2(9, 25)
 
 [node name="hand_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D"]
 position = Vector2(11, 56)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="hand_r" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D"]
 texture = ExtResource("6_rawpx")
@@ -224,12 +218,10 @@ offset = Vector2(0, -25)
 [node name="leg_lBone2D" type="Bone2D" parent="Goalie/hipBone2D"]
 position = Vector2(-21, 15)
 rest = Transform2D(1, 0, 0, 1, -21, 15)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="foot_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/leg_lBone2D"]
 position = Vector2(4, 78)
 rest = Transform2D(1, 0, 0, 1, 4, 78)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Marker2DBone2D" type="Bone2D" parent="Goalie/hipBone2D/leg_lBone2D/foot_lBone2D"]
 position = Vector2(1, 94)
@@ -249,7 +241,6 @@ offset = Vector2(3, 42)
 [node name="leg_rBone2D" type="Bone2D" parent="Goalie/hipBone2D"]
 position = Vector2(20, 13)
 rest = Transform2D(1, 0, 0, 1, 20, 13)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="leg_r" type="Sprite2D" parent="Goalie/hipBone2D/leg_rBone2D"]
 texture = ExtResource("10_o2l7x")
@@ -258,7 +249,6 @@ offset = Vector2(2, 43)
 [node name="foot_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/leg_rBone2D"]
 position = Vector2(4, 86)
 rest = Transform2D(1, 0, 0, 1, 4, 86)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="foot_r" type="Sprite2D" parent="Goalie/hipBone2D/leg_rBone2D/foot_rBone2D"]
 texture = ExtResource("11_ksjyy")

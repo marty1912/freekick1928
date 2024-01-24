@@ -134,21 +134,22 @@ func ball_preview(delta:float):
 	my_ball.enableCollisions()
 
 func launch_ball_for_real():
-	predict_shot_before_fire()
-	predict_shot_before_fire()
-	predict_shot_before_fire()
+	#predict_shot_before_fire()
+	#predict_shot_before_fire()
+	#predict_shot_before_fire()
 	print("preview: ")
-	predict_shot_before_fire(true)
+	predict_shot_before_fire(false)
 	print("real")
 	my_ball.disableCollisions()
 	my_ball.queue_free()
 	my_ball = spawn_ball()
 	launch_ball_with_current_settings(my_ball)
-	my_ball.print_debug = true
+	my_ball.print_debug = false
 	my_ball.simulate_physics(last_physics_delta)
 	on_ball_was_fired.emit()
 	camera_3d.on_ball_launch(my_ball)
 	print("launched ball!")
+	
 		
 
 func launch_ball_with_current_settings(ball:Ball):

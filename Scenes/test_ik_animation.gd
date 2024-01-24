@@ -48,7 +48,7 @@ func start_jump():
 		targets_positions_default.append(i.position)
 		t.tween_property(i,"position",-offset,0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	for i in legs:
-		var t:Tween = create_tween()
+		#var t:Tween = create_tween()
 		legs_positions_start_global.append(i.global_position)
 		legs_positions_default.append(i.position)
 		#t.tween_property(i,"global_position",i.global_position,5.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
@@ -177,7 +177,7 @@ func reach_to_ball_without_jump(jump_here:Vector2):
 		targets_positions_default.append(i.position)
 		t.tween_property(i,"global_position",jump_here,0.2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	for i in legs:
-		var t:Tween = create_tween()
+		#var t:Tween = create_tween()
 		legs_positions_start_global.append(i.global_position)
 		legs_positions_default.append(i.position)
 	

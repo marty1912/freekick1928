@@ -368,7 +368,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.46
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.2254, -2.63918, 0)
 
 [connection signal="on_goal_scored" from="GoalStuff" to="FreeKickGUI" method="_on_goal_stuff_on_goal_scored"]
-[connection signal="on_ball_held" from="GoalStuff/GoalKeeper" to="GoalStuff" method="ball_was_out"]
 [connection signal="body_entered" from="GoalStuff/GoalKeeper/Area3D" to="GoalStuff/GoalKeeper/Area3D" method="_on_body_entered"]
 [connection signal="onBallWasFired" from="BallFireThing" to="GoalStuff" method="ball_was_fired"]
 [connection signal="on_have_predicted_path" from="BallFireThing" to="GoalStuff/GoalKeeper" method="on_ball_fired"]

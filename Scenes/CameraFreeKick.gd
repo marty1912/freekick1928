@@ -30,7 +30,7 @@ func on_ball_launch(ball:Ball):
 	pass
 	
 func hide_gui():
-	var t:Tween = create_tween()
+	#var t:Tween = create_tween()
 	effet_control.fade_out(0.5)
 	power_control.fade_out(0.5)
 	#gui.visible = false

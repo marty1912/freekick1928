@@ -1,5 +1,6 @@
 extends Control
 @onready var power_select: PowerSelect = $"../BallLauncher/CamPlatform/Camera3D/GUI/power_control/Sprite3D/power_select/PowerSelect"
+@onready var ball_launcher: BallLauncher = $"../BallLauncher"
 
 @onready var controls_before_power: RichTextLabel = $controls_before_power
 @onready var controls_power_select: RichTextLabel = $controls_power_select
@@ -12,6 +13,8 @@ func on_shot_fired():
 	t.tween_property(controls_before_power,"modulate",Color(1,1,1,0),0.5)
 	t.tween_property(controls_power_select,"modulate",Color(1,1,1,0),0.5)
 	
+
+
 func on_power_select_start():
 	selecting_power = true
 	var t:Tween = create_tween()
@@ -35,6 +38,7 @@ func _ready() -> void:
 	show_before_power_init()
 	power_select.on_power_select_abort.connect(on_power_select_abort)
 	power_select.on_power_select_start.connect(on_power_select_start)
+	ball_launcher.on_ball_was_fired.connect(on_shot_fired)
 	pass # Replace with function body.
 
 
