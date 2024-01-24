@@ -23,3 +23,6 @@ res://Scripts/BallLauncher.gd
 res://Scenes/Ball.gd
 res://Scenes/test_character_body_scene.tscn
 res://Scenes/test_charBody.gd
+res://Scenes/WASD_Direction_2D.gd
+res://Scenes/GoalKeeperIn3D.gd
+res://Scenes/GoalScore.gd

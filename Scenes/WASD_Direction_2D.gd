@@ -6,10 +6,10 @@ class_name aimWASD extends Node2D
 
 
 var my_position:Vector2 = Vector2(0,0)
-var min_x: float = -0.5
+var min_x: float = -0.4
 var min_y: float = -0.5
-var max_x: float = 0.5
-var max_y:float = 0
+var max_x: float = 0.4
+var max_y:float = -0.1
 
 var moveSpeed:float = 0.25
 signal on_have_position(Vector2)

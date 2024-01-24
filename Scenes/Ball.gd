@@ -1,14 +1,16 @@
 class_name Ball extends CharacterBody3D
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 @export var my_velocity:Vector3 = Vector3(0,0,0)
 var currentRotationSpeed:Vector3 = Vector3(0,0,0)
 var gravity:float = -9.8
 var mass:float = 0.4
-
-
+var frame_count = 0
+var print_debug = false
 var stopped = true
 var in_goal:Area3D = null
 var in_net:bool =false
+var preview_mode:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#var t:Tween = create_tween()
@@ -23,10 +25,10 @@ func _process(delta: float) -> void:
 	pass
 
 func enableCollisions():
-	collision_layer = 1
+	collision_shape_3d.disabled = false
 	
 func disableCollisions():
-	collision_layer = 0
+	collision_shape_3d.disabled = true
 	pass
 
 func on_goal_entered(goal:Area3D):
@@ -34,6 +36,7 @@ func on_goal_entered(goal:Area3D):
 	pass
 	
 func my_physics_stuff(delta:float):
+	frame_count+=1
 	#print("ball physics")
 	var f_back_into_goal = Vector3(0,0,0)
 	if(in_goal != null):
@@ -55,6 +58,7 @@ func my_physics_stuff(delta:float):
 	# magnus force: https://farside.ph.utexas.edu/teaching/329/lectures/node43.html
 	var f_magnus = currentRotationSpeed.cross(my_velocity)*0.02
 	#my_velocity.y += gravity * delta
+	var my_vel_before = my_velocity
 	my_velocity += ((f_gravity+f_drag+f_magnus + f_back_into_goal)/mass) * delta
 	var my_pos_before = self.position 
 	var collision = move_and_collide(my_velocity*delta)
@@ -65,7 +69,18 @@ func my_physics_stuff(delta:float):
 	if not collision:
 		return
 	else:
-		print("ball collision!")
+		if(print_debug):
+			print("ball collision! with: {x} at frame: {y}".format({"x":collision.get_collider(0),"y":frame_count}))
+			if(collision.get_collider(0) is Ball):
+				print("body is ball ")
+		if(collision.get_collider(0) is Ball):
+			print("will fix ball - ball collision now.")
+			disableCollisions()
+			my_velocity = my_vel_before
+			position = my_pos_before
+			simulate_physics(delta)
+			enableCollisions()
+			return
 		if(my_velocity.length() < 1):
 			my_velocity = Vector3(0.0,0.0,0.0)
 			if(!stopped):
@@ -75,7 +90,7 @@ func my_physics_stuff(delta:float):
 				#onStopped.emit()
 			
 		var oldVel = my_velocity
-		my_velocity = my_velocity.bounce(collision.get_normal()) * 0.99
+		my_velocity = my_velocity.bounce(collision.get_normal()) * 0.9
 		#currentRotationSpeed -= oldVel.angle_to(velocity)
 		if(my_velocity.length() < 10):
 			return

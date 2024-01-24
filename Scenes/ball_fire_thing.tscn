@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.7631)
 script = ExtResource("1_fra6a")
 
 [node name="BallLauncher" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
 script = ExtResource("1_f6yui")
 my_force = Vector3(0, 0, 10)
 my_rot = Vector3(1, 0, 0)
@@ -106,6 +106,7 @@ transparent_bg = true
 curve = SubResource("Curve3D_me3c6")
 script = ExtResource("6_x0hg7")
 ball_move_duration = 15.0
+amount_of_balls = 45
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.18557e-05, -1, 0, 500, -4.37114e-08, 0, 0, 0)

@@ -9,8 +9,9 @@ var my_direction:Vector3 = Vector3(0,0,0)
 @onready var path_3d: Path3D = $Path3D
 var my_power:float = 0
 var power_max:float = 20
-var power_min:float = 5
-var rotation_mult: float = 20
+var power_min:float = 10
+var rotation_mult_x: float = 20
+var rotation_mult_y: float = 10
 @onready var power_select: PowerSelect = $CamPlatform/Camera3D/GUI/power_control/Sprite3D/power_select/PowerSelect
 @onready var effet_control: UI_InputStaticBody = $CamPlatform/Camera3D/GUI/Effet_Control
 @onready var aim_control: aimWASD = $WASD_Direction/SubViewport/Node2D
@@ -43,7 +44,7 @@ func set_position_hit(position_hit:Vector2):
 	# position hit shows us where we hit the ball when we kick it
 	var starting_point = Vector3(position_hit.x,position_hit.y,-1).normalized()
 	var ending_point = Vector3(0,0,0)
-	my_rot =(Vector3(position_hit.y,position_hit.x,0.0))*rotation_mult
+	my_rot =(Vector3(position_hit.y*rotation_mult_y,position_hit.x*rotation_mult_x,0.0))
 	
 
 func disable_aim():
@@ -76,16 +77,18 @@ func on_abort_selecting_power():
 	enable_aim()
 	return
 	
-func predict_shot_before_fire():
+func predict_shot_before_fire(use_debug=false):
 	
 	my_ball.disableCollisions()
 	var ball = spawn_ball()
+	ball.print_debug = use_debug
 	launch_ball_with_current_settings(ball)
 	var old_path = predicted_path_for_current_shot.slice(0,100)
 	predicted_path_for_current_shot.clear()
 	for i in range(0,300):
 		if(i<len(old_path) and i < 10):
-			print("old path: {x} new path: {y}".format({"x":old_path[i],"y":ball.global_position}))
+			pass
+			#print("old path: {x} new path: {y}".format({"x":old_path[i],"y":ball.global_position}))
 		predicted_path_for_current_shot.append(ball.global_position)
 		ball.simulate_physics(last_physics_delta)
 		#print("ball_pos: {x}".format({"x":ball.position}))
@@ -101,6 +104,7 @@ func on_done_selecting_power():
 func spawn_ball() ->Ball:
 	var ball = ball_scene.instantiate()
 	add_child(ball)
+	ball.position = Vector3(0,0,0)
 	return ball
 	
 
@@ -113,6 +117,7 @@ func launch_ball(ball:Ball,force:Vector3,rot:Vector3):
 
 func ball_preview(delta:float):
 	my_ball.disableCollisions()
+	remove_child(my_ball)
 	var ball = spawn_ball()
 	launch_ball_with_current_settings(ball)
 	path_3d.curve.clear_points()
@@ -121,21 +126,29 @@ func ball_preview(delta:float):
 		ball.simulate_physics(delta)
 		#print("ball_pos: {x}".format({"x":ball.position}))
 	ball.queue_free()
-	
+	add_child(my_ball)
 	my_ball.enableCollisions()
 
 func launch_ball_for_real():
-	predict_shot_before_fire()
-	predict_shot_before_fire()
-	predict_shot_before_fire()
-	predict_shot_before_fire()
 	
+	
+	#my_ball.free()
+	#remove_child(my_ball)
+	#my_ball.disableCollisions()
+	#my_ball.position = Vector3(0,-100,0)
+	predict_shot_before_fire()
+	predict_shot_before_fire()
+	predict_shot_before_fire()
+	print("preview: ")
+	predict_shot_before_fire(true)
+	print("real")
 		
-	
-	my_ball.queue_free()
 	my_ball.disableCollisions()
+	my_ball.queue_free()
+	#my_ball.disableCollisions()
 	my_ball = spawn_ball()
 	launch_ball_with_current_settings(my_ball)
+	my_ball.print_debug = true
 	my_ball.simulate_physics(last_physics_delta)
 	on_ball_was_fired.emit()
 	camera_3d.on_ball_launch(my_ball)
@@ -156,12 +169,14 @@ func _physics_process(delta: float) -> void:
 		launch_ball_for_real()
 		ball_launched = true
 		
+		
 	if(ball_launched):
+		return
 		if(len(actual_ball_path) < 100):
 			actual_ball_path.append(my_ball.global_position)
 			var i = len(actual_ball_path)-1
-			#print("append_ to path: {i}: {x} , {y}".format({"i":i,"x":actual_ball_path[i],"y":predicted_path_for_current_shot[i]}))
-			#print("break : {x}".format({"x":delta}))
+			print("append_ to path: {i}: {x} , {y}".format({"i":i,"x":actual_ball_path[i],"y":predicted_path_for_current_shot[i]}))
+			print("break : {x}".format({"x":delta}))
 		else:
 			pass
 			for i in range(0,len(actual_ball_path)):

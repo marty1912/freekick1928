@@ -8,6 +8,7 @@ extends Sprite3D
 @onready var area_3d: Area3D = $Area3D
 
 var time_until_hit:float = 0
+signal on_ball_held()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -52,6 +53,10 @@ func on_ball_fired(ball_launch:BallLauncher):
 		area_3d.collision_mask = 1
 		area_3d.stop_ball_enabled = true
 		print("will hold ball")
+		var t :Tween = create_tween()
+		t.tween_interval(time_until_hit-0.2)
+		t.tween_callback(func():on_ball_held.emit())
+		
 	else:
 		static_body_3d.collision_layer = 0
 		area_3d.collision_layer =0
