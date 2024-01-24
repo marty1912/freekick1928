@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dopbj55bsn5bw"]
+[gd_scene load_steps=17 format=3 uid="uid://dopbj55bsn5bw"]
 
 [ext_resource type="Script" path="res://Scripts/BallLauncher.gd" id="1_f6yui"]
 [ext_resource type="Script" path="res://Scenes/ball_fire_thing.gd" id="1_fra6a"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://baget2kdhyi5h" path="res://Scenes/power_select.tscn" id="5_vxtpb"]
 [ext_resource type="Script" path="res://Scenes/SetLineCurve.gd" id="6_x0hg7"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="8_hia72"]
+[ext_resource type="PackedScene" uid="uid://ctu6hbuba6mp6" path="res://Scenes/ball.tscn" id="9_eehny"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xfmgl"]
 viewport_path = NodePath("BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control/Sprite3D/direction_select")
@@ -45,13 +46,13 @@ my_rot = Vector3(1, 0, 0)
 [node name="CamPlatform" type="Node3D" parent="BallLauncher"]
 
 [node name="Camera3D" type="Camera3D" parent="BallLauncher/CamPlatform"]
-transform = Transform3D(-1, 2.99003e-08, -8.21506e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.06, -1.5)
+transform = Transform3D(-1, 2.99003e-08, -8.21506e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.8, -1.5)
 script = ExtResource("3_bp6hr")
 
 [node name="GUI" type="Node3D" parent="BallLauncher/CamPlatform/Camera3D"]
 
 [node name="Effet_Control" type="StaticBody3D" parent="BallLauncher/CamPlatform/Camera3D/GUI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88, -1.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_a6bhy")
@@ -72,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0048
 shape = SubResource("BoxShape3D_ch1wp")
 
 [node name="power_control" type="StaticBody3D" parent="BallLauncher/CamPlatform/Camera3D/GUI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.9, -1.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_a6bhy")
@@ -107,6 +108,8 @@ curve = SubResource("Curve3D_me3c6")
 script = ExtResource("6_x0hg7")
 ball_move_duration = 15.0
 amount_of_balls = 45
+
+[node name="Ball" parent="BallLauncher" instance=ExtResource("9_eehny")]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.18557e-05, -1, 0, 500, -4.37114e-08, 0, 0, 0)

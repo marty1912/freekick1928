@@ -49,8 +49,8 @@ func on_ball_fired(ball_launch:BallLauncher):
 	var held:bool = goal_keeper_scene.ball_will_reach_at(my_target,time_until_hit)
 	if(held):
 		static_body_3d.collision_layer = 1
-		area_3d.collision_layer =1
-		area_3d.collision_mask = 1
+		area_3d.set_collisions_enabled(true)
+		
 		area_3d.stop_ball_enabled = true
 		print("will hold ball")
 		var t :Tween = create_tween()
@@ -59,8 +59,7 @@ func on_ball_fired(ball_launch:BallLauncher):
 		
 	else:
 		static_body_3d.collision_layer = 0
-		area_3d.collision_layer =0
-		area_3d.collision_mask = 0
+		area_3d.set_collisions_enabled(false)
 		area_3d.stop_ball_enabled = false
 		print("will not hold ball")
 	pass

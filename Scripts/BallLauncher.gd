@@ -92,6 +92,7 @@ func predict_shot_before_fire(use_debug=false):
 		predicted_path_for_current_shot.append(ball.global_position)
 		ball.simulate_physics(last_physics_delta)
 		#print("ball_pos: {x}".format({"x":ball.position}))
+	ball.disableCollisions()
 	ball.queue_free()
 	my_ball.enableCollisions()
 	
@@ -125,27 +126,20 @@ func ball_preview(delta:float):
 		path_3d.curve.add_point(ball.position)
 		ball.simulate_physics(delta)
 		#print("ball_pos: {x}".format({"x":ball.position}))
+	ball.disableCollisions()
 	ball.queue_free()
 	add_child(my_ball)
 	my_ball.enableCollisions()
 
 func launch_ball_for_real():
-	
-	
-	#my_ball.free()
-	#remove_child(my_ball)
-	#my_ball.disableCollisions()
-	#my_ball.position = Vector3(0,-100,0)
 	predict_shot_before_fire()
 	predict_shot_before_fire()
 	predict_shot_before_fire()
 	print("preview: ")
 	predict_shot_before_fire(true)
 	print("real")
-		
 	my_ball.disableCollisions()
 	my_ball.queue_free()
-	#my_ball.disableCollisions()
 	my_ball = spawn_ball()
 	launch_ball_with_current_settings(my_ball)
 	my_ball.print_debug = true

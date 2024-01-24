@@ -1,4 +1,5 @@
 extends Area3D
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 @onready var sprite_3d: Sprite3D = $Sprite3D
 var stop_ball_enabled:bool =false
@@ -11,6 +12,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func set_collisions_enabled(value:bool):
+	collision_shape_3d.disabled = !value
 
 func _on_body_entered(body: Node3D) -> void:
 	if(not stop_ball_enabled):
