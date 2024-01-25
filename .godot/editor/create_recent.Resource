@@ -1,2 +1,3 @@
+DialogueResource
 StandardMaterial3D
 LiveTickerEvent

@@ -1,37 +1,127 @@
-[gd_scene load_steps=9 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=19 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
+[ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
+[ext_resource type="Texture2D" uid="uid://dna6a7dha2cpu" path="res://Sprites/outline.png" id="2_ebhr5"]
+[ext_resource type="Texture2D" uid="uid://b6nqxg57w0ves" path="res://Sprites/Grandma/background.png" id="2_l13xs"]
 [ext_resource type="Resource" uid="uid://yfaj1h3jv2b6" path="res://Resources/goal_0_1.tres" id="2_wkvxu"]
 [ext_resource type="Resource" uid="uid://dyfw4s1pl02jo" path="res://Resources/goal_0_2.tres" id="3_c4tc2"]
+[ext_resource type="Texture2D" uid="uid://qep5of34h2ef" path="res://Sprites/Grandma/background_fg.png" id="3_jsyme"]
+[ext_resource type="Texture2D" uid="uid://bc5321ppcl150" path="res://Sprites/Grandma/grandma.png" id="3_krquk"]
+[ext_resource type="Script" path="res://GrandmaControl.gd" id="3_lkqpd"]
 [ext_resource type="Resource" uid="uid://bjlcwqs8ndwls" path="res://Resources/free_kick_1.tres" id="4_b1npe"]
+[ext_resource type="Texture2D" uid="uid://bc6k7olwcxp7m" path="res://Sprites/Grandma/cake.png" id="4_cv3lv"]
 [ext_resource type="Texture2D" uid="uid://c7oxthlayrkve" path="res://Sprites/Teams/italy_flag.png" id="4_fvgfc"]
 [ext_resource type="Resource" uid="uid://dm8tvmjxl7gja" path="res://Resources/free_kick_2.tres" id="5_8nrom"]
 [ext_resource type="Texture2D" uid="uid://bsl2rhvnbqvtt" path="res://Sprites/Teams/hungary_flag.png" id="5_cexs5"]
+[ext_resource type="Texture2D" uid="uid://b16b476hy07oi" path="res://Sprites/Grandma/radio.png" id="5_jqqsp"]
 [ext_resource type="Script" path="res://Scenes/LiveTickerList.gd" id="6_6amx0"]
 
-[node name="OverallGUI" type="Control" node_paths=PackedStringArray("label_score", "label_time")]
-custom_minimum_size = Vector2(1152, 648)
+[sub_resource type="Animation" id="Animation_schlq"]
+resource_name = "cake_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/cake:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(978, 339), Vector2(481, 339)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wry8e"]
+_data = {
+"cake_in": SubResource("Animation_schlq")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_to1g3")
+
+[node name="outside_frame" type="NinePatchRect" parent="."]
+modulate = Color(0.0509804, 0, 0.0352941, 1)
+z_index = 2000
+custom_minimum_size = Vector2(740, 480)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_ebhr5")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(5, -90)
+script = ExtResource("3_lkqpd")
+
+[node name="grandmaAnimations" type="AnimationPlayer" parent="Node2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_wry8e")
+}
+
+[node name="background" type="Sprite2D" parent="Node2D"]
+position = Vector2(436, 474)
+texture = ExtResource("2_l13xs")
+
+[node name="grandma" type="Sprite2D" parent="Node2D"]
+z_index = 500
+position = Vector2(273, 306)
+texture = ExtResource("3_krquk")
+
+[node name="cake" type="Sprite2D" parent="Node2D"]
+z_index = 1100
+position = Vector2(978, 339)
+texture = ExtResource("4_cv3lv")
+
+[node name="radio" type="Sprite2D" parent="Node2D"]
+z_index = 1200
+position = Vector2(17, 393)
+texture = ExtResource("5_jqqsp")
+
+[node name="foreground_table" type="Sprite2D" parent="Node2D"]
+z_index = 1000
+position = Vector2(436, 474)
+texture = ExtResource("3_jsyme")
+
+[node name="OverallGUI" type="Control" parent="." node_paths=PackedStringArray("label_score", "label_time")]
+custom_minimum_size = Vector2(640, 480)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 739.0
+offset_bottom = 480.0
 script = ExtResource("1_sn41t")
-label_score = NodePath("Control/HBox/Score/RichTextLabel")
-label_time = NodePath("Control/HBox/TimeLabel")
+label_score = NodePath("SubViewportContainer/SubViewport/Control/HBox/Score/RichTextLabel")
+label_time = NodePath("SubViewportContainer/SubViewport/Control/HBox/TimeLabel")
 events_to_handle = Array[Resource("res://Resources/LiveTickerEvent.gd")]([ExtResource("2_wkvxu"), ExtResource("3_c4tc2"), ExtResource("4_b1npe"), ExtResource("5_8nrom")])
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
+[node name="SubViewportContainer" type="SubViewportContainer" parent="OverallGUI"]
+z_index = 2000
+layout_mode = 2
+offset_top = 1.0
+offset_right = 740.0
+offset_bottom = 481.0
+
+[node name="SubViewport" type="SubViewport" parent="OverallGUI/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(740, 480)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="OverallGUI/SubViewportContainer/SubViewport"]
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
+offset_left = -20.5
 offset_top = 24.0
-offset_right = 20.0
+offset_right = 19.5
 offset_bottom = 64.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="OverallGUI/SubViewportContainer/SubViewport/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -42,7 +132,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HBox" type="HBoxContainer" parent="Control"]
+[node name="HBox" type="HBoxContainer" parent="OverallGUI/SubViewportContainer/SubViewport/Control"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 5
@@ -53,12 +143,12 @@ offset_right = 266.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/HBox"]
+[node name="TextureRect" type="TextureRect" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 layout_mode = 2
 texture = ExtResource("4_fvgfc")
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
@@ -66,11 +156,11 @@ bbcode_enabled = true
 text = "[p align=center]ITA
 "
 
-[node name="Score" type="Control" parent="Control/HBox"]
+[node name="Score" type="Control" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBox/Score"]
+[node name="RichTextLabel" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox/Score"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 0
 offset_right = 40.0
@@ -79,12 +169,12 @@ theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]0:0"
 
-[node name="TextureRect2" type="TextureRect" parent="Control/HBox"]
+[node name="TextureRect2" type="TextureRect" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 layout_mode = 2
 texture = ExtResource("5_cexs5")
 stretch_mode = 5
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Control/HBox"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
@@ -92,19 +182,19 @@ bbcode_enabled = true
 text = "[center]HUN
 "
 
-[node name="TimeLabel" type="RichTextLabel" parent="Control/HBox"]
+[node name="TimeLabel" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[right] 00:00"
 
-[node name="LiveTickerList" type="VBoxContainer" parent="."]
+[node name="Level" type="Node3D" parent="OverallGUI/SubViewportContainer/SubViewport"]
+
+[node name="LiveTickerList" type="VBoxContainer" parent="OverallGUI"]
 layout_mode = 0
 offset_left = 502.0
 offset_top = 118.0
 offset_right = 542.0
 offset_bottom = 158.0
 script = ExtResource("6_6amx0")
-
-[node name="Level" type="Node3D" parent="."]

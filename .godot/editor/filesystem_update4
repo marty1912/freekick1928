@@ -19,3 +19,9 @@ res://Scenes/path_follow_ball.tscn
 res://Scenes/GoalKeeperScene.tscn
 res://Scenes/stadium_wall.tscn
 res://Scenes/test_character_body_scene.tscn
+res://Scenes/OverallGUI.gd
+res://addons/dialogue_manager/test_scene.tscn
+res://dialogue/Dialogue_globals.gd
+res://GeneralStoryControl.gd
+res://GrandmaControl.gd
+res://Scripts/BallLauncher.gd

@@ -5,11 +5,13 @@ const full_time:float = 90*60
 
 var cur_time:float = 0.0
 var ingame_speed:float = 90
-var ticker_paused:bool = false
+var ticker_paused:bool = true
 @export var label_score:RichTextLabel
 @onready var live_ticker_list: LiveTickerList = $LiveTickerList
 @export var label_time:RichTextLabel
-@onready var level: Node3D = $Level
+
+@onready var level: Node3D = $SubViewportContainer/SubViewport/Level
+
 
 var points:Vector2i = Vector2i(0,0)
 
@@ -99,6 +101,14 @@ func check_for_events():
 			evt.done = true
 	return
 
+func free_kick_at(time_kick:float):
+	advance_time_to(time_kick)
+	handle_free_kick()
+
+func advance_time_to(go_to_time:float):
+	cur_time = go_to_time
+	updateTimeLabel()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(ticker_paused):

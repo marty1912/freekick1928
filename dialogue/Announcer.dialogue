@@ -1,0 +1,47 @@
+using DialogueGlobals
+
+~ intro
+GRANDMOTHER: Hello grandchild! What a surprise!
+- Happy birthday nonna!
+	GRANDMOTHER: Oh thank you!  I am very happy to see you!
+- I am here for your birthday nonna!
+	GRANDMOTHER: Oh thats great! I am very happy to see you! 
+	
+RADIO ANNOUNCER:  GOAAAAALL! AS Roma takes the lead! 2:1.
+  
+GRANDMOTHER: [do emit("cake")] You know that reminds me of one afternoon when I was a child...
+GRANDMOTHER:  You know that reminds me of one afternoon when I was a child...
+do do_free_kick.emit(5*60)
+=> END
+
+
+
+
+~ outro
+
+
+if DialogueGlobals.score.x == DialogueGlobals.score.y
+	GRANDMOTHER: The match was a draw in the end but it really felt like a win. 
+	GRANDMOTHER: The great thing about it was that we were all together.
+	GRANDMOTHER: No matter how much we disagreed about some things, we all wanted our team to win that day.
+	GRANDMOTHER: It felt good to be a part of that community.
+	
+elif DialogueGlobals.score.x > DialogueGlobals.score.y
+	GRANDMOTHER: It was unbelieveable!
+	GRANDMOTHER: Our team did it! They won {{DialogueGlobals.score.x}} to {{DialogueGlobals.score.y}}.
+	GRANDMOTHER: The great thing about it was that we were all together.
+	GRANDMOTHER: No matter how much we disagreed about some things, we all wanted our team to win that day.
+	GRANDMOTHER: It felt good to be a part of that community.
+	
+elif DialogueGlobals.score.x < DialogueGlobals.score.y
+	GRANDMOTHER: We lost the game in the end, but I was not sad.
+	GRANDMOTHER: The great thing was that we were all together.
+	GRANDMOTHER: No matter how much we disagreed about some things, we all we were rooting for the same team.
+	GRANDMOTHER: It felt good to be a part of that community.
+
+	
+GRANDMOTHER: Now enough of my stories, we are not getting any younger after all.
+GRANDMOTHER: Thank you for visiting me again! 
+
+
+=> END

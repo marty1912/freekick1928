@@ -1,0 +1,486 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_ycwh2"]
+
+[resource]
+script = ExtResource("1_ycwh2")
+using_states = PackedStringArray("DialogueGlobals")
+titles = {
+"intro": "4",
+"outro": "23"
+}
+character_names = PackedStringArray("GRANDMOTHER", "RADIO ANNOUNCER")
+first_title = "4"
+lines = {
+"10": {
+"character": "RADIO ANNOUNCER",
+"character_replacements": Array[Dictionary]([]),
+"id": "10",
+"next_id": "12",
+"tags": PackedStringArray(),
+"text": "GOAAAAALL! AS Roma takes the lead! 2:1.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "GOAAAAALL! AS Roma takes the lead! 2:1.",
+"type": "dialogue"
+},
+"12": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "12",
+"next_id": "13",
+"tags": PackedStringArray(),
+"text": "[do emit(\"cake\")] You know that reminds me of one afternoon when I was a child...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "[do emit(\"cake\")] You know that reminds me of one afternoon when I was a child...",
+"type": "dialogue"
+},
+"13": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "14",
+"tags": PackedStringArray(),
+"text": "You know that reminds me of one afternoon when I was a child...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You know that reminds me of one afternoon when I was a child...",
+"type": "dialogue"
+},
+"14": {
+"id": "14",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "do_free_kick"
+}, {
+"type": "dot"
+}, {
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "number",
+"value": 5
+}, {
+"type": "operator",
+"value": "*"
+}, {
+"type": "number",
+"value": 60
+}])])
+}])
+},
+"next_id": "15",
+"type": "mutation"
+},
+"15": {
+"id": "15",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
+"20": {
+"id": "20",
+"next_id": "23",
+"text": "outro",
+"type": "title"
+},
+"23": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "x"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "y"
+}])
+},
+"id": "23",
+"next_conditional_id": "29",
+"next_id": "24",
+"next_id_after": "43",
+"type": "condition"
+},
+"24": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "24",
+"next_id": "25",
+"parent_id": "23",
+"tags": PackedStringArray(),
+"text": "The match was a draw in the end but it really felt like a win.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The match was a draw in the end but it really felt like a win.",
+"type": "dialogue"
+},
+"25": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "25",
+"next_id": "26",
+"parent_id": "23",
+"tags": PackedStringArray(),
+"text": "The great thing about it was that we were all together.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The great thing about it was that we were all together.",
+"type": "dialogue"
+},
+"26": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "26",
+"next_id": "27",
+"parent_id": "23",
+"tags": PackedStringArray(),
+"text": "No matter how much we disagreed about some things, we all wanted our team to win that day.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No matter how much we disagreed about some things, we all wanted our team to win that day.",
+"type": "dialogue"
+},
+"27": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "27",
+"next_id": "43",
+"parent_id": "23",
+"tags": PackedStringArray(),
+"text": "It felt good to be a part of that community.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It felt good to be a part of that community.",
+"type": "dialogue"
+},
+"29": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "x"
+}, {
+"type": "comparison",
+"value": ">"
+}, {
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "y"
+}])
+},
+"id": "29",
+"next_conditional_id": "36",
+"next_id": "30",
+"next_id_after": "43",
+"type": "condition"
+},
+"3": {
+"id": "3",
+"next_id": "4",
+"text": "intro",
+"type": "title"
+},
+"30": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "30",
+"next_id": "31",
+"parent_id": "29",
+"tags": PackedStringArray(),
+"text": "It was unbelieveable!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It was unbelieveable!",
+"type": "dialogue"
+},
+"31": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "31",
+"next_id": "32",
+"parent_id": "29",
+"tags": PackedStringArray(),
+"text": "Our team did it! They won {{DialogueGlobals.score.x}} to {{DialogueGlobals.score.y}}.",
+"text_replacements": Array[Dictionary]([{
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "x"
+}]),
+"value_in_text": "{{DialogueGlobals.score.x}}"
+}, {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "y"
+}]),
+"value_in_text": "{{DialogueGlobals.score.y}}"
+}]),
+"translation_key": "Our team did it! They won {{DialogueGlobals.score.x}} to {{DialogueGlobals.score.y}}.",
+"type": "dialogue"
+},
+"32": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "32",
+"next_id": "33",
+"parent_id": "29",
+"tags": PackedStringArray(),
+"text": "The great thing about it was that we were all together.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The great thing about it was that we were all together.",
+"type": "dialogue"
+},
+"33": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "33",
+"next_id": "34",
+"parent_id": "29",
+"tags": PackedStringArray(),
+"text": "No matter how much we disagreed about some things, we all wanted our team to win that day.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No matter how much we disagreed about some things, we all wanted our team to win that day.",
+"type": "dialogue"
+},
+"34": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "34",
+"next_id": "43",
+"parent_id": "29",
+"tags": PackedStringArray(),
+"text": "It felt good to be a part of that community.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It felt good to be a part of that community.",
+"type": "dialogue"
+},
+"36": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "x"
+}, {
+"type": "comparison",
+"value": "<"
+}, {
+"type": "variable",
+"value": "DialogueGlobals"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "score"
+}, {
+"type": "dot"
+}, {
+"type": "variable",
+"value": "y"
+}])
+},
+"id": "36",
+"next_conditional_id": "43",
+"next_id": "37",
+"next_id_after": "43",
+"type": "condition"
+},
+"37": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "37",
+"next_id": "38",
+"parent_id": "36",
+"tags": PackedStringArray(),
+"text": "We lost the game in the end, but I was not sad.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "We lost the game in the end, but I was not sad.",
+"type": "dialogue"
+},
+"38": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "38",
+"next_id": "39",
+"parent_id": "36",
+"tags": PackedStringArray(),
+"text": "The great thing was that we were all together.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The great thing was that we were all together.",
+"type": "dialogue"
+},
+"39": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "39",
+"next_id": "40",
+"parent_id": "36",
+"tags": PackedStringArray(),
+"text": "No matter how much we disagreed about some things, we all we were rooting for the same team.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No matter how much we disagreed about some things, we all we were rooting for the same team.",
+"type": "dialogue"
+},
+"4": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "4",
+"next_id": "5",
+"tags": PackedStringArray(),
+"text": "Hello grandchild! What a surprise!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Hello grandchild! What a surprise!",
+"type": "dialogue"
+},
+"40": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "40",
+"next_id": "43",
+"parent_id": "36",
+"tags": PackedStringArray(),
+"text": "It felt good to be a part of that community.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "It felt good to be a part of that community.",
+"type": "dialogue"
+},
+"43": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "43",
+"next_id": "44",
+"tags": PackedStringArray(),
+"text": "Now enough of my stories, we are not getting any younger after all.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Now enough of my stories, we are not getting any younger after all.",
+"type": "dialogue"
+},
+"44": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "44",
+"next_id": "47",
+"tags": PackedStringArray(),
+"text": "Thank you for visiting me again!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thank you for visiting me again!",
+"type": "dialogue"
+},
+"47": {
+"id": "47",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
+"5": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "6",
+"next_id_after": "10",
+"responses": PackedStringArray("5", "7"),
+"tags": PackedStringArray(),
+"text": "Happy birthday nonna!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Happy birthday nonna!",
+"type": "response"
+},
+"6": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "6",
+"next_id": "10",
+"parent_id": "5",
+"tags": PackedStringArray(),
+"text": "Oh thank you!  I am very happy to see you!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh thank you!  I am very happy to see you!",
+"type": "dialogue"
+},
+"7": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "8",
+"next_id_after": "10",
+"tags": PackedStringArray(),
+"text": "I am here for your birthday nonna!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I am here for your birthday nonna!",
+"type": "response"
+},
+"8": {
+"character": "GRANDMOTHER",
+"character_replacements": Array[Dictionary]([]),
+"id": "8",
+"next_id": "10",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "Oh thats great! I am very happy to see you!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh thats great! I am very happy to see you!",
+"type": "dialogue"
+}
+}
+metadata/dialogue_manager_version = "2.32.3"

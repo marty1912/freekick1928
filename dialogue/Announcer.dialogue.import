@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://b6lluwqbaoald"
+path="res://.godot/imported/Announcer.dialogue-98b10c5e76a1636d391564f6a531de71.tres"
+
+[deps]
+
+source_file="res://dialogue/Announcer.dialogue"
+dest_files=["res://.godot/imported/Announcer.dialogue-98b10c5e76a1636d391564f6a531de71.tres"]
+
+[params]
+
+defaults=true
