@@ -2,16 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://bhyjbkpqxorgv" path="res://Scenes/Pitch.tscn" id="1_5bskh"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sl1mj"]
-viewport_path = NodePath("GoalStuff/Field/StaticBody3D/Sprite3D/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_umcly"]
+viewport_path = NodePath("GoalStuff/Field/Floor/Sprite3D/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_nee4h"]
 viewport_path = NodePath("GoalStuff/GoalKeeper/SubViewport")
 
 [node name="BasePitch" instance=ExtResource("1_5bskh")]
 
-[node name="Sprite3D" parent="GoalStuff/Field/StaticBody3D" index="1"]
-texture = SubResource("ViewportTexture_sl1mj")
+[node name="Sprite3D" parent="GoalStuff/Field/Floor" index="1"]
+texture = SubResource("ViewportTexture_umcly")
 
 [node name="GoalKeeper" parent="GoalStuff" index="6"]
 texture = SubResource("ViewportTexture_nee4h")
