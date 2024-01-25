@@ -7,11 +7,30 @@ GRANDMOTHER: Hello grandchild! What a surprise!
 - I am here for your birthday nonna!
 	GRANDMOTHER: Oh thats great! I am very happy to see you! 
 	
-RADIO ANNOUNCER:  GOAAAAALL! AS Roma takes the lead! 2:1.
-  
-GRANDMOTHER: [do emit("cake")] You know that reminds me of one afternoon when I was a child...
-GRANDMOTHER:  You know that reminds me of one afternoon when I was a child...
-do do_free_kick.emit(5*60)
+
+do emit("cake")
+do wait(0.5)
+
+GRANDMOTHER: Thank you! The cake looks delicious!
+GRANDMOTHER: It reminds me of the cake that my neighbor Sofia got for her 6th birthday.
+	I spent a lot of time with her and I liked her a lot.
+GRANDMOTHER: Her family was the first in our village to have a radio you know.
+	On Sundays everybody would meet at their house after church to listen.
+GRANDMOTHER: I can remember quite clearly, we listened to a football game once.
+	The national team was playing against Hungary.
+- Oh wow! It's so interesting to hear about the old times!
+	GRANDMOTHER: Oh yes. You are lucky I like telling stories from my childhood.
+- *Sigh* Oh nonna, the same story again?
+	GRANDMOTHER: Yes because it is quite interesting. Also I remember some more details this time.
+GRANDMOTHER: So we were all sitting together in the Barbieri's living room.
+	The Capo family was there, but without Luca because he had not been born yet..
+GRANDMOTHER: But I am missing the point.
+GRANDMOTHER: The game against Hungary went quite badly at first.
+	At halftime we were behind 0:2. 
+	But in the second half we got a free kick.
+
+
+do do_free_kick.emit(50*60)
 => END
 
 
