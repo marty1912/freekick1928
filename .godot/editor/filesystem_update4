@@ -33,3 +33,4 @@ res://Scenes/DreamBubble.tscn
 res://Scenes/DreamBubble.gd
 res://godot_reuse/SpriteMask/SpriteMask.gdshader
 res://Scenes/OverallGUI.gd
+res://godot_reuse/ColorPaletteLimit/color_palette_filter.tscn

@@ -1,9 +1,9 @@
+CanvasLayer
+ColorRect
 Sprite2D
 SubViewport
 Node2D
 Marker2D
-CanvasLayer
-ColorRect
 Label
 Control
 SubViewportContainer

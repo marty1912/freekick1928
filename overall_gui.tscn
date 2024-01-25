@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=27 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
 [ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="18_jr1mj"]
 [ext_resource type="Script" path="res://move_around_test.gd" id="19_n0bmh"]
 [ext_resource type="PackedScene" uid="uid://c5lpk1sj124y6" path="res://godot_reuse/FPS_Counter/fps_counter.tscn" id="20_8d8vb"]
+[ext_resource type="PackedScene" uid="uid://drbwj1y41w1ha" path="res://godot_reuse/ColorPaletteLimit/color_palette_filter.tscn" id="22_ujopt"]
 
 [sub_resource type="Animation" id="Animation_schlq"]
 resource_name = "cake_in"
@@ -71,7 +72,6 @@ patch_margin_bottom = 16
 
 [node name="OverlayInit" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 
 [node name="OverlayInit_Rect" type="ColorRect" parent="OverlayInit"]
 anchors_preset = 15
@@ -79,6 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -222,6 +223,7 @@ text = "[right] 00:00"
 [node name="Level" type="Node3D" parent="OverallGUI/SubViewportContainer/SubViewport"]
 
 [node name="LiveTickerList" type="VBoxContainer" parent="OverallGUI"]
+visible = false
 layout_mode = 0
 offset_left = 502.0
 offset_top = 118.0
@@ -232,7 +234,6 @@ script = ExtResource("6_6amx0")
 [node name="DreamBubble" parent="OverallGUI" instance=ExtResource("18_618mx")]
 
 [node name="Node2D2" type="Node2D" parent="."]
-visible = false
 position = Vector2(426, 148)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
@@ -241,4 +242,7 @@ z_index = 4000
 texture = ExtResource("18_jr1mj")
 script = ExtResource("19_n0bmh")
 
-[node name="Control" parent="." instance=ExtResource("20_8d8vb")]
+[node name="fpsCount" parent="." instance=ExtResource("20_8d8vb")]
+visible = false
+
+[node name="color_palette_filter" parent="." instance=ExtResource("22_ujopt")]
