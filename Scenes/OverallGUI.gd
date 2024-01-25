@@ -21,6 +21,9 @@ var current_event:LiveTickerEvent = null
 var free_kick_index:int = 0
 var my_levels:Array[PackedScene] = [preload("res://Levels/FreeKick1.tscn"),preload("res://Levels/FreeKick2.tscn"),preload("res://Levels/FreeKick3.tscn"),preload("res://Levels/FreeKick4.tscn")]
 
+signal on_level_load_workaround_done()
+
+
 func on_goal_scored(team:int,player:String):
 	if(team == 0):
 		points.x += 1
@@ -39,9 +42,8 @@ func on_free_kick_miss():
 	resume_after_free_kick()
 	
 func resume_after_free_kick():
-	for c in level.get_children():
-		c.queue_free()
-		
+	
+	remove_current_level()
 	ticker_paused = false
 	live_ticker_list.visible = true
 
@@ -53,6 +55,16 @@ func on_free_kick_taken(goal:bool):
 		
 func handle_free_kick():
 	ticker_paused = true
+	spawn_level()
+	# TODO do an effect here!
+	live_ticker_list.visible = false
+
+func remove_current_level():
+	for c in level.get_children():
+		c.queue_free()
+	
+
+func spawn_level():
 	var level_selected:PackedScene = my_levels[free_kick_index]
 	free_kick_index+= 1
 	if(free_kick_index >= len(my_levels)):
@@ -60,17 +72,24 @@ func handle_free_kick():
 	var level_instance:BaseLevel = level_selected.instantiate()
 	level.add_child(level_instance)
 	level_instance.on_shot_taken.connect(on_free_kick_taken)
-	# TODO do an effect here!
-	live_ticker_list.visible = false
-
+	
+	return level_instance
 
 func add_liveticker_text(to_add:String):
 	var cur_minutes = floor(cur_time/60)
 	var with_time = "{x}': {y}".format({"x":cur_minutes,"y":to_add})
 	live_ticker_list.add_item(with_time)
 
+func initial_spawn_done():
+	remove_current_level()
+	on_level_load_workaround_done.emit()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var initial_load:BaseLevel = preload("res://Scenes/Pitch.tscn").instantiate()
+	level.add_child(initial_load)
+	initial_load.mute_me()
+	initial_load.on_spawned_and_one_second_passed.connect(initial_spawn_done)
 	pass # Replace with function body.
 
 func handle_event(evt:LiveTickerEvent):

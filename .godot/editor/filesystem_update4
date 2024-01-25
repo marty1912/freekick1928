@@ -26,3 +26,7 @@ res://GeneralStoryControl.gd
 res://GrandmaControl.gd
 res://Scripts/BallLauncher.gd
 res://godot_reuse/FilledSprite/FillTopBottom.gdshader
+res://move_around_test.gd
+res://godot_reuse/FPS_Counter/fps_count.gd
+res://godot_reuse/FPS_Counter/fps_counter.tscn
+res://Scenes/BaseLevel.gd
