@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=21 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
 [ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bsl2rhvnbqvtt" path="res://Sprites/Teams/hungary_flag.png" id="5_cexs5"]
 [ext_resource type="Texture2D" uid="uid://b16b476hy07oi" path="res://Sprites/Grandma/radio.png" id="5_jqqsp"]
 [ext_resource type="Script" path="res://Scenes/LiveTickerList.gd" id="6_6amx0"]
+[ext_resource type="Shader" path="res://godot_reuse/FilledSprite/FillTopBottom.gdshader" id="14_iy1ls"]
 
 [sub_resource type="Animation" id="Animation_schlq"]
 resource_name = "cake_in"
@@ -36,6 +37,12 @@ tracks/0/keys = {
 _data = {
 "cake_in": SubResource("Animation_schlq")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hage0"]
+shader = ExtResource("14_iy1ls")
+shader_parameter/fill = 0.584
+shader_parameter/left_right = false
+shader_parameter/reverse = false
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_to1g3")
@@ -99,6 +106,7 @@ events_to_handle = Array[Resource("res://Resources/LiveTickerEvent.gd")]([ExtRes
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="OverallGUI"]
 z_index = 2000
+material = SubResource("ShaderMaterial_hage0")
 layout_mode = 2
 offset_top = 1.0
 offset_right = 740.0

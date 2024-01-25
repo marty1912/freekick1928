@@ -25,3 +25,4 @@ res://dialogue/Dialogue_globals.gd
 res://GeneralStoryControl.gd
 res://GrandmaControl.gd
 res://Scripts/BallLauncher.gd
+res://godot_reuse/FilledSprite/FillTopBottom.gdshader
