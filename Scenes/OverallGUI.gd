@@ -11,6 +11,7 @@ var ticker_paused:bool = true
 @export var label_time:RichTextLabel
 
 @onready var level: Node3D = $SubViewportContainer/SubViewport/Level
+@onready var dream_bubble: DreamBubble = $DreamBubble
 
 
 var points:Vector2i = Vector2i(0,0)
@@ -42,10 +43,13 @@ func on_free_kick_miss():
 	resume_after_free_kick()
 	
 func resume_after_free_kick():
+	dream_bubble.hide_me()
+	var t:Tween = create_tween()
+	t.tween_interval(0.5)
+	t.tween_callback(remove_current_level)
 	
-	remove_current_level()
-	ticker_paused = false
-	live_ticker_list.visible = true
+	
+	
 
 func on_free_kick_taken(goal:bool):
 	if(goal):
@@ -57,6 +61,7 @@ func handle_free_kick():
 	ticker_paused = true
 	spawn_level()
 	# TODO do an effect here!
+	dream_bubble.show_me()
 	live_ticker_list.visible = false
 
 func remove_current_level():

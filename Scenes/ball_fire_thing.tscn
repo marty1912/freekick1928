@@ -47,7 +47,7 @@ my_rot = Vector3(1, 0, 0)
 [node name="CamPlatform" type="Node3D" parent="BallLauncher"]
 
 [node name="Camera3D" type="Camera3D" parent="BallLauncher/CamPlatform" node_paths=PackedStringArray("position_gui_here")]
-transform = Transform3D(-1, 2.99003e-08, -8.21506e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.8, -1.5)
+transform = Transform3D(-1, -2.99004e-08, 8.21506e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 0, 1.8, -1.5)
 script = ExtResource("3_bp6hr")
 position_gui_here = NodePath("../..")
 
@@ -75,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0048
 shape = SubResource("BoxShape3D_ch1wp")
 
 [node name="power_control" type="StaticBody3D" parent="BallLauncher/CamPlatform/Camera3D/GUI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.9, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.7, -1.5)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_a6bhy")
@@ -126,6 +126,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 118.0
+offset_top = -96.0
+offset_right = 118.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_lpqr2")
@@ -156,7 +160,7 @@ offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[left] [SPACE] select power
+text = "[left][SPACE] select power
 [MOUSE] abort"
 
 [connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" method="disable_inputs"]
