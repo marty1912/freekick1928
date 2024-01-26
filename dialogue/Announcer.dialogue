@@ -51,6 +51,9 @@ elif total_kicks == 3:
 	elif score_x == score_y and last_kick_was_goal:
 		GRANDMOTHER: Now the odds were even again! {{score_x}}:{{score_y}}.
 			It was so thrilling we were jumping up and down in the living room.
+	elif score_x == score_y and not last_kick_was_goal:
+		GRANDMOTHER: It was still {{score_x}}:{{score_y}}.
+			That meant we were still on a good path to winning the game.
 	elif last_kick_was_goal:
 		GRANDMOTHER: This was exactly what our team needed.
 		GRANDMOTHER: Just one more goal and the score would be even.
@@ -87,6 +90,9 @@ elif total_kicks == 4:
 		GRANDMOTHER: "GOOAAL!", we children screamed in joy. 
 			However we knew it made little difference now. 
 		GRANDMOTHER: Even the most fantastic goal was not enough to keep our team from loosing.
+	else:
+		GRANDMOTHER: But we had no luck. The game was lost. 
+			The Hungarian team proved to be too strong an opponent. 
 	do game_is_over.emit()
 	=> END
 else:
