@@ -1,0 +1,253 @@
+[gd_scene load_steps=5 format=3 uid="uid://b743kuivlvk8c"]
+
+[ext_resource type="Shader" path="res://godot_reuse/Metaballs/Metaballs.gdshader" id="1_hs5ro"]
+[ext_resource type="Script" path="res://godot_reuse/Metaballs/metaball_controller.gd" id="2_6ouyv"]
+[ext_resource type="PackedScene" uid="uid://c5nuks388otih" path="res://godot_reuse/Metaballs/metaball.tscn" id="3_557fy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jk5sk"]
+shader = ExtResource("1_hs5ro")
+shader_parameter/ballsArray = Array[Color]([Color(1, 1, 1, 1), Color(0.681511, 0.475, 0.215924, 1), Color(1, 1, 1, 1), Color(0.278003, 0.502083, 0.215924, 1), Color(1, 1, 1, 1), Color(0.168691, 0.895833, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.273954, 0.895833, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.363023, 0.895833, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.460189, 0.895833, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.565452, 0.895833, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.650472, 0.889583, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.755736, 0.889583, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.283899, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.372978, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.46475, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.547908, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.651072, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.756706, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.844804, 0.13125, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.071525, 0.389583, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.0769231, 0.529167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.0796221, 0.6875, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.14305, 0.189583, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.0890688, 0.222917, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.182186, 0.104167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.153846, 0.333333, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.218623, 0.208333, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.156545, 0.579167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.233468, 0.758333, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.147099, 0.789583, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.097166, 0.833333, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.163293, 0.69375, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.695007, 0.20625, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.786775, 0.395833, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.843455, 0.591667, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.777328, 0.779167, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.873144, 0.78125, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.850202, 0.866667, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.893387, 0.222917, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.906883, 0.316667, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.860999, 0.289583, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.912281, 0.508333, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.920378, 0.741667, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.794872, 0.2, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.921727, 0.63125, 0.0269906, 1), Color(1, 1, 1, 1), Color(0.923077, 0.379167, 0.0269906, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)])
+shader_parameter/resolution = Vector2(741, 480)
+shader_parameter/count = 43
+shader_parameter/sharpness = 0.98
+shader_parameter/threshold = 0.0
+shader_parameter/alpha = 1.0
+shader_parameter/usemask = false
+shader_parameter/radiusMult = 1.0
+
+[node name="myMetaballScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MetaballController" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_jk5sk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_6ouyv")
+
+[node name="ZeroForPos" type="Node2D" parent="CanvasLayer/MetaballController"]
+
+[node name="largeR" parent="CanvasLayer/MetaballController" instance=ExtResource("3_557fy")]
+position = Vector2(505, 228)
+radius = 160.0
+
+[node name="largeL" parent="CanvasLayer/MetaballController" instance=ExtResource("3_557fy")]
+position = Vector2(206, 241)
+radius = 160.0
+
+[node name="BottomRow" type="Node2D" parent="CanvasLayer/MetaballController"]
+
+[node name="Metaball10" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(125, 430)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball11" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(203, 430)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball12" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(269, 430)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball13" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(341, 430)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball14" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(419, 430)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball15" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(482, 427)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball16" parent="CanvasLayer/MetaballController/BottomRow" instance=ExtResource("3_557fy")]
+position = Vector2(560, 427)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="BottomRow2" type="Node2D" parent="CanvasLayer/MetaballController"]
+
+[node name="Metaball11" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(210.369, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball12" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(276.377, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball13" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(344.38, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball14" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(406, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball15" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(482.444, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball16" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(560.719, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball17" parent="CanvasLayer/MetaballController/BottomRow2" instance=ExtResource("3_557fy")]
+position = Vector2(626, 63)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="LeftFiller" type="Node2D" parent="CanvasLayer/MetaballController"]
+
+[node name="Metaball10" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(53, 187)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball11" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(57, 254)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball12" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(59, 330)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball14" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(106, 91)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball15" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(66, 107)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball18" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(135, 50)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball19" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(114, 160)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball20" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(162, 100)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball21" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(116, 278)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball22" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(173, 364)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball16" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(109, 379)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball23" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(72, 400)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball17" parent="CanvasLayer/MetaballController/LeftFiller" instance=ExtResource("3_557fy")]
+position = Vector2(121, 333)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="LeftFiller2" type="Node2D" parent="CanvasLayer/MetaballController"]
+
+[node name="Metaball9" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(515, 99)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball10" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(583, 190)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball11" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(625, 284)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball12" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(576, 374)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball13" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(647, 375)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball16" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(630, 416)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball14" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(662, 107)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball19" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(672, 152)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball20" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(638, 139)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball21" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(676, 244)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball22" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(682, 356)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball15" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(589, 96)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball17" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(683, 303)
+moveradius = 5.0
+timeMult = 1.0
+
+[node name="Metaball18" parent="CanvasLayer/MetaballController/LeftFiller2" instance=ExtResource("3_557fy")]
+position = Vector2(684, 182)
+moveradius = 5.0
+timeMult = 1.0

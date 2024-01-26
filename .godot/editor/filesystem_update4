@@ -37,3 +37,4 @@ res://dialogue/Dialogue_globals.gd
 res://Scenes/DreamBubble.gd
 res://Scenes/Ball.gd
 res://Scenes/BaseLevel.gd
+res://my_metaball_scene.tscn

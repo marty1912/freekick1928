@@ -38,12 +38,14 @@ func on_goal_scored(team:int,player:String):
 			
 func on_free_kick_goal():
 	print_rich("[color=red] on kick goal")
+	DialogueGlobals.last_kick_was_goal = true
 	on_goal_scored(0,"DAPLAYER")
 	add_liveticker_text("Amazing free kick! GOAL!!!")
 	resume_after_free_kick()
 	
 func on_free_kick_miss():
 	print_rich("[color=red] on kick miss")
+	DialogueGlobals.last_kick_was_goal = false
 	add_liveticker_text("And it's a miss.")
 	resume_after_free_kick()
 	

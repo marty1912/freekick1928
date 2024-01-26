@@ -17,11 +17,17 @@ do do_free_kick.emit(50*60+12)
 
 
 GRANDMOTHER: Mid game.
-
+if score_x < score_y:
+	GRANDMOTHER: we were still behind {{score_x}} {{score_y}}
+if score_x >= 2:
+	GRANDMOTHER: we were scoring goals
+	do game_is_over.emit()
+	=> END
+	
 do do_free_kick.emit(65*60+12)
 do wait(2)
 
-	
+
 => END
 
 ~ intro_cut_for_testing
@@ -63,20 +69,20 @@ do do_free_kick.emit(50*60)
 ~ outro
 
 
-if DialogueGlobals.score.x == DialogueGlobals.score.y
+if DialogueGlobals.score_x == DialogueGlobals.score_y
 	GRANDMOTHER: The match was a draw in the end but it really felt like a win. 
 	GRANDMOTHER: The great thing about it was that we were all together.
 	GRANDMOTHER: No matter how much we disagreed about some things, we all wanted our team to win that day.
 	GRANDMOTHER: It felt good to be a part of that community.
 	
-elif DialogueGlobals.score.x > DialogueGlobals.score.y
+elif DialogueGlobals.score_x > DialogueGlobals.score_y
 	GRANDMOTHER: It was unbelieveable!
-	GRANDMOTHER: Our team did it! They won {{DialogueGlobals.score.x}} to {{DialogueGlobals.score.y}}.
+	GRANDMOTHER: Our team did it! They won {{DialogueGlobals.score_x}} to {{DialogueGlobals.score_y}}.
 	GRANDMOTHER: The great thing about it was that we were all together.
 	GRANDMOTHER: No matter how much we disagreed about some things, we all wanted our team to win that day.
 	GRANDMOTHER: It felt good to be a part of that community.
 	
-elif DialogueGlobals.score.x < DialogueGlobals.score.y
+elif DialogueGlobals.score_x < DialogueGlobals.score_y
 	GRANDMOTHER: We lost the game in the end, but I was not sad.
 	GRANDMOTHER: The great thing was that we were all together.
 	GRANDMOTHER: No matter how much we disagreed about some things, we all we were rooting for the same team.

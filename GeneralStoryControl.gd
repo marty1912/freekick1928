@@ -20,10 +20,15 @@ func _ready() -> void:
 	DialogueGlobals.cake.connect(on_bring_cake)
 	DialogueGlobals.do_free_kick.connect(on_free_kick)
 	DialogueGlobals.do_score_goal.connect(on_score_goal)
+	DialogueGlobals.game_is_over.connect(on_game_over_called)
 	overall_gui.on_level_load_workaround_done.connect(on_initialization_done)
 	overall_gui.on_free_kick_done.connect(after_free_kick)
 	pass # Replace with function body.
 
+func on_game_over_called():
+	game_is_over = true
+	DialogueManager.show_dialogue_balloon(dialogue_file,"outro")
+	
 func on_bring_cake():
 	print_rich("[color=red] bring the cake!")
 	grandma_animations.play("cake_in")
@@ -39,10 +44,10 @@ func on_free_kick(time:float):
 
 func after_free_kick():
 	print_rich("[color=red] after free kick called")
+	DialogueGlobals.set_my_score(overall_gui.points)
 	if(not game_is_over):
 		DialogueManager.show_dialogue_balloon(dialogue_file,"mid_game")
-	else:
-		DialogueManager.show_dialogue_balloon(dialogue_file,"outro")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
