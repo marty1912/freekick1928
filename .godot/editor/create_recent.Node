@@ -1,3 +1,8 @@
+TextureButton
+Panel
+RichTextLabel
+AnimationPlayer
+Control
 CanvasLayer
 ColorRect
 Sprite2D
@@ -5,10 +10,6 @@ SubViewport
 Node2D
 Marker2D
 Label
-Control
 SubViewportContainer
-AnimationPlayer
 NinePatchRect
-RichTextLabel
 HBoxContainer
-Camera3D

@@ -38,3 +38,7 @@ res://Scenes/DreamBubble.gd
 res://Scenes/Ball.gd
 res://Scenes/BaseLevel.gd
 res://my_metaball_scene.tscn
+res://CanvasLayerFinish.gd
+res://animations/end_animation/global.res
+res://animations/end_animation/draw.res
+res://addons/dialogue_manager/example_balloon/example_balloon.tscn

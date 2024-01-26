@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=31 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
 [ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
@@ -19,7 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://dvk0r622h4mi3" path="res://godot_reuse/ColorPaletteLimit/palettes/gloom-8-1x.png" id="18_qc0a8"]
 [ext_resource type="Script" path="res://move_around_test.gd" id="19_n0bmh"]
 [ext_resource type="PackedScene" uid="uid://c5lpk1sj124y6" path="res://godot_reuse/FPS_Counter/fps_counter.tscn" id="20_8d8vb"]
+[ext_resource type="Script" path="res://CanvasLayerFinish.gd" id="21_3ivja"]
+[ext_resource type="FontFile" uid="uid://b44u65m6dkaty" path="res://godot_reuse/Fonts/sobiscuit/Sobiscuit.ttf" id="22_qndd5"]
+[ext_resource type="Texture2D" uid="uid://to8wnjcir637" path="res://Sprites/retry.png" id="23_q4jfs"]
 [ext_resource type="Texture2D" uid="uid://cmu51h5g6f4yq" path="res://godot_reuse/ColorPaletteLimit/palettes/slso8-1x.png" id="24_aod47"]
+[ext_resource type="AnimationLibrary" uid="uid://c4w3h66ljav32" path="res://animations/end_animation/global.res" id="24_bamev"]
 
 [sub_resource type="Animation" id="Animation_schlq"]
 resource_name = "cake_in"
@@ -283,3 +287,70 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="CanvasLayerFinish" type="CanvasLayer" parent="." node_paths=PackedStringArray("overlay")]
+script = ExtResource("21_3ivja")
+overlay = NodePath("../OverlayInit/OverlayInit_Rect")
+
+[node name="Control" type="Control" parent="CanvasLayerFinish"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="win_label" type="RichTextLabel" parent="CanvasLayerFinish/Control"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 0
+offset_left = 120.0
+offset_top = -293.0
+offset_right = 632.0
+offset_bottom = -37.0
+theme_override_colors/default_color = Color(0.776471, 0.870588, 0.843137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("22_qndd5")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center][wave]WIN"
+
+[node name="draw" type="RichTextLabel" parent="CanvasLayerFinish/Control"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 0
+offset_left = 120.0
+offset_top = -301.0
+offset_right = 632.0
+offset_bottom = -45.0
+theme_override_colors/default_color = Color(0.776471, 0.870588, 0.843137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("22_qndd5")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center][wave]DRAW"
+
+[node name="defeat" type="RichTextLabel" parent="CanvasLayerFinish/Control"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 0
+offset_left = 120.0
+offset_top = -300.0
+offset_right = 632.0
+offset_bottom = -44.0
+theme_override_colors/default_color = Color(0.776471, 0.870588, 0.843137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("22_qndd5")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center][wave]DEFEAT"
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayerFinish/Control"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 517.0
+offset_right = 416.0
+offset_bottom = 581.0
+texture_normal = ExtResource("23_q4jfs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayerFinish"]
+libraries = {
+"": ExtResource("24_bamev")
+}
