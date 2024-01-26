@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=31 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
 [ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dvk0r622h4mi3" path="res://godot_reuse/ColorPaletteLimit/palettes/gloom-8-1x.png" id="18_qc0a8"]
 [ext_resource type="Script" path="res://move_around_test.gd" id="19_n0bmh"]
 [ext_resource type="PackedScene" uid="uid://c5lpk1sj124y6" path="res://godot_reuse/FPS_Counter/fps_counter.tscn" id="20_8d8vb"]
+[ext_resource type="Texture2D" uid="uid://cmu51h5g6f4yq" path="res://godot_reuse/ColorPaletteLimit/palettes/slso8-1x.png" id="24_aod47"]
 
 [sub_resource type="Animation" id="Animation_schlq"]
 resource_name = "cake_in"
@@ -45,7 +46,7 @@ _data = {
 }
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_et2e8"]
-viewport_path = NodePath("OverallGUI/DreamBubble")
+viewport_path = NodePath("CL_BUBBLE/OverallGUI/DreamBubble")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x20ri"]
 resource_local_to_scene = true
@@ -59,6 +60,13 @@ shader_parameter/num_colors = 8
 shader_parameter/allow_transparent = true
 shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("18_qc0a8")
 shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("18_qc0a8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06rck"]
+shader = ExtResource("17_fdpoq")
+shader_parameter/num_colors = 8
+shader_parameter/allow_transparent = true
+shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("18_qc0a8")
+shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("24_aod47")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_to1g3")
@@ -124,7 +132,11 @@ z_index = 1000
 position = Vector2(436, 474)
 texture = ExtResource("3_jsyme")
 
-[node name="OverallGUI" type="Control" parent="." node_paths=PackedStringArray("label_score", "label_time")]
+[node name="CL_BUBBLE" type="CanvasLayer" parent="."]
+layer = 120
+visible = false
+
+[node name="OverallGUI" type="Control" parent="CL_BUBBLE" node_paths=PackedStringArray("label_score", "label_time")]
 custom_minimum_size = Vector2(640, 480)
 layout_mode = 3
 anchors_preset = 0
@@ -135,7 +147,7 @@ label_score = NodePath("SubViewportContainer/SubViewport/Control/HBox/Score/Rich
 label_time = NodePath("SubViewportContainer/SubViewport/Control/HBox/TimeLabel")
 events_to_handle = Array[Resource("res://Resources/LiveTickerEvent.gd")]([ExtResource("2_wkvxu"), ExtResource("3_c4tc2"), ExtResource("4_b1npe"), ExtResource("5_8nrom")])
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="OverallGUI"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CL_BUBBLE/OverallGUI"]
 z_index = 2000
 material = SubResource("ShaderMaterial_x20ri")
 layout_mode = 2
@@ -143,13 +155,13 @@ offset_top = 1.0
 offset_right = 740.0
 offset_bottom = 481.0
 
-[node name="SubViewport" type="SubViewport" parent="OverallGUI/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="CL_BUBBLE/OverallGUI/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(740, 480)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
-[node name="Control" type="Control" parent="OverallGUI/SubViewportContainer/SubViewport"]
+[node name="Control" type="Control" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport"]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -160,7 +172,7 @@ offset_right = 20.0
 offset_bottom = 100.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="OverallGUI/SubViewportContainer/SubViewport/Control"]
+[node name="ColorRect" type="ColorRect" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -171,7 +183,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HBox" type="HBoxContainer" parent="OverallGUI/SubViewportContainer/SubViewport/Control"]
+[node name="HBox" type="HBoxContainer" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 5
@@ -182,12 +194,12 @@ offset_right = 266.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="TextureRect" type="TextureRect" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
+[node name="TextureRect" type="TextureRect" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 layout_mode = 2
 texture = ExtResource("4_fvgfc")
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
@@ -195,11 +207,11 @@ bbcode_enabled = true
 text = "[p align=center]ITA
 "
 
-[node name="Score" type="Control" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
+[node name="Score" type="Control" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox/Score"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox/Score"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 0
 offset_right = 40.0
@@ -208,12 +220,12 @@ theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center]0:0"
 
-[node name="TextureRect2" type="TextureRect" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
+[node name="TextureRect2" type="TextureRect" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 layout_mode = 2
 texture = ExtResource("5_cexs5")
 stretch_mode = 5
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
@@ -221,19 +233,19 @@ bbcode_enabled = true
 text = "[center]HUN
 "
 
-[node name="TimeLabel" type="RichTextLabel" parent="OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
+[node name="TimeLabel" type="RichTextLabel" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/Control/HBox"]
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[right] 00:00"
 
-[node name="Level" type="Node3D" parent="OverallGUI/SubViewportContainer/SubViewport"]
+[node name="Level" type="Node3D" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport"]
 
-[node name="color_palette_filter" type="CanvasLayer" parent="OverallGUI/SubViewportContainer/SubViewport"]
-layer = 128
+[node name="color_palette_filter" type="CanvasLayer" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport"]
+layer = 10
 
-[node name="ColorRect" type="ColorRect" parent="OverallGUI/SubViewportContainer/SubViewport/color_palette_filter"]
+[node name="ColorRect" type="ColorRect" parent="CL_BUBBLE/OverallGUI/SubViewportContainer/SubViewport/color_palette_filter"]
 material = SubResource("ShaderMaterial_rbjgp")
 anchors_preset = 15
 anchor_right = 1.0
@@ -242,7 +254,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="LiveTickerList" type="VBoxContainer" parent="OverallGUI"]
+[node name="LiveTickerList" type="VBoxContainer" parent="CL_BUBBLE/OverallGUI"]
 visible = false
 layout_mode = 0
 offset_left = 502.0
@@ -251,7 +263,7 @@ offset_right = 542.0
 offset_bottom = 158.0
 script = ExtResource("6_6amx0")
 
-[node name="DreamBubble" parent="OverallGUI" instance=ExtResource("18_618mx")]
+[node name="DreamBubble" parent="CL_BUBBLE/OverallGUI" instance=ExtResource("18_618mx")]
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(426, 148)
@@ -266,10 +278,10 @@ script = ExtResource("19_n0bmh")
 visible = false
 
 [node name="color_palette_filter" type="CanvasLayer" parent="."]
-layer = 128
+layer = 110
 
 [node name="ColorRect" type="ColorRect" parent="color_palette_filter"]
-material = SubResource("ShaderMaterial_rbjgp")
+material = SubResource("ShaderMaterial_06rck")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

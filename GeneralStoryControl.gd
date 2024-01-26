@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var overall_gui: OverallGUI = $OverallGUI
+
+@onready var overall_gui: OverallGUI = $CL_BUBBLE/OverallGUI
+
 
 var dialogue_file = preload("res://dialogue/Announcer.dialogue")
 @onready var grandma_animations: AnimationPlayer = $Node2D/grandmaAnimations
@@ -23,6 +25,8 @@ func _ready() -> void:
 func on_bring_cake():
 	print("bring the cake!")
 	grandma_animations.play("cake_in")
+
+
 
 func on_free_kick(time:float):
 	overall_gui.free_kick_at(time)

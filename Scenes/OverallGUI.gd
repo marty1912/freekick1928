@@ -13,6 +13,8 @@ var ticker_paused:bool = true
 @onready var level: Node3D = $SubViewportContainer/SubViewport/Level
 @onready var dream_bubble: DreamBubble = $DreamBubble
 
+@onready var cl_bubble: CanvasLayer = $".."
+
 
 var points:Vector2i = Vector2i(0,0)
 
@@ -47,9 +49,9 @@ func resume_after_free_kick():
 	var t:Tween = create_tween()
 	t.tween_interval(0.5)
 	t.tween_callback(remove_current_level)
+	t.tween_callback(func(): cl_bubble.visible = false)
 	
-	
-	
+
 
 func on_free_kick_taken(goal:bool):
 	if(goal):
@@ -63,6 +65,7 @@ func handle_free_kick():
 	# TODO do an effect here!
 	dream_bubble.show_me()
 	live_ticker_list.visible = false
+	cl_bubble.visible = true
 
 func remove_current_level():
 	for c in level.get_children():
@@ -95,6 +98,7 @@ func _ready() -> void:
 	level.add_child(initial_load)
 	initial_load.mute_me()
 	initial_load.on_spawned_and_one_second_passed.connect(initial_spawn_done)
+	cl_bubble.visible = false
 	pass # Replace with function body.
 
 func handle_event(evt:LiveTickerEvent):
