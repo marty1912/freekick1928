@@ -33,3 +33,7 @@ res://godot_reuse/ColorPaletteLimit/color_palette_filter.tscn
 res://GeneralStoryControl.gd
 res://godot_reuse/ColorPaletteLimit/paletteReplace.gdshader
 res://Scenes/OverallGUI.gd
+res://dialogue/Dialogue_globals.gd
+res://Scenes/DreamBubble.gd
+res://Scenes/Ball.gd
+res://Scenes/BaseLevel.gd

@@ -1,18 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=27 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
 [ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
 [ext_resource type="Texture2D" uid="uid://dna6a7dha2cpu" path="res://Sprites/outline.png" id="2_ebhr5"]
 [ext_resource type="Texture2D" uid="uid://b6nqxg57w0ves" path="res://Sprites/Grandma/background.png" id="2_l13xs"]
-[ext_resource type="Resource" uid="uid://yfaj1h3jv2b6" path="res://Resources/goal_0_1.tres" id="2_wkvxu"]
-[ext_resource type="Resource" uid="uid://dyfw4s1pl02jo" path="res://Resources/goal_0_2.tres" id="3_c4tc2"]
 [ext_resource type="Texture2D" uid="uid://qep5of34h2ef" path="res://Sprites/Grandma/background_fg.png" id="3_jsyme"]
 [ext_resource type="Texture2D" uid="uid://bc5321ppcl150" path="res://Sprites/Grandma/grandma.png" id="3_krquk"]
 [ext_resource type="Script" path="res://GrandmaControl.gd" id="3_lkqpd"]
-[ext_resource type="Resource" uid="uid://bjlcwqs8ndwls" path="res://Resources/free_kick_1.tres" id="4_b1npe"]
 [ext_resource type="Texture2D" uid="uid://bc6k7olwcxp7m" path="res://Sprites/Grandma/cake.png" id="4_cv3lv"]
 [ext_resource type="Texture2D" uid="uid://c7oxthlayrkve" path="res://Sprites/Teams/italy_flag.png" id="4_fvgfc"]
-[ext_resource type="Resource" uid="uid://dm8tvmjxl7gja" path="res://Resources/free_kick_2.tres" id="5_8nrom"]
 [ext_resource type="Texture2D" uid="uid://bsl2rhvnbqvtt" path="res://Sprites/Teams/hungary_flag.png" id="5_cexs5"]
 [ext_resource type="Texture2D" uid="uid://b16b476hy07oi" path="res://Sprites/Grandma/radio.png" id="5_jqqsp"]
 [ext_resource type="Script" path="res://Scenes/LiveTickerList.gd" id="6_6amx0"]
@@ -145,7 +141,6 @@ offset_bottom = 480.0
 script = ExtResource("1_sn41t")
 label_score = NodePath("SubViewportContainer/SubViewport/Control/HBox/Score/RichTextLabel")
 label_time = NodePath("SubViewportContainer/SubViewport/Control/HBox/TimeLabel")
-events_to_handle = Array[Resource("res://Resources/LiveTickerEvent.gd")]([ExtResource("2_wkvxu"), ExtResource("3_c4tc2"), ExtResource("4_b1npe"), ExtResource("5_8nrom")])
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CL_BUBBLE/OverallGUI"]
 z_index = 2000

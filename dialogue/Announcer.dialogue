@@ -1,6 +1,30 @@
 using DialogueGlobals
 
 ~ intro
+
+GRANDMOTHER: The game against Hungary went quite badly at first.
+	At halftime we were behind 0:2. 
+	But in the second half we got a free kick.
+
+do do_score_goal.emit(1)
+do do_score_goal.emit(1)
+
+do do_free_kick.emit(50*60+12)
+=> END
+
+
+~ mid_game
+
+
+GRANDMOTHER: Mid game.
+
+do do_free_kick.emit(65*60+12)
+do wait(2)
+
+	
+=> END
+
+~ intro_cut_for_testing
 GRANDMOTHER: Hello grandchild! What a surprise!
 - Happy birthday nonna!
 	GRANDMOTHER: Oh thank you!  I am very happy to see you!
@@ -29,12 +53,12 @@ GRANDMOTHER: The game against Hungary went quite badly at first.
 	At halftime we were behind 0:2. 
 	But in the second half we got a free kick.
 
+do do_score_goal.emit(1)
+do do_score_goal.emit(1)
 
 do do_free_kick.emit(50*60)
+
 => END
-
-
-
 
 ~ outro
 

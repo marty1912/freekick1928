@@ -17,7 +17,7 @@ var ticker_paused:bool = true
 
 
 var points:Vector2i = Vector2i(0,0)
-
+var currently_kicking:bool = false
 @export var events_to_handle:Array[LiveTickerEvent] = []
 
 var current_event:LiveTickerEvent = null
@@ -25,7 +25,7 @@ var free_kick_index:int = 0
 var my_levels:Array[PackedScene] = [preload("res://Levels/FreeKick1.tscn"),preload("res://Levels/FreeKick2.tscn"),preload("res://Levels/FreeKick3.tscn"),preload("res://Levels/FreeKick4.tscn")]
 
 signal on_level_load_workaround_done()
-
+signal on_free_kick_done()
 
 func on_goal_scored(team:int,player:String):
 	if(team == 0):
@@ -33,23 +33,28 @@ func on_goal_scored(team:int,player:String):
 	else:
 		points.y +=1
 	label_score.text = "[center]{x}:{y}".format({"x":points.x,"y":points.y})
+	
 
 			
 func on_free_kick_goal():
+	print_rich("[color=red] on kick goal")
 	on_goal_scored(0,"DAPLAYER")
 	add_liveticker_text("Amazing free kick! GOAL!!!")
 	resume_after_free_kick()
 	
 func on_free_kick_miss():
+	print_rich("[color=red] on kick miss")
 	add_liveticker_text("And it's a miss.")
 	resume_after_free_kick()
 	
 func resume_after_free_kick():
 	dream_bubble.hide_me()
 	var t:Tween = create_tween()
-	t.tween_interval(0.5)
-	t.tween_callback(remove_current_level)
+	t.tween_interval(1.1)
 	t.tween_callback(func(): cl_bubble.visible = false)
+	t.tween_callback(remove_current_level)
+	t.tween_callback(func(): currently_kicking = false)
+	t.tween_callback(func(): on_free_kick_done.emit())
 	
 
 
@@ -60,6 +65,9 @@ func on_free_kick_taken(goal:bool):
 		on_free_kick_miss()
 		
 func handle_free_kick():
+	if(currently_kicking):
+		print_rich("[color=red] want to do free kick but I am already kicking")
+	currently_kicking = true
 	ticker_paused = true
 	spawn_level()
 	# TODO do an effect here!

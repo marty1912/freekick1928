@@ -74,7 +74,7 @@ func my_physics_stuff(delta:float):
 			if(collision.get_collider(0) is Ball):
 				print("body is ball ")
 		if(collision.get_collider(0) is Ball):
-			print("will fix ball - ball collision now.")
+			#print("will fix ball - ball collision now.")
 			disableCollisions()
 			my_velocity = my_vel_before
 			position = my_pos_before
