@@ -4,6 +4,7 @@ extends Node
 var score:Vector2i = Vector2i(0,0)
 var last_kick_was_goal :bool = false
 
+var total_kicks:int = 0
 var score_x:int = 0
 var score_y:int = 0
 

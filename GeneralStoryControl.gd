@@ -59,6 +59,7 @@ func on_free_kick(time:float):
 
 func after_free_kick():
 	print_rich("[color=red] after free kick called")
+	DialogueGlobals.total_kicks += 1
 	DialogueGlobals.set_my_score(overall_gui.points)
 	if(not game_is_over):
 		DialogueManager.show_dialogue_balloon(dialogue_file,"mid_game")

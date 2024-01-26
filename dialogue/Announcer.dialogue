@@ -3,7 +3,7 @@ using DialogueGlobals
 ~ intro
 
 GRANDMOTHER: The game against Hungary went quite badly at first.
-	At halftime we were behind 0:2. 
+	At half time we were behind 0:2. 
 	But in the second half we got a free kick.
 
 do do_score_goal.emit(1)
@@ -17,19 +17,82 @@ do do_free_kick.emit(50*60+12)
 
 
 GRANDMOTHER: Mid game.
-if score_x < score_y:
-	GRANDMOTHER: we were still behind {{score_x}} {{score_y}}
-	do game_is_over.emit()
+if total_kicks == 1:
+	if last_kick_was_goal:
+		GRANDMOTHER: Our team was still behind {{score_x}}:{{score_y}} but the goal lifted the spirits of the players.
+		GRANDMOTHER: A few minutes later, a player was fouled in a promising position.
+	else:
+		GRANDMOTHER: Even though they missed that chance the players did not give up.
+		GRANDMOTHER: A few minutes later, a player was fouled in a promising position.
+		
+	do do_free_kick.emit(65*60+12)
 	=> END
-if score_x >= 2:
-	GRANDMOTHER: we were scoring goals
-	do game_is_over.emit()
+elif total_kicks == 2:
+	if score_x > 1 :
+		GRANDMOTHER: Now the odds were even again! {{score_x}}:{{score_y}}.
+			It was so thrilling we were jumping up and down in the living room.
+		GRANDMOTHER: One more goal and Italy would win!
+			The referee once again sounded his whistle.
+	elif last_kick_was_goal:
+		GRANDMOTHER: With this goal the spirits of the players started to lift again.
+		GRANDMOTHER: One more and the score would be even.
+			The referee once again sounded his whistle.
+	else:
+		GRANDMOTHER: Even though they missed that chance the players did not give up.
+		GRANDMOTHER: What the team needed now was a goal.
+			The referee once again sounded his whistle.
+			
+	do do_free_kick.emit(70*60+47)
 	=> END
+elif total_kicks == 3:
+	if score_x ==3:
+		GRANDMOTHER: With the third goal our national team took the lead.
+			We were all very excited and almost sure that we would win.
+	elif score_x == score_y and last_kick_was_goal:
+		GRANDMOTHER: Now the odds were even again! {{score_x}}:{{score_y}}.
+			It was so thrilling we were jumping up and down in the living room.
+	elif last_kick_was_goal:
+		GRANDMOTHER: This was exactly what our team needed.
+		GRANDMOTHER: Just one more goal and the score would be even.
+	else: 
+		GRANDMOTHER: Our team was still behind.
+		GRANDMOTHER: However, we did not give up hope.
+			We knew that things could still change.
+		
+	GRANDMOTHER: Then, in the 80th minute our dreams shattered, Vilmos Kohut the Hungarian striker scored once again.
+	do do_score_goal.emit(1)
+	GRANDMOTHER: This put the total score to {{score_x}}:{{score_y}}.
+	do wait(2)
 	
-do do_free_kick.emit(65*60+12)
-do wait(2)
-
-
+	GRANDMOTHER: We all thought the game was over already. 
+		But in the very last minute there was another chance for our team to score.
+		
+	do do_free_kick.emit(91*60+35)
+	
+elif total_kicks == 4:
+	if last_kick_was_goal and score_x >= 4:
+		GRANDMOTHER: It was unbelieveable! Our team had scored {{score_x}} goals in the second half.
+			The final whistle sounded right after the goal. 
+		GRANDMOTHER: We were all in a frenzy. Even the adults screamed loudly!
+	elif last_kick_was_goal and score_x == 3:
+		GRANDMOTHER: It was unbelieveable! Even though the Hungarians put up quite a figth our team reached a draw.
+			The final whistle sounded right after the goal. 
+		GRANDMOTHER: Even though it was only a draw it felt like a win.
+	elif not last_kick_was_goal and score_x == 3:
+		GRANDMOTHER: The game ended in a draw. 
+			Our team fougth bravely but the Hungarians were tough to beat.
+		GRANDMOTHER: We were all amazed by the comeback our team had made. 
+			They had deserved to win.
+	elif last_kick_was_goal:
+		GRANDMOTHER: "GOOAAL!", we children screamed in joy. 
+			However we knew it made little difference now. 
+		GRANDMOTHER: Even the most fantastic goal was not enough to keep our team from loosing.
+	do game_is_over.emit()
+	=> END
+else:
+	GRANDMOTHER: The score was {{score_x}}:{{score_y}} and there was another free kick for Italy!
+	do do_free_kick.emit(65*60+12)
+	=> END
 => END
 
 ~ intro_cut_for_testing
@@ -70,27 +133,13 @@ do do_free_kick.emit(50*60)
 
 ~ outro
 
+GRANDMOTHER: But the result of the match was not important. 
+GRANDMOTHER: The great thing about it was that we were all together.
+GRANDMOTHER: No matter how much we could disagree about some things, we all wanted our team to win that day.
+GRANDMOTHER: It felt good to be a part of that community.
+GRANDMOTHER: The day of that game is still one of my dearest memories.
+	I hope you can experience something like it one day.
 
-if DialogueGlobals.score_x == DialogueGlobals.score_y
-	GRANDMOTHER: The match was a draw in the end but it really felt like a win. 
-	GRANDMOTHER: The great thing about it was that we were all together.
-	GRANDMOTHER: No matter how much we disagreed about some things, we all wanted our team to win that day.
-	GRANDMOTHER: It felt good to be a part of that community.
-	
-elif DialogueGlobals.score_x > DialogueGlobals.score_y
-	GRANDMOTHER: It was unbelieveable!
-	GRANDMOTHER: Our team did it! They won {{DialogueGlobals.score_x}} to {{DialogueGlobals.score_y}}.
-	GRANDMOTHER: The great thing about it was that we were all together.
-	GRANDMOTHER: No matter how much we disagreed about some things, we all wanted our team to win that day.
-	GRANDMOTHER: It felt good to be a part of that community.
-	
-elif DialogueGlobals.score_x < DialogueGlobals.score_y
-	GRANDMOTHER: We lost the game in the end, but I was not sad.
-	GRANDMOTHER: The great thing was that we were all together.
-	GRANDMOTHER: No matter how much we disagreed about some things, we all we were rooting for the same team.
-	GRANDMOTHER: It felt good to be a part of that community.
-
-	
 GRANDMOTHER: Now enough of my stories, we are not getting any younger after all.
 GRANDMOTHER: Thank you for visiting me again! 
 
