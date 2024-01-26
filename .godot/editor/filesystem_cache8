@@ -1,5 +1,5 @@
 3acdcc5cb6df755358dde907981ccea8
-::res://::1706212283
+::res://::1706255873
 default_env.tres::Environment::-1::1705422112::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1706186348::0::1::::<><>::
 GeneralStoryControl.gd::GDScript::-1::1706186318::0::1::::<>Node2D<>::
@@ -7,7 +7,7 @@ GrandmaControl.gd::GDScript::-1::1706180408::0::1::::GrandmaControl<>Node2D<>::
 icon.png::CompressedTexture2D::2928299814546265018::1705400339::1705402259::1::::<><>::
 line.png::CompressedTexture2D::190626204053190015::1705422112::1705422112::1::::<><>::
 move_around_test.gd::GDScript::-1::1706183798::0::1::::<>Sprite2D<>::
-overall_gui.tscn::PackedScene::1347635601211303313::1706212283::0::1::::<><>::res://Scenes/OverallGUI.gd<>res://GeneralStoryControl.gd<>uid://dna6a7dha2cpu::::res://Sprites/outline.png<>uid://b6nqxg57w0ves::::res://Sprites/Grandma/background.png<>uid://yfaj1h3jv2b6::::res://Resources/goal_0_1.tres<>uid://dyfw4s1pl02jo::::res://Resources/goal_0_2.tres<>uid://qep5of34h2ef::::res://Sprites/Grandma/background_fg.png<>uid://bc5321ppcl150::::res://Sprites/Grandma/grandma.png<>res://GrandmaControl.gd<>uid://bjlcwqs8ndwls::::res://Resources/free_kick_1.tres<>uid://bc6k7olwcxp7m::::res://Sprites/Grandma/cake.png<>uid://c7oxthlayrkve::::res://Sprites/Teams/italy_flag.png<>uid://dm8tvmjxl7gja::::res://Resources/free_kick_2.tres<>uid://bsl2rhvnbqvtt::::res://Sprites/Teams/hungary_flag.png<>uid://b16b476hy07oi::::res://Sprites/Grandma/radio.png<>res://Scenes/LiveTickerList.gd<>res://godot_reuse/SpriteMask/SpriteMask.gdshader<>uid://c04woqgurnlad::::res://Scenes/DreamBubble.tscn<>uid://bhyqw1whvkw8a::::res://icon.png<>res://move_around_test.gd<>uid://c5lpk1sj124y6::::res://godot_reuse/FPS_Counter/fps_counter.tscn<>uid://drbwj1y41w1ha::::res://godot_reuse/ColorPaletteLimit/color_palette_filter.tscn
+overall_gui.tscn::PackedScene::1347635601211303313::1706212334::0::1::::<><>::res://Scenes/OverallGUI.gd<>res://GeneralStoryControl.gd<>uid://dna6a7dha2cpu::::res://Sprites/outline.png<>uid://b6nqxg57w0ves::::res://Sprites/Grandma/background.png<>uid://yfaj1h3jv2b6::::res://Resources/goal_0_1.tres<>uid://dyfw4s1pl02jo::::res://Resources/goal_0_2.tres<>uid://qep5of34h2ef::::res://Sprites/Grandma/background_fg.png<>uid://bc5321ppcl150::::res://Sprites/Grandma/grandma.png<>res://GrandmaControl.gd<>uid://bjlcwqs8ndwls::::res://Resources/free_kick_1.tres<>uid://bc6k7olwcxp7m::::res://Sprites/Grandma/cake.png<>uid://c7oxthlayrkve::::res://Sprites/Teams/italy_flag.png<>uid://dm8tvmjxl7gja::::res://Resources/free_kick_2.tres<>uid://bsl2rhvnbqvtt::::res://Sprites/Teams/hungary_flag.png<>uid://b16b476hy07oi::::res://Sprites/Grandma/radio.png<>res://Scenes/LiveTickerList.gd<>res://godot_reuse/SpriteMask/SpriteMask.gdshader<>uid://c04woqgurnlad::::res://Scenes/DreamBubble.tscn<>uid://bhyqw1whvkw8a::::res://icon.png<>res://move_around_test.gd<>uid://c5lpk1sj124y6::::res://godot_reuse/FPS_Counter/fps_counter.tscn<>uid://drbwj1y41w1ha::::res://godot_reuse/ColorPaletteLimit/color_palette_filter.tscn
 README.md::TextFile::-1::1705422112::0::1::::<><>::
 test_tool.gd::GDScript::-1::1706191215::0::1::::<>Sprite2D<>::
 ::res://addons/::1706173067
@@ -109,9 +109,9 @@ line_pbr.tres::Shader::-1::1705509451::0::1::::<><>::
 ImmediateSurface.gd::GDScript::-1::1705509451::0::1::::ImmediateSurface<>RefCounted<>::
 LineGen3D.gd::GDScript::-1::1705509451::0::1::::LineGen3D<>Resource<>::
 README.md::TextFile::-1::1705509451::0::1::::<><>::
-::res://addons/godot-polyliner/shaders/::1706212287
+::res://addons/godot-polyliner/shaders/::1706212358
 line_fade.tres::Shader::3460173042167204228::1705509452::0::1::::<><>::
-line_glow.tres::Shader::6674044535480612962::1706212287::0::1::::<><>::
+line_glow.tres::Shader::6674044535480612962::1706212358::0::1::::<><>::
 line_pbr.tres::Shader::6790529088769449091::1705509452::0::1::::<><>::
 line_pbr_vertexlit.tres::Shader::6081056048919754380::1705509452::0::1::::<><>::
 ::res://addons/godot-polyliner/shaders/include/::1705509452
@@ -133,7 +133,7 @@ Trail3D.gd::GDScript::-1::1705509451::0::1::::<>Node3D<>::
 index.apple-touch-icon.png::CompressedTexture2D::4197920198472185662::1706186349::1705686194::1::::<><>::
 index.icon.png::CompressedTexture2D::4856057779898196343::1706186349::1705686194::1::::<><>::
 index.png::CompressedTexture2D::6004380222240225726::1706186349::1705686195::1::::<><>::
-::res://dialogue/::1706212275
+::res://dialogue/::1706212334
 Announcer.dialogue::Resource::4585687774841851401::1706212334::1706212334::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 Dialogue_globals.gd::GDScript::-1::1706176864::0::1::::<>Node<>::
 ::res://godot_reuse/::1706195548
@@ -141,8 +141,8 @@ Dialogue_globals.gd::GDScript::-1::1706176864::0::1::::<>Node<>::
 ColorPaletteLimit.gdshader::Shader::-1::1705597975::0::1::::<><>::
 ColorPaletteLimit.tres::ShaderMaterial::2111261413106225435::1705597975::0::1::::<><>::res://godot_reuseable_stuff/ColorPaletteLimit/ColorPaletteLimit.gdshader<>uid://dvk0r622h4mi3::::res://godot_reuseable_stuff/ColorPaletteLimit/palettes/gloom-8-1x.png
 ColorPaletteSwap.tres::ShaderMaterial::7204857917857670659::1705597975::0::1::::<><>::res://godot_reuseable_stuff/ColorPaletteLimit/paletteReplace.gdshader<>uid://dvk0r622h4mi3::::res://godot_reuseable_stuff/ColorPaletteLimit/palettes/gloom-8-1x.png<>uid://cmu51h5g6f4yq::::res://godot_reuseable_stuff/ColorPaletteLimit/palettes/slso8-1x.png
-paletteReplace.gdshader::Shader::-1::1705597975::0::1::::<><>::
 color_palette_filter.tscn::PackedScene::8355890020701596486::1706212287::0::1::::<><>::res://godot_reuse/ColorPaletteLimit/paletteReplace.gdshader<>uid://dvk0r622h4mi3::::res://godot_reuse/ColorPaletteLimit/palettes/gloom-8-1x.png
+paletteReplace.gdshader::Shader::-1::1705597975::0::1::::<><>::
 ::res://godot_reuse/ColorPaletteLimit/palettes/::1705598001
 ayy4-1x.png::CompressedTexture2D::3479975777031037992::1705597975::1705598001::1::::<><>::
 ayy4-1x_transparent.png::CompressedTexture2D::7380611424096642706::1705597975::1705598001::1::::<><>::
@@ -154,12 +154,12 @@ gold-gb-1x.png::CompressedTexture2D::8966902651368903260::1705597975::1705598001
 kankei4-1x.png::CompressedTexture2D::2475088255200149900::1705597975::1705598001::1::::<><>::
 lava-gb-1x.png::CompressedTexture2D::3004167075054223956::1705597975::1705598001::1::::<><>::
 slso8-1x.png::CompressedTexture2D::5658263400870160780::1705597975::1705598001::1::::<><>::
-::res://godot_reuse/Dissolve/::1706212287
-dissolve.gdshader::Shader::-1::1706212287::0::1::::<><>::
+::res://godot_reuse/Dissolve/::1706212358
+dissolve.gdshader::Shader::-1::1706212358::0::1::::<><>::
 Dissolve_example.tscn::PackedScene::3555728846966909456::1706212286::0::1::::<><>::uid://bhyqw1whvkw8a::::res://icon.png<>res://godot_reuse/Dissolve/dissolve.gdshader
-::res://godot_reuse/FilledSprite/::1706212287
+::res://godot_reuse/FilledSprite/::1706212358
 FilledCI.gd::GDScript::-1::1705598506::0::1::::<>CanvasItem<>::
-FillTopBottom.gdshader::Shader::-1::1706212287::0::1::::<><>::
+FillTopBottom.gdshader::Shader::-1::1706212358::0::1::::<><>::
 FillTopBottomMaterial.tres::ShaderMaterial::2965852753895765403::1705597975::0::1::::<><>::res://godot_reuseable_stuff/FilledSprite/FillTopBottom.gdshader
 ::res://godot_reuse/Fonts/::1705598001
 Abaddon Bold.ttf::FontFile::978583204749757690::1705597975::1705598001::1::::<><>::
@@ -177,17 +177,17 @@ Stripy-Reg.ttf::FontFile::6629328596556822330::1705597975::1705598001::1::::<><>
 ::res://godot_reuse/FPS_Counter/::1706212285
 fps_count.gd::GDScript::-1::1706183721::0::1::::<>Label<>::
 fps_counter.tscn::PackedScene::6902144838510719451::1706212285::0::1::::<><>::res://godot_reuse/FPS_Counter/fps_count.gd
-::res://godot_reuse/Metaballs/::1706212287
+::res://godot_reuse/Metaballs/::1706212358
 ball.gd::GDScript::-1::1706192658::0::1::::MetaBall<>Node2D<>::
 metaball.tscn::PackedScene::6906576775343195779::1706212286::0::1::::<><>::res://godot_reuse/Metaballs/ball.gd
-Metaballs.gdshader::Shader::-1::1706212287::0::1::::<><>::
+Metaballs.gdshader::Shader::-1::1706212358::0::1::::<><>::
 Metaballs_scene.tscn::PackedScene::2039753724970552627::1706212286::0::1::::<><>::res://godot_reuse/Metaballs/Metaballs.gdshader<>res://godot_reuse/Metaballs/metaball_controller.gd<>uid://c5nuks388otih::::res://godot_reuse/Metaballs/metaball.tscn
 metaball_controller.gd::GDScript::-1::1706192583::0::1::::MetaballController<>ColorRect<>::
 ::res://godot_reuse/RichtTextEffects/::1705597975
 effect_label.gd::GDScript::-1::1705597975::0::1::::<>RichTextLabel<>::
 wobble_effect.gd::GDScript::-1::1705597975::0::1::::<>RichTextEffect<>::
-::res://godot_reuse/SpriteMask/::1706212287
-SpriteMask.gdshader::Shader::-1::1706212287::0::1::::<><>::
+::res://godot_reuse/SpriteMask/::1706212358
+SpriteMask.gdshader::Shader::-1::1706212358::0::1::::<><>::
 ::res://Levels/::1706212284
 FreeKick1.tscn::PackedScene::9214821772696131419::1706212283::0::1::::<><>::uid://bhyjbkpqxorgv::::res://Scenes/Pitch.tscn
 FreeKick2.tscn::PackedScene::6603943139042035212::1706212283::0::1::::<><>::uid://bhyjbkpqxorgv::::res://Scenes/Pitch.tscn
@@ -207,7 +207,7 @@ free_kick_2.tres::Resource/Resource::8070844410398650906::1705685196::0::1::::<>
 goal_0_1.tres::Resource/Resource::1694871585934030373::1705685179::0::1::::<><>::res://Resources/LiveTickerEvent.gd
 goal_0_2.tres::Resource/Resource::8855504735308946052::1705682071::0::1::::<><>::res://Resources/LiveTickerEvent.gd
 LiveTickerEvent.gd::GDScript::-1::1705681110::0::1::::LiveTickerEvent<>Resource<>::
-::res://Scenes/::1706212287
+::res://Scenes/::1706212358
 Area3D_Debug_ball_impact.gd::GDScript::-1::1706096714::0::1::::<>Area3D<>::
 Ball.gd::GDScript::-1::1706095808::0::1::::Ball<>CharacterBody3D<>::
 ball.tscn::PackedScene::6149611762389214309::1706212278::0::1::::<><>::res://Scenes/Ball.gd
@@ -249,12 +249,12 @@ test_charBody.gd::GDScript::-1::1706089890::0::1::::<>CharacterBody3D<>::
 test_ik_animation.gd::GDScript::-1::1706112036::0::1::::Goalie_Control<>Node2D<>::
 WASD_Direction_2D.gd::GDScript::-1::1706095941::0::1::::aimWASD<>Node2D<>::
 WASD_Direction_2D.tscn::PackedScene::2500649840617371965::1706212278::0::1::::<><>::res://Scenes/WASD_Direction_2D.gd<>res://Scenes/ShowPosition.gd<>uid://cmdxnicg3cpno::::res://Sprites/ShotGUI/OutlineEffet.png<>uid://bhyqw1whvkw8a::::res://icon.png<>uid://22hje8wlemqs::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_70.png<>uid://xlhlbe7d6b4r::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_71.png<>uid://dtufcr1gxadhb::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_72.png<>uid://dx3r7dvsn35ag::::res://Sprites/Pixel Fantasy Icons Keyboard/MV Icons Keyboard/Individual Icons/keyboard_73.png
-wireframe.gdshader::Shader::-1::1706212287::0::1::::<><>::
+wireframe.gdshader::Shader::-1::1706212358::0::1::::<><>::
 ::res://Scripts/::1706181501
 BallLauncher.gd::GDScript::-1::1706181501::0::1::::BallLauncher<>Node3D<>::
 ::res://Sprites/::1706180197
 outline.png::CompressedTexture2D::8073600930850214418::1706180191::1706180197::1::::<><>::
-::res://Sprites/Grandma/::1706180966
+::res://Sprites/Grandma/::1706212387
 background.png::CompressedTexture2D::4590124655387531414::1706179709::1706179712::1::::<><>::
 background_fg.png::CompressedTexture2D::1132244082295577281::1706180819::1706180823::1::::<><>::
 cake.png::CompressedTexture2D::2591459150000565216::1706180961::1706180966::1::::<><>::
