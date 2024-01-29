@@ -108,7 +108,7 @@ script = ExtResource("12_ip8vn")
 targets = [NodePath("../Goalie/Targets/LeftHand"), NodePath("../Goalie/Targets/RightHand"), NodePath("../Goalie/Targets/head")]
 legs = [NodePath("../Goalie/Targets/leg_l"), NodePath("../Goalie/Targets/leg_r")]
 goalie_base = NodePath("../Goalie")
-stop_at_y = 456.0
+stop_at_y = 1224.0
 goalie_reach = NodePath("../Goalie/reach_here")
 vel_max = 500.0
 

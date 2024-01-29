@@ -285,11 +285,11 @@ script = ExtResource("6_taudu")
 
 [node name="SubViewport" type="SubViewport" parent="GoalStuff/GoalKeeper"]
 transparent_bg = true
-size = Vector2i(2000, 512)
+size = Vector2i(2048, 2048)
 size_2d_override_stretch = true
 
 [node name="GoalKeeperScene" parent="GoalStuff/GoalKeeper/SubViewport" instance=ExtResource("6_1c44d")]
-goalie_start = 0.5
+goalie_start = 0.3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GoalStuff/GoalKeeper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.170978)

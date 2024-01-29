@@ -9,7 +9,7 @@ var total_resolution = Vector2(2000,512)
 @export var goalie_reaction_time:float = 0.3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var goalie_pos_y = 316
+	var goalie_pos_y = 316+256+512
 	var goalie_pos_x = total_resolution.x*goalie_start
 	goalie.position = Vector2(goalie_pos_x,goalie_pos_y)
 	goalie_control.reaction_time = goalie_reaction_time
