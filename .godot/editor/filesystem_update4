@@ -61,3 +61,5 @@ res://Levels/FreeKick7.tscn
 res://Levels/FreeKick8.tscn
 res://Scenes/LogoScene.tscn
 res://Models/soccer_ball/rotate_soccer_ball_logo.gd
+res://Scenes/BannerScene.tscn
+res://text_with_shadows.tres

@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://c5lpk1sj124y6" path="res://godot_reuse/FPS_Counter/fps_counter.tscn" id="20_8d8vb"]
 [ext_resource type="Texture2D" uid="uid://co1bdkkc8kbq2" path="res://godot_reuse/ColorPaletteLimit/palettes/modified_satur8-1.png" id="20_xdu4t"]
 [ext_resource type="Script" path="res://CanvasLayerFinish.gd" id="21_3ivja"]
-[ext_resource type="FontFile" uid="uid://b44u65m6dkaty" path="res://godot_reuse/Fonts/sobiscuit/Sobiscuit.ttf" id="22_qndd5"]
 [ext_resource type="Texture2D" uid="uid://to8wnjcir637" path="res://Sprites/retry.png" id="23_q4jfs"]
 [ext_resource type="AnimationLibrary" uid="uid://c4w3h66ljav32" path="res://animations/end_animation/global.res" id="24_bamev"]
+[ext_resource type="Theme" uid="uid://dhjeaaf3q4ba0" path="res://text_with_shadows.tres" id="24_em6pc"]
 
 [sub_resource type="Animation" id="Animation_schlq"]
 resource_name = "cake_in"
@@ -325,10 +325,7 @@ offset_left = 120.0
 offset_top = -293.0
 offset_right = 632.0
 offset_bottom = -37.0
-theme_override_colors/default_color = Color(0.776471, 0.870588, 0.843137, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("22_qndd5")
-theme_override_font_sizes/normal_font_size = 128
+theme = ExtResource("24_em6pc")
 bbcode_enabled = true
 text = "[center][wave]WIN"
 
@@ -339,9 +336,7 @@ offset_left = 120.0
 offset_top = -301.0
 offset_right = 632.0
 offset_bottom = -45.0
-theme_override_colors/default_color = Color(0.776471, 0.870588, 0.843137, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("22_qndd5")
+theme = ExtResource("24_em6pc")
 theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
 text = "[center][wave]DRAW"
@@ -353,10 +348,7 @@ offset_left = 120.0
 offset_top = -300.0
 offset_right = 632.0
 offset_bottom = -44.0
-theme_override_colors/default_color = Color(0.776471, 0.870588, 0.843137, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("22_qndd5")
-theme_override_font_sizes/normal_font_size = 128
+theme = ExtResource("24_em6pc")
 bbcode_enabled = true
 text = "[center][wave]DEFEAT"
 

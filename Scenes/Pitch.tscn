@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Scenes/StaticBody3D.gd" id="8_x32uj"]
 [ext_resource type="Script" path="res://Scenes/Area3D_Debug_ball_impact.gd" id="9_1owui"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="10_fc3i6"]
-[ext_resource type="FontFile" uid="uid://b44u65m6dkaty" path="res://godot_reuse/Fonts/sobiscuit/Sobiscuit.ttf" id="14_0jmwm"]
+[ext_resource type="Theme" uid="uid://dhjeaaf3q4ba0" path="res://text_with_shadows.tres" id="14_ytkfs"]
 [ext_resource type="AudioStream" uid="uid://nry14nmrw5cj" path="res://Sound/481776__gregorquendel__crowd-cheering-strong-cheering-1_FADED.mp3" id="15_kosh7"]
 [ext_resource type="PackedScene" uid="uid://qikf0662xhcl" path="res://Scenes/stadium_wall.tscn" id="15_rle0j"]
 [ext_resource type="AudioStream" uid="uid://cjysiih82gk33" path="res://Sound/90743__pablo-f__referee-whistle_short.mp3" id="16_cmsog"]
@@ -349,8 +349,7 @@ offset_right = -458.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("14_0jmwm")
-theme_override_font_sizes/normal_font_size = 128
+theme = ExtResource("14_ytkfs")
 bbcode_enabled = true
 text = "[rainbow] [wave] GOAL!"
 fit_content = true

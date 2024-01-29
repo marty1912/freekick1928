@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dhjeaaf3q4ba0"]
+
+[ext_resource type="FontFile" uid="uid://b3qb7g4pavd07" path="res://godot_reuse/Fonts/quicksilver_3/Quicksilver Italic.ttf" id="1_1saaf"]
+
+[resource]
+default_font = ExtResource("1_1saaf")
+RichTextLabel/colors/default_color = Color(1, 0.847059, 0.709804, 1)
+RichTextLabel/colors/font_shadow_color = Color(1, 0, 0, 1)
+RichTextLabel/constants/shadow_offset_x = 6
+RichTextLabel/constants/shadow_offset_y = 6
+RichTextLabel/font_sizes/normal_font_size = 128
+RichTextLabel/fonts/bold_font = ExtResource("1_1saaf")
