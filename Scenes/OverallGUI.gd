@@ -11,7 +11,7 @@ var ticker_paused:bool = true
 @export var label_time:RichTextLabel
 
 @onready var level: Node3D = $SubViewportContainer/SubViewport/Level
-@onready var dream_bubble: DreamBubble = $DreamBubble
+@onready var dream_bubble: DreamBubble = $DreamBubbleVP/DreamBubble
 
 @onready var cl_bubble: CanvasLayer = $".."
 
@@ -109,6 +109,7 @@ func _ready() -> void:
 	initial_load.mute_me()
 	initial_load.on_spawned_and_one_second_passed.connect(initial_spawn_done)
 	cl_bubble.visible = false
+	DialogueGlobals.reset_all()
 	pass # Replace with function body.
 
 func handle_event(evt:LiveTickerEvent):

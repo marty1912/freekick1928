@@ -16,9 +16,7 @@ shader_parameter/strength = 4
 [sub_resource type="ViewportTexture" id="ViewportTexture_bofd7"]
 viewport_path = NodePath("SubViewport")
 
-[node name="DreamBubble" type="SubViewport"]
-transparent_bg = true
-size = Vector2i(740, 480)
+[node name="DreamBubble" type="Node2D"]
 script = ExtResource("1_0rtji")
 
 [node name="SubViewport" type="SubViewport" parent="."]

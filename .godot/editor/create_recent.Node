@@ -1,3 +1,5 @@
+SubViewport
+Node2D
 TextureButton
 Panel
 RichTextLabel
@@ -6,10 +8,7 @@ Control
 CanvasLayer
 ColorRect
 Sprite2D
-SubViewport
-Node2D
 Marker2D
 Label
 SubViewportContainer
 NinePatchRect
-HBoxContainer

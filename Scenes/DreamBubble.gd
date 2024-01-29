@@ -1,4 +1,4 @@
-class_name DreamBubble extends SubViewport
+class_name DreamBubble extends Node2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @export var animation_time:float = 1.0

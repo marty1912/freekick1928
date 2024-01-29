@@ -14,6 +14,13 @@ signal do_free_kick(float)
 signal do_score_goal(int)
 signal game_is_over()
 
+func reset_all():
+	var total_kicks:int = 0
+	set_my_score(Vector2i(0,0))
+	last_kick_was_goal = false
+	
+
+
 func set_my_score(my_s:Vector2i):
 	score = my_s
 	score_x = score.x

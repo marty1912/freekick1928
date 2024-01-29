@@ -3,6 +3,7 @@ res://godot_reuse/FilledSprite/FillTopBottom.gdshader
 res://Models/Net_material.tres
 res://addons/godot-polyliner/shaders/line_glow.tres
 res://godot_reuse/SpriteMask/SpriteMask.gdshader
+res://godot_reuse/ColorPaletteLimit/paletteReplace.gdshader
 res://godot_reuse/Metaballs/Metaballs.gdshader
 res://godot_reuse/Dissolve/dissolve.gdshader
 res://Scenes/wireframe.gdshader
@@ -30,15 +31,8 @@ res://godot_reuse/Metaballs/Metaballs_scene.tscn
 res://godot_reuse/Dissolve/Dissolve_example.tscn
 res://Scenes/DreamBubble.tscn
 res://godot_reuse/ColorPaletteLimit/color_palette_filter.tscn
-res://GeneralStoryControl.gd
-res://godot_reuse/ColorPaletteLimit/paletteReplace.gdshader
+res://my_metaball_scene.tscn
+res://addons/dialogue_manager/example_balloon/example_balloon.tscn
+res://Scenes/DreamBubble.gd
 res://Scenes/OverallGUI.gd
 res://dialogue/Dialogue_globals.gd
-res://Scenes/DreamBubble.gd
-res://Scenes/Ball.gd
-res://Scenes/BaseLevel.gd
-res://my_metaball_scene.tscn
-res://CanvasLayerFinish.gd
-res://animations/end_animation/global.res
-res://animations/end_animation/draw.res
-res://addons/dialogue_manager/example_balloon/example_balloon.tscn

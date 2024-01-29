@@ -45,14 +45,14 @@ _data = {
 "cake_in": SubResource("Animation_schlq")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_et2e8"]
-viewport_path = NodePath("CL_BUBBLE/OverallGUI/DreamBubble")
+[sub_resource type="ViewportTexture" id="ViewportTexture_mmdvx"]
+viewport_path = NodePath("CL_BUBBLE/OverallGUI/DreamBubbleVP")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x20ri"]
 resource_local_to_scene = true
 shader = ExtResource("14_0eht7")
 shader_parameter/invert = false
-shader_parameter/mask_texture = SubResource("ViewportTexture_et2e8")
+shader_parameter/mask_texture = SubResource("ViewportTexture_mmdvx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rbjgp"]
 shader = ExtResource("17_fdpoq")
@@ -262,7 +262,11 @@ offset_right = 542.0
 offset_bottom = 158.0
 script = ExtResource("6_6amx0")
 
-[node name="DreamBubble" parent="CL_BUBBLE/OverallGUI" instance=ExtResource("18_618mx")]
+[node name="DreamBubbleVP" type="SubViewport" parent="CL_BUBBLE/OverallGUI"]
+transparent_bg = true
+size = Vector2i(740, 480)
+
+[node name="DreamBubble" parent="CL_BUBBLE/OverallGUI/DreamBubbleVP" instance=ExtResource("18_618mx")]
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(426, 148)
