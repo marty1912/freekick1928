@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtpyb8rbk86bs"]
+
+[ext_resource type="AudioStream" uid="uid://b7x4ponw37nce" path="res://Sound/587897__seth_makes_sounds__lofi.wav" id="1_4v6pp"]
+[ext_resource type="AudioStream" uid="uid://draetgh7xvy73" path="res://Sound/163274__cuauh89__stadium-sound_loop.mp3" id="2_5f417"]
+
+[node name="BgMusicAutoload" type="Node2D"]
+
+[node name="BGMUSIC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4v6pp")
+autoplay = true
+bus = &"2DWorld"
+
+[node name="STADIUM_SOUND" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5f417")
+volume_db = -15.0
+autoplay = true
+bus = &"Stadium"

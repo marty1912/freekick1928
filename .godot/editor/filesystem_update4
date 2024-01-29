@@ -36,3 +36,13 @@ res://addons/dialogue_manager/example_balloon/example_balloon.tscn
 res://Scenes/DreamBubble.gd
 res://Scenes/OverallGUI.gd
 res://dialogue/Dialogue_globals.gd
+res://default_bus_layout.tres
+res://godot_reuse/audio_stuff/bg_music_autoload.tscn
+res://Sound/bg_music_autoload.tscn
+res://SoundFadeInOut.gd
+res://godot_reuse/audio_stuff/sound_fade_in_out.tscn
+res://godot_reuse/audio_stuff/SoundFadeInOut.gd
+res://Scenes/PlayWithDelay.gd
+res://Scenes/FreeKickGUI.gd
+res://Scenes/BallKickSound.gd
+res://Scenes/GoalScore.gd

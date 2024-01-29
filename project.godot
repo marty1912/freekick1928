@@ -19,6 +19,8 @@ config/icon="res://icon.png"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueGlobals="*res://dialogue/Dialogue_globals.gd"
+BgMusicAutoload="*res://Sound/bg_music_autoload.tscn"
+SoundFadeInOut="*res://godot_reuse/audio_stuff/SoundFadeInOut.gd"
 
 [display]
 

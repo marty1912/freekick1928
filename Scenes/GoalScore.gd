@@ -8,6 +8,7 @@ var countdown_tween:Tween = null
 signal on_goal_scored()
 signal on_not_scored()
 
+
 func ball_was_out():
 	abort_countdown()
 	goals_disabled = true

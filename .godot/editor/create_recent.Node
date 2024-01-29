@@ -1,5 +1,7 @@
-SubViewport
+AudioStreamPlayer
 Node2D
+Node
+SubViewport
 TextureButton
 Panel
 RichTextLabel
@@ -10,5 +12,3 @@ ColorRect
 Sprite2D
 Marker2D
 Label
-SubViewportContainer
-NinePatchRect

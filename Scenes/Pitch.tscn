@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bhyjbkpqxorgv"]
+[gd_scene load_steps=43 format=3 uid="uid://bhyjbkpqxorgv"]
 
 [ext_resource type="Script" path="res://Scenes/GoalScore.gd" id="1_et3lr"]
 [ext_resource type="Script" path="res://Scenes/BaseLevel.gd" id="1_f805a"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://lv55707iljm0" path="res://Scenes/grass.tscn" id="2_m2tpv"]
 [ext_resource type="Script" path="res://Scenes/FreeKickGUI.gd" id="4_3dsk0"]
 [ext_resource type="Material" uid="uid://b10ybt2rm6e8g" path="res://Models/Net_material.tres" id="5_gk0pm"]
-[ext_resource type="FontFile" uid="uid://cuocjgxyka8ta" path="res://godot_reuse/Fonts/Bullpen3D.ttf" id="5_rkbjw"]
 [ext_resource type="PackedScene" uid="uid://b5k0vv2ccia1v" path="res://Scenes/GoalKeeperScene.tscn" id="6_1c44d"]
 [ext_resource type="Script" path="res://Scenes/GoalKeeperIn3D.gd" id="6_taudu"]
 [ext_resource type="ArrayMesh" uid="uid://ck4gyxeym1lef" path="res://Models/Goal_net.obj" id="7_0ou34"]
@@ -14,7 +13,11 @@
 [ext_resource type="Script" path="res://Scenes/StaticBody3D.gd" id="8_x32uj"]
 [ext_resource type="Script" path="res://Scenes/Area3D_Debug_ball_impact.gd" id="9_1owui"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="10_fc3i6"]
+[ext_resource type="FontFile" uid="uid://b44u65m6dkaty" path="res://godot_reuse/Fonts/sobiscuit/Sobiscuit.ttf" id="14_0jmwm"]
+[ext_resource type="AudioStream" uid="uid://nry14nmrw5cj" path="res://Sound/481776__gregorquendel__crowd-cheering-strong-cheering-1_FADED.mp3" id="15_kosh7"]
 [ext_resource type="PackedScene" uid="uid://qikf0662xhcl" path="res://Scenes/stadium_wall.tscn" id="15_rle0j"]
+[ext_resource type="AudioStream" uid="uid://cjysiih82gk33" path="res://Sound/90743__pablo-f__referee-whistle_short.mp3" id="16_cmsog"]
+[ext_resource type="Script" path="res://Scenes/PlayWithDelay.gd" id="17_7n1h6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pim35"]
 sky_horizon_color = Color(0.59625, 0.667422, 0.666912, 1)
@@ -102,7 +105,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1278, -0.25, 0, 0.25, 0, 285.284, -1.5, 50.5447, 1.5, -35.3813, -572, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(820, -0.25, 0, 0.25, 0, 58.3711, -1.1, 0.128937, 1.1, 0.128937, -600, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1.5, 3)
 }
 tracks/1/type = "bezier"
@@ -113,7 +116,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(236, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(136, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -325,11 +328,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10623, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67104, 0, 0)
 
 [node name="FreeKickGUI" type="Control" parent="."]
-custom_minimum_size = Vector2(1152, 648)
+custom_minimum_size = Vector2(740, 480)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 740.0
+offset_bottom = 480.0
 script = ExtResource("4_3dsk0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FreeKickGUI"]
@@ -340,13 +343,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1148.0
-offset_top = -88.0
-offset_right = -636.0
-offset_bottom = 168.0
+offset_left = -970.0
+offset_top = -104.0
+offset_right = -458.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("5_rkbjw")
+theme_override_fonts/normal_font = ExtResource("14_0jmwm")
 theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
 text = "[rainbow] [wave] GOAL!"
@@ -357,6 +360,10 @@ libraries = {
 "": SubResource("AnimationLibrary_xkm1j")
 }
 
+[node name="cheering" type="AudioStreamPlayer" parent="FreeKickGUI"]
+stream = ExtResource("15_kosh7")
+bus = &"Stadium"
+
 [node name="Stadium" type="Node3D" parent="."]
 
 [node name="StadiumWall" parent="Stadium" instance=ExtResource("15_rle0j")]
@@ -366,6 +373,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -31.46
 
 [node name="StadiumWall3" parent="Stadium" instance=ExtResource("15_rle0j")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.2254, -2.63918, 0)
+
+[node name="StartKickWhistle" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StartKickWhistle"]
+stream = ExtResource("16_cmsog")
+bus = &"Stadium"
+script = ExtResource("17_7n1h6")
 
 [connection signal="on_goal_scored" from="GoalStuff" to="FreeKickGUI" method="_on_goal_stuff_on_goal_scored"]
 [connection signal="body_entered" from="GoalStuff/GoalKeeper/Area3D" to="GoalStuff/GoalKeeper/Area3D" method="_on_body_entered"]

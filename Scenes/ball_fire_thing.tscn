@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dopbj55bsn5bw"]
+[gd_scene load_steps=20 format=3 uid="uid://dopbj55bsn5bw"]
 
 [ext_resource type="Script" path="res://Scripts/BallLauncher.gd" id="1_f6yui"]
 [ext_resource type="Script" path="res://Scenes/ball_fire_thing.gd" id="1_fra6a"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="8_hia72"]
 [ext_resource type="PackedScene" uid="uid://ctu6hbuba6mp6" path="res://Scenes/ball.tscn" id="9_eehny"]
 [ext_resource type="Script" path="res://Scenes/Controls_gui.gd" id="11_lpqr2"]
+[ext_resource type="AudioStream" uid="uid://dyn877sores2y" path="res://Sound/37156__volivieri__soccer-kick-01.wav" id="12_tc3pl"]
+[ext_resource type="Script" path="res://Scenes/BallKickSound.gd" id="13_ecgg0"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xfmgl"]
 viewport_path = NodePath("BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control/Sprite3D/direction_select")
@@ -163,6 +165,12 @@ bbcode_enabled = true
 text = "[left][SPACE] select power
 [MOUSE] abort"
 
+[node name="BallKickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_tc3pl")
+bus = &"Stadium"
+script = ExtResource("13_ecgg0")
+
+[connection signal="on_ball_was_fired" from="BallLauncher" to="BallKickSound" method="play_with_random_pitch"]
 [connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" method="disable_inputs"]
 [connection signal="on_disable_all_inputs" from="BallLauncher" to="BallLauncher/WASD_Direction/SubViewport/Node2D" method="disable_inputs"]
 [connection signal="on_enable_all_inputs" from="BallLauncher" to="BallLauncher/CamPlatform/Camera3D/GUI/Effet_Control" method="enable_inputs"]

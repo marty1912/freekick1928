@@ -51,6 +51,9 @@ func on_free_kick_miss():
 	
 func resume_after_free_kick():
 	dream_bubble.hide_me()
+	#SoundFadeInOut.cross_fade("2DWorld","Stadium")
+	SoundFadeInOut.fade_out("Stadium")
+	SoundFadeInOut.fade_in("2DWorld")
 	var t:Tween = create_tween()
 	t.tween_interval(1.1)
 	t.tween_callback(func(): cl_bubble.visible = false)
@@ -74,6 +77,9 @@ func handle_free_kick():
 	spawn_level()
 	# TODO do an effect here!
 	dream_bubble.show_me()
+	#SoundFadeInOut.cross_fade("Stadium","2DWorld")
+	SoundFadeInOut.fade_in("Stadium")
+	SoundFadeInOut.fade_to("2DWorld",-20)
 	live_ticker_list.visible = false
 	cl_bubble.visible = true
 
