@@ -56,7 +56,7 @@ func my_physics_stuff(delta:float):
 	var f_drag = -my_velocity.normalized() *(my_velocity.length_squared()*0.01)
 	
 	# magnus force: https://farside.ph.utexas.edu/teaching/329/lectures/node43.html
-	var f_magnus = currentRotationSpeed.cross(my_velocity)*0.02
+	var f_magnus = currentRotationSpeed.cross(my_velocity)*0.02*0.5
 	#my_velocity.y += gravity * delta
 	var my_vel_before = my_velocity
 	my_velocity += ((f_gravity+f_drag+f_magnus + f_back_into_goal)/mass) * delta
@@ -91,6 +91,10 @@ func my_physics_stuff(delta:float):
 			
 		var oldVel = my_velocity
 		my_velocity = my_velocity.bounce(collision.get_normal()) * 0.9
+		var coll_normal = collision.get_normal().normalized()
+		var rot_offset = (my_velocity.normalized()-coll_normal)*my_velocity.length()
+		# this is not correct but it looks better than letting the ball stay still on impact
+		currentRotationSpeed = Vector3(0,0,-rot_offset.x) # .rotated(my_velocity.normalized(),0)
 		#currentRotationSpeed -= oldVel.angle_to(velocity)
 		if(my_velocity.length() < 10):
 			return

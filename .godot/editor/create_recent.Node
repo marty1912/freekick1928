@@ -1,3 +1,8 @@
+Camera3D
+CollisionShape3D
+StaticBody3D
+Ball
+MeshInstance3D
 Button
 AudioStreamPlayer
 Node2D
@@ -8,8 +13,3 @@ Panel
 RichTextLabel
 AnimationPlayer
 Control
-CanvasLayer
-ColorRect
-Sprite2D
-Marker2D
-Label

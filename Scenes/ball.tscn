@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctu6hbuba6mp6"]
+[gd_scene load_steps=6 format=3 uid="uid://ctu6hbuba6mp6"]
 
 [ext_resource type="Script" path="res://Scenes/Ball.gd" id="1_el6n0"]
+[ext_resource type="PackedScene" uid="uid://btguvuw2negxx" path="res://Models/soccer_ball/scene.gltf" id="2_c6ovk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4e0it"]
 radius = 0.11
 
 [sub_resource type="SphereMesh" id="SphereMesh_de7k2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7erm8"]
 
 [node name="Ball" type="CharacterBody3D" groups=["Ball"]]
 motion_mode = 1
@@ -17,6 +20,11 @@ script = ExtResource("1_el6n0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_4e0it")
 
+[node name="Sketchfab_Scene" parent="CollisionShape3D" instance=ExtResource("2_c6ovk")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_de7k2")
+surface_material_override/0 = SubResource("StandardMaterial3D_7erm8")

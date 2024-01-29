@@ -50,3 +50,8 @@ res://Scenes/test_ik_animation.gd
 res://Scenes/FixGoalieProblems.gd
 res://Scenes/button_reload_test.gd
 res://Scenes/GoalKeeperScene.gd
+res://Scenes/Ball.gd
+res://Scenes/ballTest.tscn
+res://Scenes/ballTest.gd
+res://Scenes/follow_ball_debug.gd
+res://Scripts/BallLauncher.gd
