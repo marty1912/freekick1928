@@ -22,7 +22,16 @@ var currently_kicking:bool = false
 
 var current_event:LiveTickerEvent = null
 var free_kick_index:int = 0
-var my_levels:Array[PackedScene] = [preload("res://Levels/FreeKick1.tscn"),preload("res://Levels/FreeKick2.tscn"),preload("res://Levels/FreeKick3.tscn"),preload("res://Levels/FreeKick4.tscn")]
+var my_levels:Array[PackedScene] = [
+	preload("res://Levels/FreeKick1.tscn"),
+	preload("res://Levels/FreeKick2.tscn"),
+	preload("res://Levels/FreeKick3.tscn"),
+	preload("res://Levels/FreeKick4.tscn"),
+	preload("res://Levels/FreeKick5.tscn"),
+	preload("res://Levels/FreeKick6.tscn"),
+	preload("res://Levels/FreeKick7.tscn"),
+	preload("res://Levels/FreeKick8.tscn")
+	]
 
 signal on_level_load_workaround_done()
 signal on_free_kick_done()
@@ -110,6 +119,7 @@ func initial_spawn_done():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	my_levels.shuffle()
 	var initial_load:BaseLevel = preload("res://Scenes/Pitch.tscn").instantiate()
 	level.add_child(initial_load)
 	initial_load.mute_me()

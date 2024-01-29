@@ -58,11 +58,11 @@ texture = ExtResource("3_fh1ut")
 
 [node name="Vertical" type="Line2D" parent="Node2D/Sprite2D"]
 points = PackedVector2Array(0, 1024, 0, -1024)
-width = 4.0
+width = 8.0
 
 [node name="Horizontal" type="Line2D" parent="Node2D/Sprite2D"]
 points = PackedVector2Array(1024, 0, -1024, 0)
-width = 4.0
+width = 8.0
 
 [node name="ColorRect" type="ColorRect" parent="Node2D/Sprite2D"]
 offset_left = -12.0

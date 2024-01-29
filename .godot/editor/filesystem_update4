@@ -55,3 +55,7 @@ res://Scenes/ballTest.tscn
 res://Scenes/ballTest.gd
 res://Scenes/follow_ball_debug.gd
 res://Scripts/BallLauncher.gd
+res://Levels/FreeKick5.tscn
+res://Levels/FreeKick6.tscn
+res://Levels/FreeKick7.tscn
+res://Levels/FreeKick8.tscn

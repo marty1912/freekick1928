@@ -60,6 +60,10 @@ shader = ExtResource("17_fdpoq")
 shader_parameter/num_colors = 8
 shader_parameter/allow_transparent = true
 shader_parameter/flip_swap = true
+shader_parameter/use_exception = false
+shader_parameter/color_exception = Color(0.666667, 0, 1, 1)
+shader_parameter/color_replace_exception = Color(0.666667, 0, 1, 1)
+shader_parameter/exception_tolerance = 0.2
 shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("18_qc0a8")
 shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("15_bolpi")
 
@@ -68,6 +72,10 @@ shader = ExtResource("17_fdpoq")
 shader_parameter/num_colors = 8
 shader_parameter/allow_transparent = true
 shader_parameter/flip_swap = false
+shader_parameter/use_exception = false
+shader_parameter/color_exception = Color(0.666667, 0, 1, 1)
+shader_parameter/color_replace_exception = Color(0.666667, 0, 1, 1)
+shader_parameter/exception_tolerance = 0.2
 shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("18_qc0a8")
 shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("20_xdu4t")
 

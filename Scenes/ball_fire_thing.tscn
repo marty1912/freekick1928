@@ -147,7 +147,7 @@ offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[left][WASD] - adjust direction 
+text = "[left][color=aa00ff][WASD] - adjust direction 
 [MOUSE] control curve 
 [SPACE] confirm"
 
@@ -162,7 +162,7 @@ offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[left][SPACE] select power
+text = "[left][color=aa00ff][SPACE] select power
 [MOUSE] abort"
 
 [node name="BallKickSound" type="AudioStreamPlayer" parent="."]

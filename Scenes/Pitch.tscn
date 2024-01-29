@@ -34,7 +34,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uutfu"]
-size = Vector3(7.4, 2.44, 1.77869)
+size = Vector3(7.4, 2.38, 1.779)
 
 [sub_resource type="BoxMesh" id="BoxMesh_djm41"]
 
@@ -44,7 +44,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.0588235, 0.945098, 0.258824, 0.352941)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bel3w"]
-size = Vector3(100, 50, 2)
+size = Vector3(101.619, 50.1, 1.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7slc"]
 size = Vector3(10, 50, 100)
@@ -140,7 +140,7 @@ script = ExtResource("1_et3lr")
 [node name="Goal" type="Area3D" parent="GoalStuff"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/Goal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 0.987112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14239, 0.987112)
 shape = SubResource("BoxShape3D_uutfu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Goal/CollisionShape3D"]
@@ -153,7 +153,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2mh0g")
 [node name="Out" type="Area3D" parent="GoalStuff"]
 
 [node name="TOP" type="CollisionShape3D" parent="GoalStuff/Out"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.44, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809326, 27.4937, 0.881195)
 shape = SubResource("BoxShape3D_bel3w")
 
 [node name="SIDE_LEFT" type="CollisionShape3D" parent="GoalStuff/Out"]
