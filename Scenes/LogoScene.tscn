@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://duquccl3jonw8"]
+
+[ext_resource type="Texture2D" uid="uid://bc5321ppcl150" path="res://Sprites/Grandma/grandma.png" id="1_i0jbv"]
+[ext_resource type="Texture2D" uid="uid://jk75j2qwp5ha" path="res://Sprites/logo_stuff_bg.png" id="1_rgt1m"]
+[ext_resource type="Texture2D" uid="uid://sl818qdgi00h" path="res://Sprites/logo_stuff_fg1.png" id="3_7jvjg"]
+[ext_resource type="Texture2D" uid="uid://b4s83wdtk1g7q" path="res://Sprites/logo_stuff_fg2.png" id="4_bfl84"]
+[ext_resource type="PackedScene" uid="uid://btguvuw2negxx" path="res://Models/soccer_ball/scene.gltf" id="5_q4e22"]
+[ext_resource type="Script" path="res://Models/soccer_ball/rotate_soccer_ball_logo.gd" id="6_u88vx"]
+[ext_resource type="FontFile" uid="uid://b3qb7g4pavd07" path="res://godot_reuse/Fonts/quicksilver_3/Quicksilver Italic.ttf" id="7_4q4r0"]
+[ext_resource type="Shader" path="res://godot_reuse/ColorPaletteLimit/paletteReplace.gdshader" id="8_uttb8"]
+[ext_resource type="Texture2D" uid="uid://dvk0r622h4mi3" path="res://godot_reuse/ColorPaletteLimit/palettes/gloom-8-1x.png" id="9_kimp6"]
+[ext_resource type="Texture2D" uid="uid://co1bdkkc8kbq2" path="res://godot_reuse/ColorPaletteLimit/palettes/modified_satur8-1.png" id="10_nkeld"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdeyv"]
+shader = ExtResource("8_uttb8")
+shader_parameter/num_colors = 8
+shader_parameter/allow_transparent = true
+shader_parameter/flip_swap = false
+shader_parameter/use_exception = false
+shader_parameter/color_exception = null
+shader_parameter/color_replace_exception = null
+shader_parameter/exception_tolerance = 0.2
+shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("9_kimp6")
+shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("10_nkeld")
+
+[node name="LogoScene" type="Node2D"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(321, 319)
+scale = Vector2(2, 2)
+texture = ExtResource("1_rgt1m")
+
+[node name="grandma" type="Sprite2D" parent="."]
+position = Vector2(336, 253)
+texture = ExtResource("1_i0jbv")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(47, 132)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = 100
+position = Vector2(274, 320)
+texture = ExtResource("3_7jvjg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+z_index = 50
+position = Vector2(320, 320)
+texture = ExtResource("4_bfl84")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Node2D"]
+z_index = 300
+offset_left = -227.0
+offset_right = 413.0
+offset_bottom = 640.0
+
+[node name="SubViewport" type="SubViewport" parent="Node2D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="Node2D/SubViewportContainer/SubViewport"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node2D/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.496582, -0.803263, 0.328901, 0.0583965, 0.408982, 0.910672, 0, 2.06575, 0)
+shadow_enabled = true
+
+[node name="Sketchfab_Scene" parent="Node2D/SubViewportContainer/SubViewport/Node3D" instance=ExtResource("5_q4e22")]
+script = ExtResource("6_u88vx")
+
+[node name="Camera3D" type="Camera3D" parent="Node2D/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.94878)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+z_index = 400
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 0
+offset_left = 143.0
+offset_top = 354.0
+offset_right = 655.0
+offset_bottom = 610.0
+theme_override_colors/font_shadow_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("7_4q4r0")
+theme_override_font_sizes/normal_font_size = 78
+bbcode_enabled = true
+text = "[color=red][center]   FREE KICK
+[center]-1928-"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_hdeyv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
