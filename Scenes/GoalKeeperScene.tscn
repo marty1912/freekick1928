@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5k0vv2ccia1v"]
+[gd_scene load_steps=27 format=3 uid="uid://b5k0vv2ccia1v"]
 
 [ext_resource type="Texture2D" uid="uid://bq6kcbe0hyihy" path="res://Sprites/Teams/goalie/layer-13.png" id="1_07phw"]
 [ext_resource type="Script" path="res://Scenes/GoalKeeperScene.gd" id="1_j8omo"]
 [ext_resource type="Texture2D" uid="uid://cfeavhpldm2v8" path="res://Sprites/Teams/goalie/layer-12.png" id="2_m135a"]
 [ext_resource type="Texture2D" uid="uid://ba3b4lbifbhrt" path="res://Sprites/Teams/goalie/layer-16.png" id="3_c2x7k"]
+[ext_resource type="Script" path="res://Scenes/FixGoalieProblems.gd" id="4_0xpbf"]
 [ext_resource type="Texture2D" uid="uid://c6xf2gfn7i7cd" path="res://Sprites/Teams/goalie/layer-17.png" id="4_pf44h"]
 [ext_resource type="Texture2D" uid="uid://xai6j64no1t4" path="res://Sprites/Teams/goalie/layer-15.png" id="5_5asuh"]
 [ext_resource type="Texture2D" uid="uid://6uhm0vh6wp3p" path="res://Sprites/Teams/goalie/layer-14.png" id="6_rawpx"]
@@ -16,90 +17,53 @@
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="12_puysw"]
 [ext_resource type="Script" path="res://Scenes/MouseInputTester.gd" id="13_qdp07"]
 [ext_resource type="Script" path="res://Scenes/GoalieReachDebug.gd" id="16_ba6qh"]
+[ext_resource type="Script" path="res://Scenes/button_reload_test.gd" id="18_btqtq"]
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_t2jhv"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_pkxbq"]
 target_nodepath = NodePath("Targets/head")
-tip_nodepath = NodePath("hipBone2D/torsoBone2D/headBone2D/HeadEnd")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 0
-joint_data/0/bone2d_node = NodePath("hipBone2D")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 1
-joint_data/1/bone2d_node = NodePath("hipBone2D/torsoBone2D")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = true
+joint_one_bone_idx = 0
+joint_one_bone2d_node = NodePath("hipBone2D")
+joint_two_bone_idx = 1
+joint_two_bone2d_node = NodePath("hipBone2D/torsoBone2D")
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_sn6q1"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_qp8r1"]
 target_nodepath = NodePath("Targets/LeftHand")
-tip_nodepath = NodePath("hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D/endBone2D/end")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 2
-joint_data/0/bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_lBone2D")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 3
-joint_data/1/bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = true
+joint_one_bone_idx = 2
+joint_one_bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_lBone2D")
+joint_two_bone_idx = 3
+joint_two_bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D")
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_xjlnx"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_bp8sx"]
 target_nodepath = NodePath("Targets/RightHand")
-tip_nodepath = NodePath("hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D/endBone2D/end")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 5
-joint_data/0/bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_rBone2D")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 6
-joint_data/1/bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = true
+flip_bend_direction = true
+joint_one_bone_idx = 5
+joint_one_bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_rBone2D")
+joint_two_bone_idx = 6
+joint_two_bone2d_node = NodePath("hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D")
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_syva0"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_gw14w"]
 target_nodepath = NodePath("Targets/leg_l")
-tip_nodepath = NodePath("hipBone2D/leg_lBone2D/foot_lBone2D/Marker2DBone2D/end_leg_l")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 9
-joint_data/0/bone2d_node = NodePath("hipBone2D/leg_lBone2D")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 10
-joint_data/1/bone2d_node = NodePath("hipBone2D/leg_lBone2D/foot_lBone2D")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = true
+flip_bend_direction = true
+joint_one_bone_idx = 9
+joint_one_bone2d_node = NodePath("hipBone2D/leg_lBone2D")
+joint_two_bone_idx = 10
+joint_two_bone2d_node = NodePath("hipBone2D/leg_lBone2D/foot_lBone2D")
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_fay83"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_ajylq"]
 target_nodepath = NodePath("Targets/leg_r")
-tip_nodepath = NodePath("hipBone2D/leg_rBone2D/foot_rBone2D/Marker2DBone2D/end_leg_r")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 12
-joint_data/0/bone2d_node = NodePath("hipBone2D/leg_rBone2D")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 13
-joint_data/1/bone2d_node = NodePath("hipBone2D/leg_rBone2D/foot_rBone2D")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = true
+joint_one_bone_idx = 12
+joint_one_bone2d_node = NodePath("hipBone2D/leg_rBone2D")
+joint_two_bone_idx = 13
+joint_two_bone2d_node = NodePath("hipBone2D/leg_rBone2D/foot_rBone2D")
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_yg8gh"]
 enabled = true
 modification_count = 5
-modifications/0 = SubResource("SkeletonModification2DCCDIK_t2jhv")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_sn6q1")
-modifications/2 = SubResource("SkeletonModification2DCCDIK_xjlnx")
-modifications/3 = SubResource("SkeletonModification2DCCDIK_syva0")
-modifications/4 = SubResource("SkeletonModification2DCCDIK_fay83")
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_pkxbq")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_qp8r1")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_bp8sx")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_gw14w")
+modifications/4 = SubResource("SkeletonModification2DTwoBoneIK_ajylq")
 
 [sub_resource type="Animation" id="Animation_fqwfl"]
 resource_name = "test_goalie"
@@ -151,16 +115,22 @@ vel_max = 500.0
 [node name="Goalie" type="Skeleton2D" parent="."]
 position = Vector2(960, 304)
 modification_stack = SubResource("SkeletonModificationStack2D_yg8gh")
+script = ExtResource("4_0xpbf")
 
 [node name="hipBone2D" type="Bone2D" parent="Goalie"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="hip" type="Sprite2D" parent="Goalie/hipBone2D"]
 texture = ExtResource("1_07phw")
 
 [node name="torsoBone2D" type="Bone2D" parent="Goalie/hipBone2D"]
 position = Vector2(-2, -9)
-rest = Transform2D(1, 0, 0, 1, -2, -9)
+rest = Transform2D(0.999236, -0.0372386, 0.0372386, 0.999236, -2, -9)
+auto_calculate_length_and_angle = false
+length = 102.786
+bone_angle = -90.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="torso" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D"]
 texture = ExtResource("2_m135a")
@@ -168,6 +138,8 @@ offset = Vector2(3, -57)
 
 [node name="arm_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D"]
 position = Vector2(-34, -97)
+rest = Transform2D(0.998446, -0.0538247, 0.0538247, 0.998446, -34, -97)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="arm_l" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D"]
 texture = ExtResource("3_c2x7k")
@@ -175,6 +147,8 @@ offset = Vector2(-5, 26)
 
 [node name="hand_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D"]
 position = Vector2(-9, 55)
+rest = Transform2D(0.998406, -0.0564401, 0.0564401, 0.998406, -9, 55)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="hand_l" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D"]
 texture = ExtResource("4_pf44h")
@@ -182,11 +156,14 @@ offset = Vector2(-14, 42)
 
 [node name="endBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D"]
 position = Vector2(-16, 72)
+rest = Transform2D(1, 0, 0, 1, -16, 72)
 
 [node name="end" type="Marker2D" parent="Goalie/hipBone2D/torsoBone2D/arm_lBone2D/hand_lBone2D/endBone2D"]
 
 [node name="arm_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D"]
 position = Vector2(41, -97)
+rest = Transform2D(0.989821, 0.141744, -0.141744, 0.989821, 41, -97)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="arm_r" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D"]
 texture = ExtResource("5_5asuh")
@@ -194,6 +171,8 @@ offset = Vector2(9, 25)
 
 [node name="hand_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D"]
 position = Vector2(11, 56)
+rest = Transform2D(0.997721, 0.0674683, -0.0674683, 0.997721, 11, 56)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="hand_r" type="Sprite2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D"]
 texture = ExtResource("6_rawpx")
@@ -201,12 +180,14 @@ offset = Vector2(16, 41)
 
 [node name="endBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D"]
 position = Vector2(19, 71)
+rest = Transform2D(1, 0, 0, 1, 19, 71)
 
 [node name="end" type="Marker2D" parent="Goalie/hipBone2D/torsoBone2D/arm_rBone2D/hand_rBone2D/endBone2D"]
 position = Vector2(-1.00001, -0.999996)
 
 [node name="headBone2D" type="Bone2D" parent="Goalie/hipBone2D/torsoBone2D"]
 position = Vector2(6, -117)
+rest = Transform2D(1, 0, 0, 1, 6, -117)
 
 [node name="HeadEnd" type="Marker2D" parent="Goalie/hipBone2D/torsoBone2D/headBone2D"]
 position = Vector2(3, -51)
@@ -217,11 +198,13 @@ offset = Vector2(0, -25)
 
 [node name="leg_lBone2D" type="Bone2D" parent="Goalie/hipBone2D"]
 position = Vector2(-21, 15)
-rest = Transform2D(1, 0, 0, 1, -21, 15)
+rest = Transform2D(0.9927, 0.120597, -0.120597, 0.9927, -21, 15)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="foot_lBone2D" type="Bone2D" parent="Goalie/hipBone2D/leg_lBone2D"]
 position = Vector2(4, 78)
-rest = Transform2D(1, 0, 0, 1, 4, 78)
+rest = Transform2D(0.999176, -0.0405881, 0.0405881, 0.999176, 4, 78)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Marker2DBone2D" type="Bone2D" parent="Goalie/hipBone2D/leg_lBone2D/foot_lBone2D"]
 position = Vector2(1, 94)
@@ -240,7 +223,8 @@ offset = Vector2(3, 42)
 
 [node name="leg_rBone2D" type="Bone2D" parent="Goalie/hipBone2D"]
 position = Vector2(20, 13)
-rest = Transform2D(1, 0, 0, 1, 20, 13)
+rest = Transform2D(0.999137, 0.0406851, -0.0406851, 0.999137, 20, 13)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="leg_r" type="Sprite2D" parent="Goalie/hipBone2D/leg_rBone2D"]
 texture = ExtResource("10_o2l7x")
@@ -248,7 +232,8 @@ offset = Vector2(2, 43)
 
 [node name="foot_rBone2D" type="Bone2D" parent="Goalie/hipBone2D/leg_rBone2D"]
 position = Vector2(4, 86)
-rest = Transform2D(1, 0, 0, 1, 4, 86)
+rest = Transform2D(0.998919, -0.0464614, 0.0464614, 0.998919, 4, 86)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="foot_r" type="Sprite2D" parent="Goalie/hipBone2D/leg_rBone2D/foot_rBone2D"]
 texture = ExtResource("11_ksjyy")
@@ -263,22 +248,22 @@ rest = Transform2D(1, 0, 0, 1, 0, 84)
 [node name="Targets" type="Node2D" parent="Goalie"]
 
 [node name="LeftHand" type="Marker2D" parent="Goalie/Targets"]
-position = Vector2(-99, 122)
+position = Vector2(-60, 182)
 
 [node name="RightHand" type="Marker2D" parent="Goalie/Targets"]
-position = Vector2(90, 104)
+position = Vector2(61, 180)
 
 [node name="Hip" type="Marker2D" parent="Goalie/Targets"]
 position = Vector2(90, 104)
 
 [node name="leg_l" type="Marker2D" parent="Goalie/Targets"]
-position = Vector2(-36, 182)
+position = Vector2(-33, 187)
 
 [node name="leg_r" type="Marker2D" parent="Goalie/Targets"]
-position = Vector2(24, 188)
+position = Vector2(21, 186)
 
 [node name="head" type="Marker2D" parent="Goalie/Targets"]
-position = Vector2(16, -205)
+position = Vector2(-8, -170)
 
 [node name="Sprite2D" type="Sprite2D" parent="Goalie"]
 visible = false
@@ -321,4 +306,11 @@ script = ExtResource("16_ba6qh")
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "reload_scene"
+script = ExtResource("18_btqtq")
+
 [connection signal="on_have_position" from="MouseInputTester" to="Goalie_Control" method="on_jump_here"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

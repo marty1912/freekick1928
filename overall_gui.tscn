@@ -155,6 +155,7 @@ offset_right = 740.0
 offset_bottom = 481.0
 
 [node name="SubViewport" type="SubViewport" parent="CL_BUBBLE/OverallGUI/SubViewportContainer"]
+own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(740, 480)

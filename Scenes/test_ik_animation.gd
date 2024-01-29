@@ -27,11 +27,17 @@ var legs_positions_start_global:Array[Vector2] = []
 var in_jump:bool = false
 var jump_done:bool = false
 var reaction_time:float = 0
+@onready var goalie_skeleton: Skeleton2D = $"../Goalie"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#start_jump()
 	pass # Replace with function body.
+
+func remove_and_add_again():
+	var par = goalie_skeleton.get_parent()
+	par.remove_child(goalie_skeleton)
+	par.add_child(goalie_skeleton)
 
 func start_jump():
 	var dist_to_reach:float = (goalie_base.global_position - goalie_reach.global_position).length()
@@ -105,8 +111,8 @@ func update_jump_position():
 
 func stand_up():
 	for i in range(0,len(targets)):
-		var t :Tween = create_tween()
-		t.tween_property(targets[i],"position",targets_positions_default[i],1.0)
+		var tww :Tween = create_tween()
+		tww.tween_property(targets[i],"position",targets_positions_default[i],1.0)
 	for i in range(0,len(legs)):
 		var t :Tween = create_tween()
 		t.tween_property(legs[i],"position",legs_positions_default[i],1.0)
@@ -160,7 +166,7 @@ func can_jump_here_in_time(jump_here:Vector2,time:float)-> bool:
 	
 	self.global_position = jump_here
 	var target = get_jump_target()
-	var dist = (goalie_base.global_position-target).length()
+	#var dist = (goalie_base.global_position-target).length()
 	
 	if(need_time < time):
 		return true
@@ -181,9 +187,9 @@ func reach_to_ball_without_jump(jump_here:Vector2):
 		legs_positions_start_global.append(i.global_position)
 		legs_positions_default.append(i.position)
 	
-	var t:Tween = create_tween()
-	t.tween_interval(2.0)
-	t.tween_callback(func(): stand_up())
+	var tw:Tween = create_tween()
+	tw.tween_interval(2.0)
+	tw.tween_callback(func(): stand_up())
 
 func jump_to_be_here_in(jump_here:Vector2,time:float) -> bool:
 	reach_position_debug.global_position = jump_here

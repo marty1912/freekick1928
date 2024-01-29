@@ -46,3 +46,6 @@ res://Scenes/PlayWithDelay.gd
 res://Scenes/FreeKickGUI.gd
 res://Scenes/BallKickSound.gd
 res://Scenes/GoalScore.gd
+res://Scenes/test_ik_animation.gd
+res://Scenes/FixGoalieProblems.gd
+res://Scenes/button_reload_test.gd

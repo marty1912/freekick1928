@@ -15,7 +15,7 @@ signal do_score_goal(int)
 signal game_is_over()
 
 func reset_all():
-	var total_kicks:int = 0
+	total_kicks = 0
 	set_my_score(Vector2i(0,0))
 	last_kick_was_goal = false
 	
