@@ -34,7 +34,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uutfu"]
-size = Vector3(7.4, 2.44, 1.13745)
+size = Vector3(7.4, 2.44, 1.77869)
 
 [sub_resource type="BoxMesh" id="BoxMesh_djm41"]
 
@@ -50,7 +50,7 @@ size = Vector3(100, 50, 2)
 size = Vector3(10, 50, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p53fs"]
-size = Vector3(50, 2.44, 2)
+size = Vector3(49.8706, 2.44, 2)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u4jh5"]
 
@@ -140,7 +140,7 @@ script = ExtResource("1_et3lr")
 [node name="Goal" type="Area3D" parent="GoalStuff"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GoalStuff/Goal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 1.30773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22, 0.987112)
 shape = SubResource("BoxShape3D_uutfu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GoalStuff/Goal/CollisionShape3D"]
@@ -165,7 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0007, 27.44, 1)
 shape = SubResource("BoxShape3D_w7slc")
 
 [node name="LEFT" type="CollisionShape3D" parent="GoalStuff/Out"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6664, 1.187, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7311, 1.187, 1)
 shape = SubResource("BoxShape3D_p53fs")
 
 [node name="RIGHT" type="CollisionShape3D" parent="GoalStuff/Out"]

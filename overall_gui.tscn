@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://tg2mj32566kj"]
+[gd_scene load_steps=32 format=3 uid="uid://tg2mj32566kj"]
 
 [ext_resource type="Script" path="res://Scenes/OverallGUI.gd" id="1_sn41t"]
 [ext_resource type="Script" path="res://GeneralStoryControl.gd" id="1_to1g3"]
@@ -13,16 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://b16b476hy07oi" path="res://Sprites/Grandma/radio.png" id="5_jqqsp"]
 [ext_resource type="Script" path="res://Scenes/LiveTickerList.gd" id="6_6amx0"]
 [ext_resource type="Shader" path="res://godot_reuse/SpriteMask/SpriteMask.gdshader" id="14_0eht7"]
+[ext_resource type="Texture2D" uid="uid://4pag3hbrumq2" path="res://godot_reuse/ColorPaletteLimit/palettes/dreamhaze8-1x.png" id="15_bolpi"]
 [ext_resource type="Shader" path="res://godot_reuse/ColorPaletteLimit/paletteReplace.gdshader" id="17_fdpoq"]
 [ext_resource type="PackedScene" uid="uid://c04woqgurnlad" path="res://Scenes/DreamBubble.tscn" id="18_618mx"]
 [ext_resource type="Texture2D" uid="uid://bhyqw1whvkw8a" path="res://icon.png" id="18_jr1mj"]
 [ext_resource type="Texture2D" uid="uid://dvk0r622h4mi3" path="res://godot_reuse/ColorPaletteLimit/palettes/gloom-8-1x.png" id="18_qc0a8"]
 [ext_resource type="Script" path="res://move_around_test.gd" id="19_n0bmh"]
 [ext_resource type="PackedScene" uid="uid://c5lpk1sj124y6" path="res://godot_reuse/FPS_Counter/fps_counter.tscn" id="20_8d8vb"]
+[ext_resource type="Texture2D" uid="uid://co1bdkkc8kbq2" path="res://godot_reuse/ColorPaletteLimit/palettes/modified_satur8-1.png" id="20_xdu4t"]
 [ext_resource type="Script" path="res://CanvasLayerFinish.gd" id="21_3ivja"]
 [ext_resource type="FontFile" uid="uid://b44u65m6dkaty" path="res://godot_reuse/Fonts/sobiscuit/Sobiscuit.ttf" id="22_qndd5"]
 [ext_resource type="Texture2D" uid="uid://to8wnjcir637" path="res://Sprites/retry.png" id="23_q4jfs"]
-[ext_resource type="Texture2D" uid="uid://cmu51h5g6f4yq" path="res://godot_reuse/ColorPaletteLimit/palettes/slso8-1x.png" id="24_aod47"]
 [ext_resource type="AnimationLibrary" uid="uid://c4w3h66ljav32" path="res://animations/end_animation/global.res" id="24_bamev"]
 
 [sub_resource type="Animation" id="Animation_schlq"]
@@ -58,15 +59,17 @@ shader_parameter/mask_texture = SubResource("ViewportTexture_mmdvx")
 shader = ExtResource("17_fdpoq")
 shader_parameter/num_colors = 8
 shader_parameter/allow_transparent = true
+shader_parameter/flip_swap = true
 shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("18_qc0a8")
-shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("18_qc0a8")
+shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("15_bolpi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_06rck"]
 shader = ExtResource("17_fdpoq")
 shader_parameter/num_colors = 8
 shader_parameter/allow_transparent = true
+shader_parameter/flip_swap = false
 shader_parameter/PALETTE_TEXTURE_ORIG = ExtResource("18_qc0a8")
-shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("24_aod47")
+shader_parameter/PALETTE_TEXTURE_SWAP = ExtResource("20_xdu4t")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_to1g3")
@@ -289,6 +292,8 @@ material = SubResource("ShaderMaterial_06rck")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 162.0
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
