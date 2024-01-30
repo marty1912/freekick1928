@@ -27,6 +27,10 @@ SoundFadeInOut="*res://godot_reuse/audio_stuff/SoundFadeInOut.gd"
 window/size/viewport_width=740
 window/size/viewport_height=480
 
+[editor]
+
+movie_writer/movie_file="C:/Users/bmart/Documents/GodotProjects/FreeKick1928/Screenshots/recordings/movie.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")

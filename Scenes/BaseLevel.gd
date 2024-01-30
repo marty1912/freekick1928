@@ -10,6 +10,7 @@ var shot_was_taken_already : bool = false
 var time_elapsed:float = 0
 var frames_elapsed:int = 0
 var emitted_one_second=false
+var goal_scored_or_not_already = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	goal_stuff.on_goal_scored.connect(on_goal_scored)
@@ -39,11 +40,15 @@ func emit_shot_taken_if_not_already_done(val:bool):
 		shot_was_taken_already = true
 
 func on_goal_scored():
-	var tween:Tween = create_tween()
-	tween.tween_interval(2)
-	tween.tween_callback(func(): emit_shot_taken_if_not_already_done(true))
+	if(not goal_scored_or_not_already):
+		goal_scored_or_not_already = true
+		var tween:Tween = create_tween()
+		tween.tween_interval(4)
+		tween.tween_callback(func(): emit_shot_taken_if_not_already_done(true))
 
 func on_no_goal():
-	var tween:Tween = create_tween()
-	tween.tween_interval(2)
-	tween.tween_callback(func(): emit_shot_taken_if_not_already_done(false))
+	if(not goal_scored_or_not_already):
+		goal_scored_or_not_already = true
+		var tween:Tween = create_tween()
+		tween.tween_interval(2)
+		tween.tween_callback(func(): emit_shot_taken_if_not_already_done(false))

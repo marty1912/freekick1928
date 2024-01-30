@@ -66,6 +66,7 @@ text = "[color=red][center]   FEATURES
 [center]"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="LogoScene/Control" index="2"]
+visible = false
 z_index = 400
 custom_minimum_size = Vector2(512, 256)
 layout_mode = 0
@@ -81,5 +82,43 @@ theme_override_font_sizes/normal_font_size = 78
 bbcode_enabled = true
 text = "[color=red][center]   CONTROLS
 [center]"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="LogoScene/Control" index="3"]
+visible = false
+z_index = 400
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 0
+offset_left = 133.0
+offset_top = 394.0
+offset_right = 645.0
+offset_bottom = 650.0
+theme_override_colors/font_shadow_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("5_4qu7b")
+theme_override_font_sizes/normal_font_size = 78
+bbcode_enabled = true
+text = "[color=red][center]     STORY
+[center]"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="LogoScene/Control" index="4"]
+z_index = 400
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 0
+offset_left = 133.0
+offset_top = 394.0
+offset_right = 645.0
+offset_bottom = 650.0
+theme_override_colors/font_shadow_color = Color(1, 1, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("5_4qu7b")
+theme_override_font_sizes/normal_font_size = 78
+bbcode_enabled = true
+text = "[color=red][center]    CREDITS
+[center]"
+
+[node name="ColorRect" parent="LogoScene/CanvasLayer" index="0"]
+offset_right = 299.0
 
 [editable path="LogoScene"]
