@@ -1,8 +1,8 @@
+ColorRect
 Camera3D
 Node3D
 SubViewport
 SubViewportContainer
-ColorRect
 CanvasLayer
 RichTextLabel
 Control

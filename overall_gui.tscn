@@ -86,7 +86,7 @@ script = ExtResource("1_to1g3")
 layer = 2
 
 [node name="outside_frame" type="NinePatchRect" parent="CanvasLayer"]
-modulate = Color(0.0509804, 0, 0.0352941, 1)
+modulate = Color(0.321569, 0.0235294, 0.266667, 1)
 z_index = 2000
 custom_minimum_size = Vector2(740, 480)
 offset_right = 740.0
@@ -107,7 +107,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.0509804, 0.00784314, 0.0784314, 1)
+color = Color(0.321569, 0.0235294, 0.266667, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(5, -90)

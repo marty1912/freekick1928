@@ -45,3 +45,5 @@ res://Scenes/LogoScene.tscn
 res://Scenes/BannerScene.tscn
 res://Scenes/OverallGUI.gd
 res://Scenes/BaseLevel.gd
+res://Scenes/EmbedBGScene.tscn
+res://Scenes/ballSceneBG.tscn

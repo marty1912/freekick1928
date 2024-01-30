@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2g4ryqexxsda"]
+
+[ext_resource type="PackedScene" uid="uid://duquccl3jonw8" path="res://Scenes/LogoScene.tscn" id="1_xpkf2"]
+
+[node name="EmbedBgScene" type="Node2D"]
+
+[node name="LogoScene" parent="." instance=ExtResource("1_xpkf2")]
+position = Vector2(102, -87)

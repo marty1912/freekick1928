@@ -24,8 +24,8 @@ SoundFadeInOut="*res://godot_reuse/audio_stuff/SoundFadeInOut.gd"
 
 [display]
 
-window/size/viewport_width=740
-window/size/viewport_height=480
+window/size/viewport_width=256
+window/size/viewport_height=256
 
 [editor]
 
