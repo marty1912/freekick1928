@@ -114,17 +114,24 @@ func add_liveticker_text(to_add:String):
 	live_ticker_list.add_item(with_time)
 
 func initial_spawn_done():
+	dream_bubble.hide_me()
 	remove_current_level()
-	on_level_load_workaround_done.emit()
+	var t:Tween = create_tween()
+	t.tween_interval(1.5)
+	t.tween_callback(func(): on_level_load_workaround_done.emit())
+	t.tween_callback(func(): cl_bubble.visible = false)
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	my_levels.shuffle()
-	var initial_load:BaseLevel = preload("res://Scenes/Pitch.tscn").instantiate()
+	
+	var initial_load:BaseLevel = preload("res://Levels/FreeKick1.tscn").instantiate()
 	level.add_child(initial_load)
 	initial_load.mute_me()
 	initial_load.on_spawned_and_one_second_passed.connect(initial_spawn_done)
-	cl_bubble.visible = false
+	dream_bubble.show_me()
+	
 	DialogueGlobals.reset_all()
 	pass # Replace with function body.
 

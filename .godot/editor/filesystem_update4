@@ -43,3 +43,5 @@ res://Levels/FreeKick7.tscn
 res://Levels/FreeKick8.tscn
 res://Scenes/LogoScene.tscn
 res://Scenes/BannerScene.tscn
+res://Scenes/OverallGUI.gd
+res://Scenes/BaseLevel.gd
