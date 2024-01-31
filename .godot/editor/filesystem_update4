@@ -1,4 +1,4 @@
-res://overall_gui.tscn
+res://Scenes/ballSceneBG.tscn
 res://godot_reuse/FilledSprite/FillTopBottom.gdshader
 res://Models/Net_material.tres
 res://text_with_shadows.tres
@@ -16,6 +16,7 @@ res://Scenes/WASD_Direction_2D.tscn
 res://Scenes/power_select.tscn
 res://Scenes/ball_fire_thing.tscn
 res://Scenes/grass.tscn
+res://overall_gui.tscn
 res://Levels/FreeKick1.tscn
 res://Levels/FreeKick2.tscn
 res://Levels/FreeKick4.tscn
@@ -43,7 +44,4 @@ res://Levels/FreeKick7.tscn
 res://Levels/FreeKick8.tscn
 res://Scenes/LogoScene.tscn
 res://Scenes/BannerScene.tscn
-res://Scenes/OverallGUI.gd
-res://Scenes/BaseLevel.gd
 res://Scenes/EmbedBGScene.tscn
-res://Scenes/ballSceneBG.tscn

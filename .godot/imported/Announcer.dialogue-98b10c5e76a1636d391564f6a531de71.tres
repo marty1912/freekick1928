@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_8fxft"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_nkxte"]
 
 [resource]
-script = ExtResource("1_8fxft")
+script = ExtResource("1_nkxte")
 using_states = PackedStringArray("DialogueGlobals")
 titles = {
 "details_families": "126",
@@ -1153,9 +1153,9 @@ Soon after that the referee once again blew his whistle.",
 "next_id": "54",
 "parent_id": "52",
 "tags": PackedStringArray(),
-"text": "Even though they missed that chance the players did not give up.",
+"text": "Another failed attempt. But our players did not give up.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "Even though they missed that chance the players did not give up.",
+"translation_key": "Another failed attempt. But our players did not give up.",
 "type": "dialogue"
 },
 "54": {

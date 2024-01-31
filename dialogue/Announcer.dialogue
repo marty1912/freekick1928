@@ -50,7 +50,7 @@ elif total_kicks == 2:
 		GRANDMOTHER: One more and the score would be even.
 			Soon after that the referee once again blew his whistle.
 	else:
-		GRANDMOTHER: Even though they missed that chance the players did not give up.
+		GRANDMOTHER: Another failed attempt. But our players did not give up.
 		GRANDMOTHER: What the team needed now was a goal.
 			Soon after that the referee once again blew his whistle.
 			
